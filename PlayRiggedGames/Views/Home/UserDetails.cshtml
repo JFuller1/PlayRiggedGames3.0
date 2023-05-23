@@ -1,0 +1,30 @@
+﻿@{
+    ViewData["Title"] = "User Details";
+}
+@model PlayRiggedGames.Service.ViewModels.Home_UserDetails_ViewModel;
+
+<div>
+    <h1>User Details</h1>
+
+    <ul>
+        <li>Username: @Model.User.UserName</li>
+        <li>Email: @Model.User.Email</li>
+        <li>Total Money: @Model.User.Money</li>
+    </ul>
+
+    <h2>Slot Machine Game Logs</h2>
+    <ul>
+        @foreach (var gamelog in Model.SlotGameLogs)
+        {
+            @*<li>Slot Machine: </li> UPDATE ONCE SLOT OUTCOMES ARE BEING CREATED*@
+            @*Check if it was a jackpot, if so display cool jackpot text*@
+            @if (gamelog.Jackpot == true)
+            {
+                <li>JACKPOT</li>
+            }
+            <li>Money Spent: @gamelog.MoneyInput</li>
+            <li>Money Won: @gamelog.MoneyOutput</li>
+            <li>Time: @gamelog.Time</li>
+        }
+    </ul>
+</div>
