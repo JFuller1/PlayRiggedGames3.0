@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using PlayRiggedGames.DataAccess.Data;
@@ -12,13 +13,14 @@ namespace PlayRiggedGames.Service.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly ApplicationDbContext _db;
+        // ensure to use the INTERFACE not the HARDCODED stuff when injecting
+        private readonly IRiggedService _service;
         private readonly UserManager<ApplicationUser> _userManager;
 
-        public HomeController(ILogger<HomeController> logger, ApplicationDbContext db, UserManager<ApplicationUser> userManager)
+        public HomeController(ILogger<HomeController> logger, IRiggedService service, UserManager<ApplicationUser> userManager)
         {
             _logger = logger;
-            _db = db;
+            _service = service;
             _userManager = userManager;
         }
 
@@ -37,18 +39,22 @@ namespace PlayRiggedGames.Service.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        [Authorize]
         public IActionResult UserDetails()
         {
             ApplicationUser user = GetLoggedInUser();
-            List<SlotGameLog> slotLogs = _db.SlotGameLogs.Where(gamelog => gamelog.PlayerId == user.Id).ToList();
-            return View(new Home_UserDetails_ViewModel(user, slotLogs, _db.SlotMachines.ToList()));
+            List<SlotGameLog> slotLogs = _service.GetAllSlotGameLogs().Where(x => x.Player == user).ToList();
+            List<SlotMachine> slotMachines = _service.GetAllSlotMachines().ToList();
+
+            return View(new Home_UserDetails_ViewModel(user, slotLogs, slotMachines));
         }
 
-        public ApplicationUser GetLoggedInUser()
+        private ApplicationUser GetLoggedInUser()
         {
             // gets the id of the currently logged in user
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            return _db.ApplicationUsers.First(user => user.Id == userId);
+            return _service.GetUserById(userId);
         }
     }
 }
