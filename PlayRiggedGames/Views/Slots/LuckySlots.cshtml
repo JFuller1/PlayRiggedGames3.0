@@ -1,0 +1,120 @@
+﻿<link rel="stylesheet" href="~/css/slots.css" />
+
+<p id="moneyDisplay"></p>
+<input type="hidden" value="@Url.Action("GenerateSlotSymbols")" id="UrlGenerateSlotSymbols" />
+<button id="generateBtn">Generate Symbols</button>
+<div id="symbolDisplay"></div>
+<div id="resultDisplay"></div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" defer>
+    let money = 500;
+    let name = "LuckySlots";
+    let width = 5;
+    let height = 3;
+
+    // !! Move symbol data to db !!
+    let symbols = [
+        {
+            name: "club",
+            value: 25,
+            weight: 50
+        },
+        {
+            name: "lemon",
+            value: 25,
+            weight: 50
+        },
+        {
+            name: "spade",
+            value: 35,
+            weight: 50
+        },
+        {
+            name: "banana",
+            value: 40,
+            weight: 50
+            },
+        {
+            name: "cherry",
+            value: 50,
+            weight: 50
+            },
+        {
+            name: "diamond",
+            value: 60,
+            weight: 50
+        },
+        {
+            name: "melon",
+            value: 75,
+            weight: 50
+        },
+        {
+            name: "grapes",
+            value: 80,
+            weight: 50
+        },
+        {
+            name: "heart",
+            value: 100,
+            weight: 50
+        },
+        {
+            name: "dice",
+            value: 125,
+            weight: 50
+        },
+        {
+            name: "chip",
+            value: 150,
+            weight: 50
+        },
+        {
+            name: "orange",
+            value: 100,
+            weight: 50
+        },
+        {
+            name: "strawberry",
+            value: 125,
+            weight: 25
+        },
+        {
+            name: "emerald",
+            value: 150,
+            weight: 25
+        },
+        {
+            name: "coin",
+            value: 200,
+            weight: 25
+        },
+        {
+            name: "bell",
+            value: 200,
+            weight: 15
+        },
+        {
+            name: "horseshoe",
+            value: 200,
+            weight: 15
+        },
+        {
+            name: "clover",
+            value: 350,
+            weight: 15
+        },
+        {
+            name: "crown",
+            value: 1000,
+            weight: 10
+        },
+        {
+            name: "seven",
+            value: 5000,
+            weight: 5
+        },
+    ];
+</script>
+<script src="~/js/slothelper.js" defer></script>

@@ -1,0 +1,120 @@
+﻿<link rel="stylesheet" href="~/css/slots.css" />
+
+<p id="moneyDisplay"></p>
+<input type="hidden" value="@Url.Action("GenerateSlotSymbols")" id="UrlGenerateSlotSymbols" />
+<button id="generateBtn">Generate Symbols</button>
+<div id="symbolDisplay"></div>
+<div id="resultDisplay"></div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" defer>
+    let money = 500;
+    let name = "DailySpin";
+    let width = 7;
+    let height = 5;
+
+    // !! Move symbol data to db !!
+    let symbols = [
+        {
+            name: "goldclub",
+            value: 25,
+            weight: 50
+        },
+        {
+            name: "goldlemon",
+            value: 25,
+            weight: 50
+        },
+        {
+            name: "goldspade",
+            value: 35,
+            weight: 50
+        },
+        {
+            name: "goldbanana",
+            value: 40,
+            weight: 50
+        },
+        {
+            name: "goldcherry",
+            value: 50,
+            weight: 50
+        },
+        {
+            name: "golddiamond",
+            value: 60,
+            weight: 50
+        },
+        {
+            name: "goldmelon",
+            value: 75,
+            weight: 50
+        },
+        {
+            name: "goldgrapes",
+            value: 80,
+            weight: 50
+        },
+        {
+            name: "goldheart",
+            value: 100,
+            weight: 50
+        },
+        {
+            name: "golddice",
+            value: 125,
+            weight: 50
+        },
+        {
+            name: "goldchip",
+            value: 150,
+            weight: 50
+        },
+        {
+            name: "goldorange",
+            value: 100,
+            weight: 50
+        },
+        {
+            name: "goldstrawberry",
+            value: 125,
+            weight: 25
+        },
+        {
+            name: "goldemerald",
+            value: 150,
+            weight: 25
+        },
+        {
+            name: "goldcoin",
+            value: 200,
+            weight: 25
+        },
+        {
+            name: "goldbell",
+            value: 200,
+            weight: 15
+        },
+        {
+            name: "goldhorseshoe",
+            value: 200,
+            weight: 15
+        },
+        {
+            name: "goldclover",
+            value: 350,
+            weight: 15
+        },
+        {
+            name: "goldcrown",
+            value: 1000,
+            weight: 10
+        },
+        {
+            name: "goldseven",
+            value: 5000,
+            weight: 5
+        },
+    ];
+</script>
+<script src="~/js/slothelper.js" defer></script>
