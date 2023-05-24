@@ -648,6 +648,8 @@ namespace PlayRiggedGames.DataAccess.Data
         }
 
         #region Functions from Interface
+        // fun fact: you do indeed need SaveChanges();
+
         // User
         public bool CreateUser(ApplicationUser newUser)
         {
@@ -659,6 +661,7 @@ namespace PlayRiggedGames.DataAccess.Data
             {
                 return false;
             }
+            this.SaveChanges();
             return true;
         }
         public IEnumerable<ApplicationUser> GetAllUsers()
@@ -673,13 +676,12 @@ namespace PlayRiggedGames.DataAccess.Data
                 ApplicationUser selected = ApplicationUsers.First(x => x.Id == updateData.Id);
 
                 selected = updateData;
-
-                SaveChanges();
             }
             catch (Exception e)
             {
                 return false;
             }
+            this.SaveChanges();
             return true;
         }
 
@@ -694,6 +696,7 @@ namespace PlayRiggedGames.DataAccess.Data
             {
                 return false;
             }
+            this.SaveChanges();
             return true;
         }
         public IEnumerable<SlotMachine> GetAllSlotMachines()
@@ -708,13 +711,12 @@ namespace PlayRiggedGames.DataAccess.Data
                 SlotMachine selected = SlotMachines.First(x => x.Id == updateData.Id);
 
                 selected = updateData;
-
-                SaveChanges();
             }
             catch (Exception e)
             {
                 return false;
             }
+            this.SaveChanges();
             return true;
         }
 
@@ -729,6 +731,7 @@ namespace PlayRiggedGames.DataAccess.Data
             {
                 return false;
             }
+            this.SaveChanges();
             return true;
         }
         public IEnumerable<SlotSymbol> GetAllSlotSymbols()
@@ -743,12 +746,12 @@ namespace PlayRiggedGames.DataAccess.Data
 
                 selected = updateData;
 
-                SaveChanges();
             }
             catch (Exception e)
             {
                 return false;
             }
+            this.SaveChanges();
             return true;
         }
 
@@ -764,6 +767,7 @@ namespace PlayRiggedGames.DataAccess.Data
             {
                 return false;
             }
+            this.SaveChanges();
             return true;
         }
         public IEnumerable<SlotGameLog> GetAllSlotGameLogs()
@@ -782,6 +786,7 @@ namespace PlayRiggedGames.DataAccess.Data
             {
                 return false;
             }
+            this.SaveChanges();
             return true;
         }
         public IEnumerable<SlotOutcome> GetAllSlotOutcomes()
