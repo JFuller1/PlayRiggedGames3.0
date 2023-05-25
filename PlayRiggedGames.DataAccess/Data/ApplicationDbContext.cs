@@ -676,12 +676,16 @@ namespace PlayRiggedGames.DataAccess.Data
                 ApplicationUser selected = ApplicationUsers.First(x => x.Id == updateData.Id);
 
                 selected = updateData;
+
+                Console.WriteLine(selected);
+
+                this.SaveChanges();
             }
             catch (Exception e)
             {
                 return false;
             }
-            this.SaveChanges();
+
             return true;
         }
 

@@ -15,6 +15,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using PlayRiggedGames.Domain.Models;
+using PlayRiggedGames.Service;
 
 namespace PlayRiggedGames.Areas.Identity.Pages.Account
 {
@@ -22,11 +23,15 @@ namespace PlayRiggedGames.Areas.Identity.Pages.Account
     {
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly ILogger<LoginModel> _logger;
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly IRiggedService _service;
 
-        public LoginModel(SignInManager<ApplicationUser> signInManager, ILogger<LoginModel> logger)
+        public LoginModel(SignInManager<ApplicationUser> signInManager, ILogger<LoginModel> logger, UserManager<ApplicationUser> userManager, IRiggedService service)
         {
             _signInManager = signInManager;
             _logger = logger;
+            _userManager = userManager;
+            _service = service;
         }
 
         /// <summary>
@@ -114,7 +119,13 @@ namespace PlayRiggedGames.Areas.Identity.Pages.Account
                 var result = await _signInManager.PasswordSignInAsync(Input.UserName, Input.Password, Input.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
+                    //Gets the user... what would the error be if there were two users with the same username??? TALK ABOUT THIS TO TEAM
+                    var user = await _userManager.FindByNameAsync(Input.UserName);
+                    user.LastLogin = DateTime.Now;
+                    _service.UpdateUser(user);
+
                     _logger.LogInformation("User logged in.");
+
                     return LocalRedirect(returnUrl);
                 }
                 if (result.RequiresTwoFactor)
