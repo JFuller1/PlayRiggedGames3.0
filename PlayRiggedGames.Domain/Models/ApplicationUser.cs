@@ -14,7 +14,6 @@ namespace PlayRiggedGames.Domain.Models
         public string LastName { get; set; }
         public int Money { get; set; } = 100;
         public DateTime Birthday { get; set; } = DateTime.Now;
-        public DateTime LastLogin { get; set; } = DateTime.Now;
         public bool BlackListed { get; set; } = false;
     }
 }
