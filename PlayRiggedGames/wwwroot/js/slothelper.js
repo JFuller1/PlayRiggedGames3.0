@@ -45,7 +45,7 @@ function generateSymbols() {
         $.ajax({
             type: "POST",
             url: $('#UrlGenerateSlotSymbols').val(),
-            data: { machineName: name, symbolData: JSON.stringify(symbols), height: height, width: width, selectedRows: JSON.stringify(selectedRows)},
+            data: { machineId: machineId, selectedRows: JSON.stringify(selectedRows)},
             dataType: "json",
             success: function (response) {
                 const obj = JSON.parse(`${response}`);

@@ -89,7 +89,7 @@ namespace PlayRiggedGames.DataAccess.Data
                     {
                         Id = 1,
                         Name = "Lucky Slots",
-                        Width = 3,
+                        Width = 5,
                         Height = 3
                     }
                 );

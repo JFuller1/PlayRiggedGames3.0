@@ -4,16 +4,30 @@ using System.Linq;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+using Microsoft.Extensions.Logging;
+using PlayRiggedGames.Domain.Models;
 using PlayRiggedGames.Models;
+using PlayRiggedGames.Service.Controllers;
+using PlayRiggedGames.Service;
+using Newtonsoft.Json;
 
 namespace PlayRiggedGames.Controllers
 {
     public class SlotsController : Controller
     {
-        // GET: /<controller>/
+        private readonly ILogger<HomeController> _logger;
+        private readonly IRiggedService _service;
+        private readonly UserManager<ApplicationUser> _userManager;
+
+        public SlotsController(ILogger<HomeController> logger, IRiggedService service, UserManager<ApplicationUser> userManager)
+        {
+            _logger = logger;
+            _service = service;
+            _userManager = userManager;
+        }
+
         public IActionResult Index()
         {
             return View();
@@ -30,20 +44,14 @@ namespace PlayRiggedGames.Controllers
         }
 
         [HttpPost]
-        public JsonResult GenerateSlotSymbols(string machineName, string symbolData, int height, int width, string selectedRows)
+        public JsonResult GenerateSlotSymbols(int machineId, string selectedRows)
         {
-            int totalSymbols = height * width;
-            JArray jarr = JArray.Parse(symbolData);
+            SlotMachine machine = _service.GetSlotMachineById(machineId);
 
-            List<SlotSymbol> symbols = new List<SlotSymbol>();
-            int totalWeight = 0;
+            int totalSymbols = machine.Height * machine.Width;
 
-            foreach (JObject obj in jarr.Children<JObject>())
-            {
-                SlotSymbol sym = new SlotSymbol(obj.Property("name").Value.ToString(), (int)obj.Property("value").Value, (int)obj.Property("weight").Value);
-                symbols.Add(sym);
-                totalWeight += (int)obj.Property("weight").Value;
-            }
+            List<SlotSymbol> symbols = _service.GetAllSlotSymbols().Where(s => s.SlotMachineId == machine.Id).ToList();
+            int totalWeight = symbols.Sum(s => s.Weight);
 
             string[] result = new string[totalSymbols];
 
@@ -75,7 +83,7 @@ namespace PlayRiggedGames.Controllers
 
             foreach(int rowIndex in paidRowIndexes)
             {
-                List<string> row = resultList.GetRange(rowIndex * width, width);
+                List<string> row = resultList.GetRange(rowIndex * machine.Width, machine.Width);
                 paidRows.Add(rowIndex, row);
             }
 
@@ -83,10 +91,8 @@ namespace PlayRiggedGames.Controllers
 
             foreach(KeyValuePair<int, List<string>> kvp in paidRows)
             {
-                wins.AddRange(CheckRowForWins(kvp, symbols, machineName));
+                wins.AddRange(CheckRowForWins(kvp, symbols, machine.Name));
             }
-
-
 
             return Json(JsonConvert.SerializeObject(new
             {
