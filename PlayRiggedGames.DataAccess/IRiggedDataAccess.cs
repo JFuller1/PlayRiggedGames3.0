@@ -1,4 +1,5 @@
-﻿using PlayRiggedGames.Domain.Models;
+﻿using Microsoft.AspNetCore.Identity;
+using PlayRiggedGames.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -59,7 +60,16 @@ namespace PlayRiggedGames.DataAccess
 
         // SlotOutcomes CR
         bool CreateSlotOutcome(SlotOutcome slotOutcome);            
-        IEnumerable<SlotOutcome> GetAllSlotOutcomes();              
+        IEnumerable<SlotOutcome> GetAllSlotOutcomes();
 
+        // IdentityRoles CRU
+        bool CreateIdentityRole(IdentityRole role);
+        IEnumerable<IdentityRole> GetAllIdentityRoles();
+        bool UpdateIdentityRole(IdentityRole role);
+
+        // IdentityUserRoles CRU
+        bool CreateIdentityUserRole(IdentityUserRole<string> userRole);
+        IEnumerable<IdentityUserRole<string>> GetAllIdentityUserRoles();
+        bool UpdateIdentityUserRole(IdentityUserRole<string> updateData);
     }
 }

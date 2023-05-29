@@ -1,8 +1,10 @@
-﻿using PlayRiggedGames.DataAccess;
+﻿using Microsoft.AspNetCore.Identity;
+using PlayRiggedGames.DataAccess;
 using PlayRiggedGames.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -89,6 +91,10 @@ namespace PlayRiggedGames.Service
         {
             return _dataAccess.GetAllSlotSymbols();
         }
+        public IEnumerable<SlotSymbol> GetSlotSymbolBySlotMachineId(int id)
+        {
+            return GetAllSlotSymbols().Where(x => x.SlotMachineId == id);
+        }
         public SlotSymbol GetSlotSymbolById(int id)
         {
             return GetAllSlotSymbols().FirstOrDefault(x => x.Id == id);
@@ -137,6 +143,12 @@ namespace PlayRiggedGames.Service
         public IEnumerable<SlotOutcome> GetSlotOutcomesBySlotMachineId(int id)
         {
             return GetAllSlotOutcomes().Where(x => x.SlotMachineId == id);
+        }
+
+        // Roles CR
+        public IdentityRole GetIdentityRoleByUserId(string userId)
+        {
+            return _dataAccess.GetIdentityUserRoles().Where(x => x.UserId == userId).Select(x => x.RoleId);
         }
         #endregion
     }
