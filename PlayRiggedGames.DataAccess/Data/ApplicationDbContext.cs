@@ -91,6 +91,13 @@ namespace PlayRiggedGames.DataAccess.Data
                         Name = "Lucky Slots",
                         Width = 5,
                         Height = 3
+                    },
+                    new SlotMachine()
+                    {
+                        Id = 2,
+                        Name = "Daily Spin",
+                        Width = 7,
+                        Height = 5
                     }
                 );
 
