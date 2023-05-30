@@ -1,0 +1,29 @@
+﻿@model Admin_User_ViewModel;
+
+<h1>User Details: @(Model.User.UserName)</h1>
+
+<p>ID:          @(Model.User.Id)</p>
+<p>Username:    @(Model.User.UserName)</p>
+<p>First Name:  @(Model.User.FirstName)</p>
+<p>Last Name:   @(Model.User.LastName)</p>
+<p>Email:       @(Model.User.Email)</p>
+<p>Phone:       @(Model.User.PhoneNumber)</p>
+<p>Money:       @(Model.User.Money)</p>
+<p>Role:        @(Model.Role.Name)</p>
+<p>Blacklisted: @(Model.User.BlackListed)</p>
+
+<br />
+<br />
+
+<h2>Modify User Info</h2>
+<form method="post">
+    <p>Assign New Role</p>
+    
+
+    <br />
+
+    <p>Blacklist User</p>
+    <br />
+
+    <button type="submit">Apply Changes</button>
+</form>

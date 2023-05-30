@@ -35,7 +35,6 @@ namespace PlayRiggedGames.Service
         IEnumerable<ApplicationUser> GetAllUsers();
         ApplicationUser GetUserById(string id);
         bool UpdateUser(ApplicationUser updateData);
-        public IdentityRole GetUserRoleById(string id);
 
         // SlotMachine CRU
         bool CreateSlotMachine(SlotMachine newSlotMachine);
@@ -69,7 +68,6 @@ namespace PlayRiggedGames.Service
         // IdentityUserRole CRU
         bool CreateIdentityUserRole(string userId, string roleId);
         IEnumerable<IdentityUserRole<string>> GetAllIdentityUserRoles();
-        IdentityRole GetIdentityUserRoleById(ApplicationUser user);
-        IdentityRole GetIdentityUserRoleById(IdentityRole role);
+        IdentityRole GetIdentityRoleByUser(ApplicationUser user);
     }
 }

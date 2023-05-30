@@ -145,10 +145,67 @@ namespace PlayRiggedGames.Service
             return GetAllSlotOutcomes().Where(x => x.SlotMachineId == id);
         }
 
-        // Roles CR
-        public IdentityRole GetIdentityRoleByUserId(string userId)
+        // IdentityRole CRU 
+        public bool CreateIdentityRole(string roleName)
         {
-            return _dataAccess.GetIdentityUserRoles().Where(x => x.UserId == userId).Select(x => x.RoleId);
+            try
+            {
+                _dataAccess.CreateIdentityRole(new IdentityRole(roleName));
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+            return true;
+        }
+        public IEnumerable<IdentityRole> GetAllIdentityRoles()
+        {
+            return _dataAccess.GetAllIdentityRoles();
+        }
+        public IdentityRole GetIdentityRoleById(string id)
+        {
+            return _dataAccess.GetAllIdentityRoles().FirstOrDefault(x => x.Id == id);
+        }
+
+        // IdentityUserRole CRU
+        public bool CreateIdentityUserRole(string userId, string roleId)
+        {
+            try
+            {
+                List<string> userIdWithRoles = GetAllIdentityUserRoles().Select(x => x.UserId).ToList();
+                List<string> roleIds = GetAllIdentityRoles().Select(x => x.Id).ToList();
+
+                if (userIdWithRoles.Contains(userId))
+                {
+                    throw new Exception("User already has role. Modify instead of adding.");
+                }
+                else if (!roleIds.Contains(roleId))
+                {
+                    throw new Exception("Specified role does not exist.");
+                }
+                else
+                {
+                    // All clear
+                    _dataAccess.CreateIdentityUserRole(new IdentityUserRole<string>()
+                    {
+                        UserId = userId,
+                        RoleId = roleId
+                    });
+                }
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+            return true;
+        }
+        public IEnumerable<IdentityUserRole<string>> GetAllIdentityUserRoles()
+        {
+            return _dataAccess.GetAllIdentityUserRoles();
+        }
+        public IdentityRole GetIdentityRoleByUser(ApplicationUser user)
+        {
+            return GetIdentityRoleById(GetAllIdentityUserRoles().Where(x => x.UserId == user.Id).Select(x => x.RoleId).FirstOrDefault());   
         }
         #endregion
     }

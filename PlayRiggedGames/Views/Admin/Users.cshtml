@@ -14,6 +14,7 @@
                 <th scope="col">Email</th>
                 <th scope="col">Role</th>
                 <th scope="col">Blacklisted</th>
+                <th scope="col"></th>
             </tr>
         </thead>
         <tbody>
@@ -25,8 +26,9 @@
                     <td>@(viewModel.User.FirstName)</td>
                     <td>@(viewModel.User.LastName)</td>
                     <td>@(viewModel.User.Email)</td>
-                    <td>@(viewModel.Role)</td>
+                    <td>@(viewModel.Role.Name)</td>
                     <td>@(viewModel.User.BlackListed)</td>
+                    <td><a class="" asp-area="" asp-controller="Admin" asp-action="User" asp-route-Id="@(viewModel.User.Id)">Detail</a></td>
                 </tr>
             }
         </tbody>

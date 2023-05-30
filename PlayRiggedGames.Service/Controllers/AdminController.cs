@@ -34,16 +34,36 @@ namespace PlayRiggedGames.Service.Controllers
             return View();
         }
 
+        //
+        // User related
+        //
         public IActionResult Users()
         {
             List<Admin_Users_ViewModel> returning = new();
 
             foreach(ApplicationUser user in _service.GetAllUsers())
             {
-
+                returning.Add(new Admin_Users_ViewModel()
+                {
+                    User = user,
+                    Role = _service.GetIdentityRoleByUser(user)
+                });
             }
 
-            return View();
+            return View(returning);
+        }
+        public IActionResult User(string id)
+        {
+            // using same viewmodel since there's no need to create 
+            ApplicationUser selectedUser = _service.GetUserById(id);
+
+            Admin_User_ViewModel returning = new()
+            {
+                User = selectedUser,
+                Role = _service.GetIdentityRoleByUser(selectedUser)
+            };
+
+            return View(returning);
         }
 
         //
@@ -51,7 +71,7 @@ namespace PlayRiggedGames.Service.Controllers
         //
         public IActionResult SlotMachines()
         {
-            return View(_service.GetAllSlotMachines());
+            return View(_service.GetAllSlotMachines().ToList());
         }
 
         public IActionResult SlotMachine(int slotMachineId) 
