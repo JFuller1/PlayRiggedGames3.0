@@ -1,5 +1,5 @@
 ﻿const moneyDisplay = document.getElementById("moneyDisplay");
-moneyDisplay.innerHTML = `$${money}`;
+let money = parseInt(moneyDisplay.innerHTML.substring(1));
 
 const symbolDisplay = document.getElementById("symbolDisplay")
 symbolDisplay.style.width = `${width * 80}px`;
@@ -39,9 +39,10 @@ function generateSymbols() {
         }
     }
 
+    money -= (selectedRows.length * cost);
+    moneyDisplay.innerHTML = `$${money}`;
+
     if (selectedRows.length > 0) {
-        money -= (selectedRows.length * 5);
-        moneyDisplay.innerHTML = `$${money}`;
         $.ajax({
             type: "POST",
             url: $('#UrlGenerateSlotSymbols').val(),
@@ -75,10 +76,10 @@ function generateSymbols() {
                         });
                     });
 
-                    money += obj.pay;
-                    moneyDisplay.innerHTML = `$${money}`;
-
                     document.getElementById("generateBtn").disabled = false;
+
+                    money += obj.pay
+                    moneyDisplay.innerHTML = `$${money}`;
                 }, 500 + (width - 1) * 750)
             },
             error: function (req, status, error) {

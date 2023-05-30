@@ -12,6 +12,7 @@ using PlayRiggedGames.Models;
 using PlayRiggedGames.Service.Controllers;
 using PlayRiggedGames.Service;
 using Newtonsoft.Json;
+using System.Security.Claims;
 
 namespace PlayRiggedGames.Controllers
 {
@@ -55,6 +56,8 @@ namespace PlayRiggedGames.Controllers
 
             string[] result = new string[totalSymbols];
 
+            ApplicationUser user = GetLoggedInUser();
+
             for (int i = 0; i < totalSymbols; i++)
             {
                 int chosenSym = new Random().Next(1, totalWeight + 1);
@@ -78,6 +81,9 @@ namespace PlayRiggedGames.Controllers
 
             List<int> paidRowIndexes = System.Text.Json.JsonSerializer.Deserialize<List<int>>(selectedRows);
 
+            user.Money -= (machine.Cost * paidRowIndexes.Count);
+            _service.UpdateUser(user);
+
             Dictionary<int, List<string>> paidRows = new Dictionary<int, List<string>>();
             List<string> resultList = result.ToList();
 
@@ -94,11 +100,21 @@ namespace PlayRiggedGames.Controllers
                 wins.AddRange(CheckRowForWins(kvp, symbols, machine.Name));
             }
 
+            int pay = 0;
+
+            if (wins.Count > 0)
+            {
+                pay = (int)Math.Floor(wins.Sum(w => w.Payout));
+
+                user.Money += pay;
+                _service.UpdateUser(user);
+            }
+
             return Json(JsonConvert.SerializeObject(new
             {
                 wins = wins,
                 result = resultList,
-                pay = wins.Sum(w => w.Payout)
+                pay = pay
             }));
         }
 
@@ -197,6 +213,13 @@ namespace PlayRiggedGames.Controllers
                     return null;
                 }
             }
+        }
+
+        private ApplicationUser GetLoggedInUser()
+        {
+            // gets the id of the currently logged in user
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            return _service.GetUserById(userId);
         }
     }
 }
