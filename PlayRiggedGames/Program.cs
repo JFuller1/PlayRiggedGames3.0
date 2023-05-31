@@ -1,9 +1,11 @@
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using PlayRiggedGames.DataAccess;
 using PlayRiggedGames.DataAccess.Data;
 using PlayRiggedGames.Domain.Models;
 using PlayRiggedGames.Service;
+using PlayRiggedGames.Service.EmailServices;
 
 namespace PlayRiggedGames
 {
@@ -36,6 +38,9 @@ namespace PlayRiggedGames
             builder.Services.AddScoped<IRiggedDataAccess, ApplicationDbContext>();
             builder.Services.AddScoped<IRiggedService, RiggedService>();
             #endregion
+
+            builder.Services.AddTransient<IEmailSender, EmailSender>();
+            builder.Services.Configure<AuthMessageSenderOptions>(builder.Configuration);
 
             var app = builder.Build();
 
