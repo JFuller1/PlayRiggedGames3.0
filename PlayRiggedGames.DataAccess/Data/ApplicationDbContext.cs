@@ -88,9 +88,18 @@ namespace PlayRiggedGames.DataAccess.Data
                     new SlotMachine()
                     {
                         Id = 1,
-                        Name = "Lucky Slots",
-                        Width = 3,
-                        Height = 3
+                        Name = "LuckySlots",
+                        Width = 5,
+                        Height = 3,
+                        Cost = 5
+                    },
+                    new SlotMachine()
+                    {
+                        Id = 2,
+                        Name = "DailySpin",
+                        Width = 7,
+                        Height = 5,
+                        Cost = 0
                     }
                 );
 
@@ -101,15 +110,15 @@ namespace PlayRiggedGames.DataAccess.Data
                     {
                         Id = 1,
                         Name = "club",
-                        Value = 5,
-                        Weight = 50,
+                        Value = 75,
+                        Weight = 30,
                         SlotMachineId = 1
                     },
                     new SlotSymbol()
                     {
                         Id = 2,
                         Name = "lemon",
-                        Value = 5,
+                        Value = 25,
                         Weight = 50,
                         SlotMachineId = 1
                     },
@@ -117,15 +126,15 @@ namespace PlayRiggedGames.DataAccess.Data
                     {
                         Id = 3,
                         Name = "spade",
-                        Value = 10,
-                        Weight = 50,
+                        Value = 75,
+                        Weight = 30,
                         SlotMachineId = 1
                     },
                     new SlotSymbol()
                     {
                         Id = 4,
                         Name = "banana",
-                        Value = 10,
+                        Value = 30,
                         Weight = 50,
                         SlotMachineId = 1
                     },
@@ -133,7 +142,7 @@ namespace PlayRiggedGames.DataAccess.Data
                     {
                         Id = 5,
                         Name = "cherry",
-                        Value = 10,
+                        Value = 50,
                         Weight = 50,
                         SlotMachineId = 1
                     },
@@ -141,15 +150,15 @@ namespace PlayRiggedGames.DataAccess.Data
                     {
                         Id = 6,
                         Name = "diamond",
-                        Value = 15,
-                        Weight = 50,
+                        Value = 75,
+                        Weight = 30,
                         SlotMachineId = 1
                     },
                     new SlotSymbol()
                     {
                         Id = 7,
                         Name = "melon",
-                        Value = 15,
+                        Value = 35,
                         Weight = 50,
                         SlotMachineId = 1
                     },
@@ -157,7 +166,7 @@ namespace PlayRiggedGames.DataAccess.Data
                     {
                         Id = 8,
                         Name = "grapes",
-                        Value = 15,
+                        Value = 40,
                         Weight = 50,
                         SlotMachineId = 1
                     },
@@ -165,31 +174,31 @@ namespace PlayRiggedGames.DataAccess.Data
                     {
                         Id = 9,
                         Name = "heart",
-                        Value = 25,
-                        Weight = 50,
+                        Value = 75,
+                        Weight = 30,
                         SlotMachineId = 1
                     },
                     new SlotSymbol()
                     {
                         Id = 10,
                         Name = "dice",
-                        Value = 25,
-                        Weight = 50,
+                        Value = 110,
+                        Weight = 10,
                         SlotMachineId = 1
                     },
                     new SlotSymbol()
                     {
                         Id = 11,
                         Name = "chip",
-                        Value = 25,
-                        Weight = 50,
+                        Value = 100,
+                        Weight = 10,
                         SlotMachineId = 1
                     },
                     new SlotSymbol()
                     {
                         Id = 12,
                         Name = "orange",
-                        Value = 25,
+                        Value = 45,
                         Weight = 50,
                         SlotMachineId = 1
                     },
@@ -197,31 +206,31 @@ namespace PlayRiggedGames.DataAccess.Data
                     {
                         Id = 13,
                         Name = "strawberry",
-                        Value = 25,
-                        Weight = 20,
+                        Value = 55,
+                        Weight = 50,
                         SlotMachineId = 1
                     },
                     new SlotSymbol()
                     {
                         Id = 14,
                         Name = "emerald",
-                        Value = 50,
-                        Weight = 20,
+                        Value = 200,
+                        Weight = 5,
                         SlotMachineId = 1
                     },
                     new SlotSymbol()
                     {
                         Id = 15,
                         Name = "coin",
-                        Value = 50,
-                        Weight = 20,
+                        Value = 135,
+                        Weight = 10,
                         SlotMachineId = 1
                     },
                     new SlotSymbol()
                     {
                         Id = 16,
                         Name = "bell",
-                        Value = 150,
+                        Value = 125,
                         Weight = 10,
                         SlotMachineId = 1
                     },
@@ -237,8 +246,8 @@ namespace PlayRiggedGames.DataAccess.Data
                     {
                         Id = 18,
                         Name = "clover",
-                        Value = 150,
-                        Weight = 10,
+                        Value = 175,
+                        Weight = 5,
                         SlotMachineId = 1
                     },
                     new SlotSymbol()
@@ -246,7 +255,7 @@ namespace PlayRiggedGames.DataAccess.Data
                         Id = 19,
                         Name = "crown",
                         Value = 500,
-                        Weight = 3,
+                        Weight = 5,
                         SlotMachineId = 1
                     },
                     new SlotSymbol()
@@ -254,7 +263,7 @@ namespace PlayRiggedGames.DataAccess.Data
                         Id = 20,
                         Name = "seven",
                         Value = 1000,
-                        Weight = 1,
+                        Weight = 3,
                         SlotMachineId = 1
                     }
                 );
@@ -347,15 +356,30 @@ namespace PlayRiggedGames.DataAccess.Data
                 LastName = "Brown"
             };
 
+            var user5 = new ApplicationUser()
+            {
+                Id = "0dd9ce5d-123d-4831-9087-7f2deab0082f",
+                UserName = "EvilZabloo",
+                NormalizedUserName = "EVILZABLOO",
+                Money = 200,
+                Birthday = new DateTime(1905, 12, 5),
+                Email = "exoimple@hotmail.com",
+                EmailConfirmed = true,
+                FirstName = "Evil",
+                LastName = "Jaeden",
+                BlackListed = true
+            };
+
             PasswordHasher<ApplicationUser> ph = new PasswordHasher<ApplicationUser>();
             admin1.PasswordHash = ph.HashPassword(admin1, "1234*Pass");
             user1.PasswordHash = ph.HashPassword(user2, "1997Sale$");
             user2.PasswordHash = ph.HashPassword(user2, "$Moon99");
             user3.PasswordHash = ph.HashPassword(user3, "AwesomePossum!77");
             user4.PasswordHash = ph.HashPassword(user4, "Pass%55");
+            user5.PasswordHash = ph.HashPassword(user5, "Mwahahaha!05");
 
             builder.Entity<ApplicationUser>()
-                .HasData(admin1, user1, user2, user3, user4);
+                .HasData(admin1, user1, user2, user3, user4, user5);
             #endregion
 
             #region Slot Game Log

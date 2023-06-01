@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PlayRiggedGames.DataAccess.Data;
 
@@ -11,9 +12,10 @@ using PlayRiggedGames.DataAccess.Data;
 namespace PlayRiggedGames.DataAccess.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230530154641_AddedSampleBlackListedUser")]
+    partial class AddedSampleBlackListedUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -208,9 +210,6 @@ namespace PlayRiggedGames.DataAccess.Data.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("AccountCreated")
-                        .HasColumnType("datetime2");
-
                     b.Property<DateTime>("Birthday")
                         .HasColumnType("datetime2");
 
@@ -289,7 +288,6 @@ namespace PlayRiggedGames.DataAccess.Data.Migrations
                         {
                             Id = "f2672e1f-cf38-45a5-94d0-8ebb0c2ce2ce",
                             AccessFailedCount = 0,
-                            AccountCreated = new DateTime(2023, 5, 26, 9, 51, 44, 844, DateTimeKind.Local).AddTicks(4434),
                             Birthday = new DateTime(2000, 1, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             BlackListed = false,
                             ConcurrencyStamp = "60d1be7c-9002-40b7-b1c0-ed81bedce127",
@@ -310,7 +308,6 @@ namespace PlayRiggedGames.DataAccess.Data.Migrations
                         {
                             Id = "d68aba42-86f9-45de-b529-c53869d23b1f",
                             AccessFailedCount = 0,
-                            AccountCreated = new DateTime(2023, 5, 26, 9, 51, 44, 844, DateTimeKind.Local).AddTicks(4450),
                             Birthday = new DateTime(1969, 3, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             BlackListed = false,
                             ConcurrencyStamp = "48e64c17-5b05-4ed2-97b8-ec167226a329",
@@ -331,7 +328,6 @@ namespace PlayRiggedGames.DataAccess.Data.Migrations
                         {
                             Id = "d207e04f-7a11-452e-8a48-23bae4fcd12f",
                             AccessFailedCount = 0,
-                            AccountCreated = new DateTime(2023, 5, 26, 9, 51, 44, 844, DateTimeKind.Local).AddTicks(4460),
                             Birthday = new DateTime(1995, 6, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             BlackListed = false,
                             ConcurrencyStamp = "45743549-5ee6-444c-861e-886b317bff29",
@@ -352,7 +348,6 @@ namespace PlayRiggedGames.DataAccess.Data.Migrations
                         {
                             Id = "b3e93844-b0c1-4e5b-a308-64353b0208d1",
                             AccessFailedCount = 0,
-                            AccountCreated = new DateTime(2023, 5, 26, 9, 51, 44, 844, DateTimeKind.Local).AddTicks(4469),
                             Birthday = new DateTime(1998, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             BlackListed = false,
                             ConcurrencyStamp = "e7707c2b-31f0-4b2d-9ef3-1f25cf1dd0ac",
@@ -373,8 +368,8 @@ namespace PlayRiggedGames.DataAccess.Data.Migrations
                         {
                             Id = "0dd9ce5d-2e8d-4831-9087-7f2deab0082f",
                             AccessFailedCount = 0,
-                            AccountCreated = new DateTime(2023, 5, 26, 9, 51, 44, 844, DateTimeKind.Local).AddTicks(4477),
                             Birthday = new DateTime(2002, 12, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            BlackListed = false,
                             ConcurrencyStamp = "9fe2aad7-f71d-48e2-a1e4-4b78cbb21edb",
                             Email = "example@hotmail.com",
                             EmailConfirmed = true,
@@ -504,7 +499,6 @@ namespace PlayRiggedGames.DataAccess.Data.Migrations
                             MoneyOutput = 10000,
                             PlayerId = "d68aba42-86f9-45de-b529-c53869d23b1f",
                             Time = new DateTime(2023, 5, 30, 10, 46, 41, 476, DateTimeKind.Local).AddTicks(6963)
-
                         },
                         new
                         {
