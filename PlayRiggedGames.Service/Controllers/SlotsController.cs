@@ -110,6 +110,9 @@ namespace PlayRiggedGames.Controllers
                 _service.UpdateUser(user);
             }
 
+            SlotGameLog log = new SlotGameLog(machine.Cost * paidRowIndexes.Count, pay, DateTime.Now, false, user.Id);
+            _service.CreateSlotGameLog(log);
+
             return Json(JsonConvert.SerializeObject(new
             {
                 wins = wins,
