@@ -64,10 +64,12 @@ namespace PlayRiggedGames.Service
         bool CreateIdentityRole(string roleName);
         IEnumerable<IdentityRole> GetAllIdentityRoles();
         IdentityRole GetIdentityRoleById(string id);
+        public bool UpdateIdentityRole(IdentityRole role);
 
         // IdentityUserRole CRU
         bool CreateIdentityUserRole(string userId, string roleId);
         IEnumerable<IdentityUserRole<string>> GetAllIdentityUserRoles();
         IdentityRole GetIdentityRoleByUser(ApplicationUser user);
+        public bool UpdateIdentityUserRole(ApplicationUser user, IdentityRole role);
     }
 }

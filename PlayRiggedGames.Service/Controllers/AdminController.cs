@@ -52,18 +52,57 @@ namespace PlayRiggedGames.Service.Controllers
 
             return View(returning);
         }
+
         public IActionResult User(string id)
         {
-            // using same viewmodel since there's no need to create 
             ApplicationUser selectedUser = _service.GetUserById(id);
 
             Admin_User_ViewModel returning = new()
             {
                 User = selectedUser,
-                Role = _service.GetIdentityRoleByUser(selectedUser)
+                Role = _service.GetIdentityRoleByUser(selectedUser),
+                AllRoles = _service.GetAllIdentityRoles().ToList()
             };
 
             return View(returning);
+        }
+
+        [HttpPost] 
+        public IActionResult User(Admin_User_ViewModel vm)
+        {
+            // grabbing input values
+            ApplicationUser selectedUser = _service.GetUserById(vm.UserId);
+            IdentityRole newRole = _service.GetIdentityRoleById(vm.NewRoleId);
+
+            // check if newRole, blacklisted is different from user info
+            // if different change values
+            // then return to User
+            if (newRole != _service.GetIdentityRoleByUser(selectedUser))
+            {
+                // given role does not match
+                // need to change value
+                _service.UpdateIdentityUserRole(selectedUser, newRole);
+            }
+            if (vm.NowBlacklist != selectedUser.BlackListed)
+            {
+                // blacklist has been toggled 
+                // need to change value
+                selectedUser.BlackListed = vm.NowBlacklist;
+
+                _service.UpdateUser(selectedUser);
+            }
+
+            // remaking viewmodel
+            ApplicationUser returningUser = _service.GetUserById(selectedUser.Id);
+
+            Admin_User_ViewModel returning = new()
+            {
+                User = returningUser,
+                Role = _service.GetIdentityRoleByUser(returningUser),
+                AllRoles = _service.GetAllIdentityRoles().ToList()
+            };
+
+            return View("User", returning);
         }
 
         //

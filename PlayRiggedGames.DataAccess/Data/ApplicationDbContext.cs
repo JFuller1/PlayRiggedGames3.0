@@ -854,8 +854,9 @@ namespace PlayRiggedGames.DataAccess.Data
             try
             {
                 IdentityUserRole<string> selected = GetAllIdentityUserRoles().First(x => x.UserId == updateData.UserId);
-
-                selected = updateData;
+                
+                UserRoles.Remove(selected);
+                UserRoles.Add(updateData);
 
                 this.SaveChanges();
             }

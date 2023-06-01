@@ -166,6 +166,14 @@ namespace PlayRiggedGames.Service
         {
             return _dataAccess.GetAllIdentityRoles().FirstOrDefault(x => x.Id == id);
         }
+        public bool UpdateIdentityRole(IdentityRole role)
+        {
+            if (_dataAccess.UpdateIdentityRole(role))
+            {
+                return true;
+            }
+            return false;
+        }
 
         // IdentityUserRole CRU
         public bool CreateIdentityUserRole(string userId, string roleId)
@@ -205,7 +213,21 @@ namespace PlayRiggedGames.Service
         }
         public IdentityRole GetIdentityRoleByUser(ApplicationUser user)
         {
-            return GetIdentityRoleById(GetAllIdentityUserRoles().Where(x => x.UserId == user.Id).Select(x => x.RoleId).FirstOrDefault());   
+            return GetIdentityRoleById(GetAllIdentityUserRoles().Where(x => x.UserId == user.Id).Select(x => x.RoleId).FirstOrDefault());
+        }
+        public bool UpdateIdentityUserRole(ApplicationUser user, IdentityRole role)
+        {
+            IdentityUserRole<string> updateData = new()
+            {
+                UserId = user.Id,
+                RoleId = role.Id
+            };
+
+            if (_dataAccess.UpdateIdentityUserRole(updateData))
+            {
+                return true;
+            }
+            return false;
         }
         #endregion
     }

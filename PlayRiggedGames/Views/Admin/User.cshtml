@@ -1,4 +1,10 @@
-﻿@model Admin_User_ViewModel;
+﻿@using Microsoft.AspNetCore.Identity;
+@model Admin_User_ViewModel;
+
+@{
+    // have to put this here so when HTTP post, it doesn't return null
+    
+}
 
 <h1>User Details: @(Model.User.UserName)</h1>
 
@@ -18,11 +24,37 @@
 <h2>Modify User Info</h2>
 <form method="post">
     <p>Assign New Role</p>
-    
+    @for (int i = 0; i < Model.AllRoles.Count; i++)
+    {
+        IdentityRole role = Model.AllRoles[i];
+
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="NewRoleId" id="@(role.Id)" value="@(role.Id)" @(i == 0 ? "checked" : null)>
+            <label class="form-check-label" for="@(role.Id)">
+                @(role.Name)
+            </label>
+        </div>
+
+    }
 
     <br />
 
     <p>Blacklist User</p>
+    <input type="hidden" id="userId" name="UserId" value="@(Model.User.Id)">
+
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="NowBlacklist" id="nowBlacklistTrue" value="true">
+        <label class="form-check-label" for="nowBlacklistTrue">
+            True
+        </label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="NowBlacklist" id="nowBlacklistFalse" value="false" checked>
+        <label class="form-check-label" for="nowBlacklistFalse">
+            False
+        </label>
+    </div>
+
     <br />
 
     <button type="submit">Apply Changes</button>
