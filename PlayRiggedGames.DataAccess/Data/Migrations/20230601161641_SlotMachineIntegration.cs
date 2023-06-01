@@ -5,233 +5,257 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace PlayRiggedGames.DataAccess.Data.Migrations
 {
-    public partial class LuckySlotsSymbolsUpdated : Migration
+    public partial class SlotMachineIntegration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.AddColumn<int>(
+                name: "Cost",
+                table: "SlotMachines",
+                type: "int",
+                nullable: false,
+                defaultValue: 0);
+
             migrationBuilder.UpdateData(
                 table: "AspNetRoles",
                 keyColumn: "Id",
                 keyValue: "e820885b-8490-4367-8bd6-50440fed5b39",
                 column: "ConcurrencyStamp",
-                value: "86a9b74c-9752-44dd-8b88-4a283d566b2f");
+                value: "0562def0-879e-4e8b-9364-db0870f8478c");
 
             migrationBuilder.UpdateData(
                 table: "AspNetRoles",
                 keyColumn: "Id",
                 keyValue: "eda3e09d-0aaa-4e19-984a-7b511c387a86",
                 column: "ConcurrencyStamp",
-                value: "d437520d-a0a1-48b3-8570-ebbb3216fcaa");
+                value: "29f91a30-138b-45bb-988c-fe44a87fae7b");
 
             migrationBuilder.UpdateData(
                 table: "AspNetUsers",
                 keyColumn: "Id",
                 keyValue: "0dd9ce5d-2e8d-4831-9087-7f2deab0082f",
-                columns: new[] { "ConcurrencyStamp", "PasswordHash", "SecurityStamp" },
-                values: new object[] { "09f54c25-a300-4cdb-bc8a-45f52c39af4b", "AQAAAAEAACcQAAAAELt4eH8h6+nzRz3hyBMO8SLVa9ikEUskz/xGF7vWg653vqko3zxNlNZAJv31Xe6x6w==", "a4c8bcf8-10eb-45a3-8a93-d87910f2639b" });
+                columns: new[] { "AccountCreated", "ConcurrencyStamp", "PasswordHash", "SecurityStamp" },
+                values: new object[] { new DateTime(2023, 6, 1, 11, 16, 40, 352, DateTimeKind.Local).AddTicks(7833), "1504c54d-26b4-48c6-8dea-02aeaab2af24", "AQAAAAEAACcQAAAAEO29OIvEfh4LPRlh2WkJbEAebF7HY87UIlSkrH2V0gz9/Igy6xgQzabyTHDGZug+Gg==", "7453c76b-4503-4607-8bbb-c58f94967624" });
 
             migrationBuilder.UpdateData(
                 table: "AspNetUsers",
                 keyColumn: "Id",
                 keyValue: "b3e93844-b0c1-4e5b-a308-64353b0208d1",
-                columns: new[] { "ConcurrencyStamp", "PasswordHash", "SecurityStamp" },
-                values: new object[] { "77c80b29-f214-4096-b49b-0e8621fd70ca", "AQAAAAEAACcQAAAAEMTqw/8HqZBNDMd75i/F1mCno5ljnG3pn7Rvp9n93uTYoQd5fOLaO6mNoCHVcDwy0w==", "7de7c609-0ecc-490e-963e-57486e5ffdb5" });
+                columns: new[] { "AccountCreated", "ConcurrencyStamp", "PasswordHash", "SecurityStamp" },
+                values: new object[] { new DateTime(2023, 6, 1, 11, 16, 40, 352, DateTimeKind.Local).AddTicks(7813), "4861404c-b80e-4bab-a6f4-971916f3d4b7", "AQAAAAEAACcQAAAAEBc5uQNNKF0MaT5yBi+XjaRZmE4A8j1GlVyY/Uwq47Xw6FcUj/5rp2WlqvXFTwPvUA==", "7819c979-9b55-413a-acf4-844b3d02e175" });
 
             migrationBuilder.UpdateData(
                 table: "AspNetUsers",
                 keyColumn: "Id",
                 keyValue: "d207e04f-7a11-452e-8a48-23bae4fcd12f",
-                columns: new[] { "ConcurrencyStamp", "PasswordHash", "SecurityStamp" },
-                values: new object[] { "9c60a974-6fc6-48bb-b7d3-006b669e5f96", "AQAAAAEAACcQAAAAENvZzwFS9CNUwAFPul2FOSZHzBV953M+Z4zw1/f9bm43MBHrqqSWCYTJVXM2pcdLag==", "bf49c099-17d1-4240-adb3-9ce22e88c536" });
+                columns: new[] { "AccountCreated", "ConcurrencyStamp", "PasswordHash", "SecurityStamp" },
+                values: new object[] { new DateTime(2023, 6, 1, 11, 16, 40, 352, DateTimeKind.Local).AddTicks(7786), "afed4847-8d87-4ce8-8a48-3e19e2d266b9", "AQAAAAEAACcQAAAAEEAFBaijJcgY0OXaV92N273YhCPlBEBocfApO+7OEdf1zyv85xue5fW2usBUCdT9RQ==", "47d1d4f8-8969-401c-b12a-1d6b20969062" });
 
             migrationBuilder.UpdateData(
                 table: "AspNetUsers",
                 keyColumn: "Id",
                 keyValue: "d68aba42-86f9-45de-b529-c53869d23b1f",
-                columns: new[] { "ConcurrencyStamp", "PasswordHash", "SecurityStamp" },
-                values: new object[] { "90f2bed9-7b07-4769-be8c-cc8681893a95", "AQAAAAEAACcQAAAAEI/xHn/O3OIiIjT+XdVSY24HRtIbS6alHHd7I3Vhovmtr+d9l1MHCQzXWhBvUdUsmA==", "66398a1b-57a4-4e35-9b4f-b25acf8b8300" });
+                columns: new[] { "AccountCreated", "ConcurrencyStamp", "PasswordHash", "SecurityStamp" },
+                values: new object[] { new DateTime(2023, 6, 1, 11, 16, 40, 352, DateTimeKind.Local).AddTicks(7766), "848eeaea-cfa9-4b15-9865-2c90ac27b3c3", "AQAAAAEAACcQAAAAEK221F6yOT2BJBpcm3fJnRhkQ/hjj/nOYqHEGHTSa9KsOR/gEVZNp/EMn8VtPcik4A==", "8a57e9f9-c8a2-4af9-8fe4-260f4fb14429" });
 
             migrationBuilder.UpdateData(
                 table: "AspNetUsers",
                 keyColumn: "Id",
                 keyValue: "f2672e1f-cf38-45a5-94d0-8ebb0c2ce2ce",
-                columns: new[] { "ConcurrencyStamp", "PasswordHash", "SecurityStamp" },
-                values: new object[] { "329956f1-ce3c-437d-963e-9ee8c54acdb9", "AQAAAAEAACcQAAAAEErfBpCk6s1KqUVJsehPWQTxrzRn03RJsNzluF3xJp1jSAtfxW8RAbBvBLewvnvChQ==", "80b94200-a6d0-46f3-ba4f-242277d19877" });
+                columns: new[] { "AccountCreated", "ConcurrencyStamp", "PasswordHash", "SecurityStamp" },
+                values: new object[] { new DateTime(2023, 6, 1, 11, 16, 40, 352, DateTimeKind.Local).AddTicks(7732), "a217ab3f-dfca-43c1-90e1-e765f3539458", "AQAAAAEAACcQAAAAEInPe+UmnlXE+TmdLuba1ca3TmuR2qyfY2q/C22e22vbAsuXlzDNy9fodxeEbKpXxw==", "e21ee732-8560-465c-b71a-31b81b5ea6d8" });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "AccountCreated", "Birthday", "BlackListed", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "Money", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                values: new object[] { "0dd9ce5d-123d-4831-9087-7f2deab0082f", 0, new DateTime(2023, 6, 1, 11, 16, 40, 352, DateTimeKind.Local).AddTicks(7857), new DateTime(1905, 12, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), true, "01235806-1d63-43aa-bc0a-f4f50ccf8d77", "exoimple@hotmail.com", true, "Evil", "Jaeden", false, null, 200, null, "EVILZABLOO", "AQAAAAEAACcQAAAAEANFXnX940goM+yC1lV8UY0glwO9MK/B4+qatwzTEgDYEqgO8G4+bjiNOxPvxEegfQ==", null, false, "ee139152-1e33-4882-a7a3-f76736622f87", false, "EvilZabloo" });
 
             migrationBuilder.UpdateData(
                 table: "SlotGameLogs",
                 keyColumn: "Id",
                 keyValue: 1,
                 column: "Time",
-                value: new DateTime(2023, 5, 30, 10, 35, 51, 932, DateTimeKind.Local).AddTicks(9368));
+                value: new DateTime(2023, 6, 1, 11, 16, 40, 368, DateTimeKind.Local).AddTicks(3063));
 
             migrationBuilder.UpdateData(
                 table: "SlotGameLogs",
                 keyColumn: "Id",
                 keyValue: 2,
                 column: "Time",
-                value: new DateTime(2023, 5, 30, 10, 35, 51, 932, DateTimeKind.Local).AddTicks(9372));
+                value: new DateTime(2023, 6, 1, 11, 16, 40, 368, DateTimeKind.Local).AddTicks(3072));
 
             migrationBuilder.UpdateData(
                 table: "SlotGameLogs",
                 keyColumn: "Id",
                 keyValue: 3,
                 column: "Time",
-                value: new DateTime(2023, 5, 30, 10, 35, 51, 932, DateTimeKind.Local).AddTicks(9375));
+                value: new DateTime(2023, 6, 1, 11, 16, 40, 368, DateTimeKind.Local).AddTicks(3080));
 
             migrationBuilder.UpdateData(
                 table: "SlotGameLogs",
                 keyColumn: "Id",
                 keyValue: 4,
                 column: "Time",
-                value: new DateTime(2023, 5, 30, 10, 35, 51, 932, DateTimeKind.Local).AddTicks(9380));
+                value: new DateTime(2023, 6, 1, 11, 16, 40, 368, DateTimeKind.Local).AddTicks(3088));
 
             migrationBuilder.UpdateData(
                 table: "SlotGameLogs",
                 keyColumn: "Id",
                 keyValue: 5,
                 column: "Time",
-                value: new DateTime(2023, 5, 30, 10, 35, 51, 932, DateTimeKind.Local).AddTicks(9383));
+                value: new DateTime(2023, 6, 1, 11, 16, 40, 368, DateTimeKind.Local).AddTicks(3096));
 
             migrationBuilder.UpdateData(
                 table: "SlotGameLogs",
                 keyColumn: "Id",
                 keyValue: 6,
                 column: "Time",
-                value: new DateTime(2023, 5, 30, 10, 35, 51, 932, DateTimeKind.Local).AddTicks(9386));
+                value: new DateTime(2023, 6, 1, 11, 16, 40, 368, DateTimeKind.Local).AddTicks(3104));
 
             migrationBuilder.UpdateData(
                 table: "SlotGameLogs",
                 keyColumn: "Id",
                 keyValue: 7,
                 column: "Time",
-                value: new DateTime(2023, 5, 30, 10, 35, 51, 932, DateTimeKind.Local).AddTicks(9390));
+                value: new DateTime(2023, 6, 1, 11, 16, 40, 368, DateTimeKind.Local).AddTicks(3112));
 
             migrationBuilder.UpdateData(
                 table: "SlotGameLogs",
                 keyColumn: "Id",
                 keyValue: 8,
                 column: "Time",
-                value: new DateTime(2023, 5, 30, 10, 35, 51, 932, DateTimeKind.Local).AddTicks(9393));
+                value: new DateTime(2023, 6, 1, 11, 16, 40, 368, DateTimeKind.Local).AddTicks(3120));
 
             migrationBuilder.UpdateData(
                 table: "SlotGameLogs",
                 keyColumn: "Id",
                 keyValue: 9,
                 column: "Time",
-                value: new DateTime(2023, 5, 30, 10, 35, 51, 932, DateTimeKind.Local).AddTicks(9397));
+                value: new DateTime(2023, 6, 1, 11, 16, 40, 368, DateTimeKind.Local).AddTicks(3128));
 
             migrationBuilder.UpdateData(
                 table: "SlotGameLogs",
                 keyColumn: "Id",
                 keyValue: 10,
                 column: "Time",
-                value: new DateTime(2023, 5, 30, 10, 35, 51, 932, DateTimeKind.Local).AddTicks(9400));
+                value: new DateTime(2023, 6, 1, 11, 16, 40, 368, DateTimeKind.Local).AddTicks(3136));
 
             migrationBuilder.UpdateData(
                 table: "SlotGameLogs",
                 keyColumn: "Id",
                 keyValue: 11,
                 column: "Time",
-                value: new DateTime(2023, 5, 30, 10, 35, 51, 932, DateTimeKind.Local).AddTicks(9404));
+                value: new DateTime(2023, 6, 1, 11, 16, 40, 368, DateTimeKind.Local).AddTicks(3144));
 
             migrationBuilder.UpdateData(
                 table: "SlotGameLogs",
                 keyColumn: "Id",
                 keyValue: 12,
                 column: "Time",
-                value: new DateTime(2023, 5, 30, 10, 35, 51, 932, DateTimeKind.Local).AddTicks(9407));
+                value: new DateTime(2023, 6, 1, 11, 16, 40, 368, DateTimeKind.Local).AddTicks(3152));
 
             migrationBuilder.UpdateData(
                 table: "SlotGameLogs",
                 keyColumn: "Id",
                 keyValue: 13,
                 column: "Time",
-                value: new DateTime(2023, 5, 30, 10, 35, 51, 932, DateTimeKind.Local).AddTicks(9411));
+                value: new DateTime(2023, 6, 1, 11, 16, 40, 368, DateTimeKind.Local).AddTicks(3160));
 
             migrationBuilder.UpdateData(
                 table: "SlotGameLogs",
                 keyColumn: "Id",
                 keyValue: 14,
                 column: "Time",
-                value: new DateTime(2023, 5, 30, 10, 35, 51, 932, DateTimeKind.Local).AddTicks(9414));
+                value: new DateTime(2023, 6, 1, 11, 16, 40, 368, DateTimeKind.Local).AddTicks(3168));
 
             migrationBuilder.UpdateData(
                 table: "SlotGameLogs",
                 keyColumn: "Id",
                 keyValue: 15,
                 column: "Time",
-                value: new DateTime(2023, 5, 30, 10, 35, 51, 932, DateTimeKind.Local).AddTicks(9418));
+                value: new DateTime(2023, 6, 1, 11, 16, 40, 368, DateTimeKind.Local).AddTicks(3176));
 
             migrationBuilder.UpdateData(
                 table: "SlotGameLogs",
                 keyColumn: "Id",
                 keyValue: 16,
                 column: "Time",
-                value: new DateTime(2023, 5, 30, 10, 35, 51, 932, DateTimeKind.Local).AddTicks(9421));
+                value: new DateTime(2023, 6, 1, 11, 16, 40, 368, DateTimeKind.Local).AddTicks(3184));
 
             migrationBuilder.UpdateData(
                 table: "SlotGameLogs",
                 keyColumn: "Id",
                 keyValue: 17,
                 column: "Time",
-                value: new DateTime(2023, 5, 30, 10, 35, 51, 932, DateTimeKind.Local).AddTicks(9425));
+                value: new DateTime(2023, 6, 1, 11, 16, 40, 368, DateTimeKind.Local).AddTicks(3192));
 
             migrationBuilder.UpdateData(
                 table: "SlotGameLogs",
                 keyColumn: "Id",
                 keyValue: 18,
                 column: "Time",
-                value: new DateTime(2023, 5, 30, 10, 35, 51, 932, DateTimeKind.Local).AddTicks(9428));
+                value: new DateTime(2023, 6, 1, 11, 16, 40, 368, DateTimeKind.Local).AddTicks(3200));
 
             migrationBuilder.UpdateData(
                 table: "SlotGameLogs",
                 keyColumn: "Id",
                 keyValue: 19,
                 column: "Time",
-                value: new DateTime(2023, 5, 30, 10, 35, 51, 932, DateTimeKind.Local).AddTicks(9432));
+                value: new DateTime(2023, 6, 1, 11, 16, 40, 368, DateTimeKind.Local).AddTicks(3208));
 
             migrationBuilder.UpdateData(
                 table: "SlotGameLogs",
                 keyColumn: "Id",
                 keyValue: 20,
                 column: "Time",
-                value: new DateTime(2023, 5, 30, 10, 35, 51, 932, DateTimeKind.Local).AddTicks(9435));
+                value: new DateTime(2023, 6, 1, 11, 16, 40, 368, DateTimeKind.Local).AddTicks(3216));
 
             migrationBuilder.UpdateData(
                 table: "SlotGameLogs",
                 keyColumn: "Id",
                 keyValue: 21,
                 column: "Time",
-                value: new DateTime(2023, 5, 30, 10, 35, 51, 932, DateTimeKind.Local).AddTicks(9439));
+                value: new DateTime(2023, 6, 1, 11, 16, 40, 368, DateTimeKind.Local).AddTicks(3224));
 
             migrationBuilder.UpdateData(
                 table: "SlotGameLogs",
                 keyColumn: "Id",
                 keyValue: 22,
                 column: "Time",
-                value: new DateTime(2023, 5, 30, 10, 35, 51, 932, DateTimeKind.Local).AddTicks(9442));
+                value: new DateTime(2023, 6, 1, 11, 16, 40, 368, DateTimeKind.Local).AddTicks(3231));
 
             migrationBuilder.UpdateData(
                 table: "SlotGameLogs",
                 keyColumn: "Id",
                 keyValue: 23,
                 column: "Time",
-                value: new DateTime(2023, 5, 30, 10, 35, 51, 932, DateTimeKind.Local).AddTicks(9445));
+                value: new DateTime(2023, 6, 1, 11, 16, 40, 368, DateTimeKind.Local).AddTicks(3391));
 
             migrationBuilder.UpdateData(
                 table: "SlotGameLogs",
                 keyColumn: "Id",
                 keyValue: 24,
                 column: "Time",
-                value: new DateTime(2023, 5, 30, 10, 35, 51, 932, DateTimeKind.Local).AddTicks(9449));
+                value: new DateTime(2023, 6, 1, 11, 16, 40, 368, DateTimeKind.Local).AddTicks(3400));
 
             migrationBuilder.UpdateData(
                 table: "SlotGameLogs",
                 keyColumn: "Id",
                 keyValue: 25,
                 column: "Time",
-                value: new DateTime(2023, 5, 30, 10, 35, 51, 932, DateTimeKind.Local).AddTicks(9452));
+                value: new DateTime(2023, 6, 1, 11, 16, 40, 368, DateTimeKind.Local).AddTicks(3409));
+
+            migrationBuilder.UpdateData(
+                table: "SlotMachines",
+                keyColumn: "Id",
+                keyValue: 1,
+                columns: new[] { "Cost", "Name", "Width" },
+                values: new object[] { 5, "LuckySlots", 5 });
+
+            migrationBuilder.InsertData(
+                table: "SlotMachines",
+                columns: new[] { "Id", "Cost", "Height", "Name", "OutOfOrder", "Width" },
+                values: new object[] { 2, 0, 5, "DailySpin", false, 7 });
 
             migrationBuilder.UpdateData(
                 table: "SlotSymbols",
@@ -369,229 +393,250 @@ namespace PlayRiggedGames.DataAccess.Data.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DeleteData(
+                table: "AspNetUsers",
+                keyColumn: "Id",
+                keyValue: "0dd9ce5d-123d-4831-9087-7f2deab0082f");
+
+            migrationBuilder.DeleteData(
+                table: "SlotMachines",
+                keyColumn: "Id",
+                keyValue: 2);
+
+            migrationBuilder.DropColumn(
+                name: "Cost",
+                table: "SlotMachines");
+
             migrationBuilder.UpdateData(
                 table: "AspNetRoles",
                 keyColumn: "Id",
                 keyValue: "e820885b-8490-4367-8bd6-50440fed5b39",
                 column: "ConcurrencyStamp",
-                value: "4e626b50-f4bd-4c5c-8911-b605929a894b");
+                value: "26fa9360-441d-4eaf-b1f5-6090e6cf8391");
 
             migrationBuilder.UpdateData(
                 table: "AspNetRoles",
                 keyColumn: "Id",
                 keyValue: "eda3e09d-0aaa-4e19-984a-7b511c387a86",
                 column: "ConcurrencyStamp",
-                value: "da6bfc39-fa76-4fe2-b752-7130d0309191");
+                value: "d15ece4f-8314-400a-8204-cc2a44f484a2");
 
             migrationBuilder.UpdateData(
                 table: "AspNetUsers",
                 keyColumn: "Id",
                 keyValue: "0dd9ce5d-2e8d-4831-9087-7f2deab0082f",
-                columns: new[] { "ConcurrencyStamp", "PasswordHash", "SecurityStamp" },
-                values: new object[] { "fac147ed-9efd-495f-b7b8-2c561e0473fb", "AQAAAAEAACcQAAAAEI385gRd6egs1P4o7/d77NQBzSbmV4yva+d9k7kIHiPo0CS4vYFgXmJOjsxQN6AI7Q==", "acdf229e-9275-48da-a0db-456d9e96e8bd" });
+                columns: new[] { "AccountCreated", "ConcurrencyStamp", "PasswordHash", "SecurityStamp" },
+                values: new object[] { new DateTime(2023, 5, 26, 9, 51, 44, 844, DateTimeKind.Local).AddTicks(4477), "5d579ac2-3648-4a28-bbe8-4fe8fbb87fb4", "AQAAAAEAACcQAAAAEDsSY7vKfLFuvI1WjLl8NhA2oaU6I35/PMVBwkJ7jibZhXJHJNgYMKQGWZ+dqAs/4g==", "281bc565-ddfa-4463-9594-9ffeb19bb005" });
 
             migrationBuilder.UpdateData(
                 table: "AspNetUsers",
                 keyColumn: "Id",
                 keyValue: "b3e93844-b0c1-4e5b-a308-64353b0208d1",
-                columns: new[] { "ConcurrencyStamp", "PasswordHash", "SecurityStamp" },
-                values: new object[] { "9670787e-420c-4904-8dd7-3285c7c4deda", "AQAAAAEAACcQAAAAEN+VPzXjZBgTridTnFE8WwJRrdTFhaC5pUH+vDyvGosvzUBScbNmdsH5N2Iy6trw3w==", "10958c91-8a49-4bd5-89eb-42305b3ceb3b" });
+                columns: new[] { "AccountCreated", "ConcurrencyStamp", "PasswordHash", "SecurityStamp" },
+                values: new object[] { new DateTime(2023, 5, 26, 9, 51, 44, 844, DateTimeKind.Local).AddTicks(4469), "568e78ca-6958-448f-ada2-6f337e01d5e8", "AQAAAAEAACcQAAAAEJBmO8zCeGx90mI8AAotvo3/TQQYE7tcXL7rs+K9rBdtXnUVlmD44le2zLHXNDh1/Q==", "7af63a5f-dcbf-4523-8645-9dd32387d135" });
 
             migrationBuilder.UpdateData(
                 table: "AspNetUsers",
                 keyColumn: "Id",
                 keyValue: "d207e04f-7a11-452e-8a48-23bae4fcd12f",
-                columns: new[] { "ConcurrencyStamp", "PasswordHash", "SecurityStamp" },
-                values: new object[] { "e1b6f6fb-5429-4a4d-8149-1a819cb61fe9", "AQAAAAEAACcQAAAAEHzg54iaF/BtJC9pMtcCY59RcrZbvUTs+Sbyo9CD1lsnGzeRa94a984Pl3tx8bQXcA==", "6a729885-3816-4e28-ba6f-fbee6f57e904" });
+                columns: new[] { "AccountCreated", "ConcurrencyStamp", "PasswordHash", "SecurityStamp" },
+                values: new object[] { new DateTime(2023, 5, 26, 9, 51, 44, 844, DateTimeKind.Local).AddTicks(4460), "6ea78b2d-244f-41d0-94f2-9e53d9237725", "AQAAAAEAACcQAAAAEMFx7HxuceI3XV7yvHPcg3l6c4QFGf0T8XxDi9gw9Y8QYW4IO8I0kjog7/FUaajeDQ==", "8dfc699d-057f-41c2-b3fe-bdc8191b1196" });
 
             migrationBuilder.UpdateData(
                 table: "AspNetUsers",
                 keyColumn: "Id",
                 keyValue: "d68aba42-86f9-45de-b529-c53869d23b1f",
-                columns: new[] { "ConcurrencyStamp", "PasswordHash", "SecurityStamp" },
-                values: new object[] { "e3288b11-32f8-4e3c-8852-3a8bc51dc677", "AQAAAAEAACcQAAAAEOSEMDcF96KFTr1hWt7q6D0NtVQXPT2X6mp6UsQDULK2sAyMOeIKeCE43VvjmBByIg==", "f85cd617-6218-4c28-83a2-23d9a5e30c29" });
+                columns: new[] { "AccountCreated", "ConcurrencyStamp", "PasswordHash", "SecurityStamp" },
+                values: new object[] { new DateTime(2023, 5, 26, 9, 51, 44, 844, DateTimeKind.Local).AddTicks(4450), "8b138400-af54-45f9-b92b-c654579ba39c", "AQAAAAEAACcQAAAAEI5WX5AlFbyjhnmlDbnBV7jo8/idfWPalycw8OZdzoomitPTjVXaJWb64umc1h+2sg==", "a75dc0c2-1935-42b8-b380-5f2798107852" });
 
             migrationBuilder.UpdateData(
                 table: "AspNetUsers",
                 keyColumn: "Id",
                 keyValue: "f2672e1f-cf38-45a5-94d0-8ebb0c2ce2ce",
-                columns: new[] { "ConcurrencyStamp", "PasswordHash", "SecurityStamp" },
-                values: new object[] { "02b68bf1-6e46-4b34-b6d5-13baf00c64bf", "AQAAAAEAACcQAAAAEOgZ+HGO/lQRNPL0boBTwmsqi1Z+4oVN7ktzqJ8ZspFSgot6hmBnjjLmIs4LbHaIxQ==", "ce80378f-a8fb-4e38-92e0-1dddccaeea5b" });
+                columns: new[] { "AccountCreated", "ConcurrencyStamp", "PasswordHash", "SecurityStamp" },
+                values: new object[] { new DateTime(2023, 5, 26, 9, 51, 44, 844, DateTimeKind.Local).AddTicks(4434), "07fd69b9-2ec8-4f2b-aaf9-f0ebd2ae5212", "AQAAAAEAACcQAAAAELu0WRzeP8HmaUpg/cskoO+1cphi+TYTf9T0w6rCPvaEfL6BW/jDCh83W3vmdev99Q==", "8a6a9e48-4b3b-4926-9e47-fc2cbbe0b219" });
 
             migrationBuilder.UpdateData(
                 table: "SlotGameLogs",
                 keyColumn: "Id",
                 keyValue: 1,
                 column: "Time",
-                value: new DateTime(2023, 5, 30, 9, 44, 32, 900, DateTimeKind.Local).AddTicks(6358));
+                value: new DateTime(2023, 5, 26, 9, 51, 44, 849, DateTimeKind.Local).AddTicks(8977));
 
             migrationBuilder.UpdateData(
                 table: "SlotGameLogs",
                 keyColumn: "Id",
                 keyValue: 2,
                 column: "Time",
-                value: new DateTime(2023, 5, 30, 9, 44, 32, 900, DateTimeKind.Local).AddTicks(6362));
+                value: new DateTime(2023, 5, 26, 9, 51, 44, 849, DateTimeKind.Local).AddTicks(8981));
 
             migrationBuilder.UpdateData(
                 table: "SlotGameLogs",
                 keyColumn: "Id",
                 keyValue: 3,
                 column: "Time",
-                value: new DateTime(2023, 5, 30, 9, 44, 32, 900, DateTimeKind.Local).AddTicks(6366));
+                value: new DateTime(2023, 5, 26, 9, 51, 44, 849, DateTimeKind.Local).AddTicks(8984));
 
             migrationBuilder.UpdateData(
                 table: "SlotGameLogs",
                 keyColumn: "Id",
                 keyValue: 4,
                 column: "Time",
-                value: new DateTime(2023, 5, 30, 9, 44, 32, 900, DateTimeKind.Local).AddTicks(6370));
+                value: new DateTime(2023, 5, 26, 9, 51, 44, 849, DateTimeKind.Local).AddTicks(8988));
 
             migrationBuilder.UpdateData(
                 table: "SlotGameLogs",
                 keyColumn: "Id",
                 keyValue: 5,
                 column: "Time",
-                value: new DateTime(2023, 5, 30, 9, 44, 32, 900, DateTimeKind.Local).AddTicks(6373));
+                value: new DateTime(2023, 5, 26, 9, 51, 44, 849, DateTimeKind.Local).AddTicks(8991));
 
             migrationBuilder.UpdateData(
                 table: "SlotGameLogs",
                 keyColumn: "Id",
                 keyValue: 6,
                 column: "Time",
-                value: new DateTime(2023, 5, 30, 9, 44, 32, 900, DateTimeKind.Local).AddTicks(6377));
+                value: new DateTime(2023, 5, 26, 9, 51, 44, 849, DateTimeKind.Local).AddTicks(8995));
 
             migrationBuilder.UpdateData(
                 table: "SlotGameLogs",
                 keyColumn: "Id",
                 keyValue: 7,
                 column: "Time",
-                value: new DateTime(2023, 5, 30, 9, 44, 32, 900, DateTimeKind.Local).AddTicks(6380));
+                value: new DateTime(2023, 5, 26, 9, 51, 44, 849, DateTimeKind.Local).AddTicks(8998));
 
             migrationBuilder.UpdateData(
                 table: "SlotGameLogs",
                 keyColumn: "Id",
                 keyValue: 8,
                 column: "Time",
-                value: new DateTime(2023, 5, 30, 9, 44, 32, 900, DateTimeKind.Local).AddTicks(6384));
+                value: new DateTime(2023, 5, 26, 9, 51, 44, 849, DateTimeKind.Local).AddTicks(9002));
 
             migrationBuilder.UpdateData(
                 table: "SlotGameLogs",
                 keyColumn: "Id",
                 keyValue: 9,
                 column: "Time",
-                value: new DateTime(2023, 5, 30, 9, 44, 32, 900, DateTimeKind.Local).AddTicks(6387));
+                value: new DateTime(2023, 5, 26, 9, 51, 44, 849, DateTimeKind.Local).AddTicks(9005));
 
             migrationBuilder.UpdateData(
                 table: "SlotGameLogs",
                 keyColumn: "Id",
                 keyValue: 10,
                 column: "Time",
-                value: new DateTime(2023, 5, 30, 9, 44, 32, 900, DateTimeKind.Local).AddTicks(6391));
+                value: new DateTime(2023, 5, 26, 9, 51, 44, 849, DateTimeKind.Local).AddTicks(9009));
 
             migrationBuilder.UpdateData(
                 table: "SlotGameLogs",
                 keyColumn: "Id",
                 keyValue: 11,
                 column: "Time",
-                value: new DateTime(2023, 5, 30, 9, 44, 32, 900, DateTimeKind.Local).AddTicks(6394));
+                value: new DateTime(2023, 5, 26, 9, 51, 44, 849, DateTimeKind.Local).AddTicks(9013));
 
             migrationBuilder.UpdateData(
                 table: "SlotGameLogs",
                 keyColumn: "Id",
                 keyValue: 12,
                 column: "Time",
-                value: new DateTime(2023, 5, 30, 9, 44, 32, 900, DateTimeKind.Local).AddTicks(6398));
+                value: new DateTime(2023, 5, 26, 9, 51, 44, 849, DateTimeKind.Local).AddTicks(9016));
 
             migrationBuilder.UpdateData(
                 table: "SlotGameLogs",
                 keyColumn: "Id",
                 keyValue: 13,
                 column: "Time",
-                value: new DateTime(2023, 5, 30, 9, 44, 32, 900, DateTimeKind.Local).AddTicks(6402));
+                value: new DateTime(2023, 5, 26, 9, 51, 44, 849, DateTimeKind.Local).AddTicks(9020));
 
             migrationBuilder.UpdateData(
                 table: "SlotGameLogs",
                 keyColumn: "Id",
                 keyValue: 14,
                 column: "Time",
-                value: new DateTime(2023, 5, 30, 9, 44, 32, 900, DateTimeKind.Local).AddTicks(6405));
+                value: new DateTime(2023, 5, 26, 9, 51, 44, 849, DateTimeKind.Local).AddTicks(9023));
 
             migrationBuilder.UpdateData(
                 table: "SlotGameLogs",
                 keyColumn: "Id",
                 keyValue: 15,
                 column: "Time",
-                value: new DateTime(2023, 5, 30, 9, 44, 32, 900, DateTimeKind.Local).AddTicks(6409));
+                value: new DateTime(2023, 5, 26, 9, 51, 44, 849, DateTimeKind.Local).AddTicks(9027));
 
             migrationBuilder.UpdateData(
                 table: "SlotGameLogs",
                 keyColumn: "Id",
                 keyValue: 16,
                 column: "Time",
-                value: new DateTime(2023, 5, 30, 9, 44, 32, 900, DateTimeKind.Local).AddTicks(6412));
+                value: new DateTime(2023, 5, 26, 9, 51, 44, 849, DateTimeKind.Local).AddTicks(9031));
 
             migrationBuilder.UpdateData(
                 table: "SlotGameLogs",
                 keyColumn: "Id",
                 keyValue: 17,
                 column: "Time",
-                value: new DateTime(2023, 5, 30, 9, 44, 32, 900, DateTimeKind.Local).AddTicks(6416));
+                value: new DateTime(2023, 5, 26, 9, 51, 44, 849, DateTimeKind.Local).AddTicks(9034));
 
             migrationBuilder.UpdateData(
                 table: "SlotGameLogs",
                 keyColumn: "Id",
                 keyValue: 18,
                 column: "Time",
-                value: new DateTime(2023, 5, 30, 9, 44, 32, 900, DateTimeKind.Local).AddTicks(6419));
+                value: new DateTime(2023, 5, 26, 9, 51, 44, 849, DateTimeKind.Local).AddTicks(9038));
 
             migrationBuilder.UpdateData(
                 table: "SlotGameLogs",
                 keyColumn: "Id",
                 keyValue: 19,
                 column: "Time",
-                value: new DateTime(2023, 5, 30, 9, 44, 32, 900, DateTimeKind.Local).AddTicks(6423));
+                value: new DateTime(2023, 5, 26, 9, 51, 44, 849, DateTimeKind.Local).AddTicks(9041));
 
             migrationBuilder.UpdateData(
                 table: "SlotGameLogs",
                 keyColumn: "Id",
                 keyValue: 20,
                 column: "Time",
-                value: new DateTime(2023, 5, 30, 9, 44, 32, 900, DateTimeKind.Local).AddTicks(6426));
+                value: new DateTime(2023, 5, 26, 9, 51, 44, 849, DateTimeKind.Local).AddTicks(9045));
 
             migrationBuilder.UpdateData(
                 table: "SlotGameLogs",
                 keyColumn: "Id",
                 keyValue: 21,
                 column: "Time",
-                value: new DateTime(2023, 5, 30, 9, 44, 32, 900, DateTimeKind.Local).AddTicks(6430));
+                value: new DateTime(2023, 5, 26, 9, 51, 44, 849, DateTimeKind.Local).AddTicks(9048));
 
             migrationBuilder.UpdateData(
                 table: "SlotGameLogs",
                 keyColumn: "Id",
                 keyValue: 22,
                 column: "Time",
-                value: new DateTime(2023, 5, 30, 9, 44, 32, 900, DateTimeKind.Local).AddTicks(6434));
+                value: new DateTime(2023, 5, 26, 9, 51, 44, 849, DateTimeKind.Local).AddTicks(9052));
 
             migrationBuilder.UpdateData(
                 table: "SlotGameLogs",
                 keyColumn: "Id",
                 keyValue: 23,
                 column: "Time",
-                value: new DateTime(2023, 5, 30, 9, 44, 32, 900, DateTimeKind.Local).AddTicks(6437));
+                value: new DateTime(2023, 5, 26, 9, 51, 44, 849, DateTimeKind.Local).AddTicks(9055));
 
             migrationBuilder.UpdateData(
                 table: "SlotGameLogs",
                 keyColumn: "Id",
                 keyValue: 24,
                 column: "Time",
-                value: new DateTime(2023, 5, 30, 9, 44, 32, 900, DateTimeKind.Local).AddTicks(6441));
+                value: new DateTime(2023, 5, 26, 9, 51, 44, 849, DateTimeKind.Local).AddTicks(9059));
 
             migrationBuilder.UpdateData(
                 table: "SlotGameLogs",
                 keyColumn: "Id",
                 keyValue: 25,
                 column: "Time",
-                value: new DateTime(2023, 5, 30, 9, 44, 32, 900, DateTimeKind.Local).AddTicks(6444));
+                value: new DateTime(2023, 5, 26, 9, 51, 44, 849, DateTimeKind.Local).AddTicks(9062));
+
+            migrationBuilder.UpdateData(
+                table: "SlotMachines",
+                keyColumn: "Id",
+                keyValue: 1,
+                columns: new[] { "Name", "Width" },
+                values: new object[] { "Lucky Slots", 3 });
 
             migrationBuilder.UpdateData(
                 table: "SlotSymbols",

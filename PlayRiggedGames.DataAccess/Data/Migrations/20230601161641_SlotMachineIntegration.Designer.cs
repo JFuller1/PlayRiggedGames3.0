@@ -12,8 +12,8 @@ using PlayRiggedGames.DataAccess.Data;
 namespace PlayRiggedGames.DataAccess.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230529140927_updatedSlotMachinesInDatabase")]
-    partial class updatedSlotMachinesInDatabase
+    [Migration("20230601161641_SlotMachineIntegration")]
+    partial class SlotMachineIntegration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -54,13 +54,13 @@ namespace PlayRiggedGames.DataAccess.Data.Migrations
                         new
                         {
                             Id = "eda3e09d-0aaa-4e19-984a-7b511c387a86",
-                            ConcurrencyStamp = "91aa36c9-7b02-47b9-833b-20f67630ecb1",
+                            ConcurrencyStamp = "29f91a30-138b-45bb-988c-fe44a87fae7b",
                             Name = "Admin"
                         },
                         new
                         {
                             Id = "e820885b-8490-4367-8bd6-50440fed5b39",
-                            ConcurrencyStamp = "d2efbd90-6fed-412c-8a82-6a4a25fbd42d",
+                            ConcurrencyStamp = "0562def0-879e-4e8b-9364-db0870f8478c",
                             Name = "User"
                         });
                 });
@@ -210,6 +210,9 @@ namespace PlayRiggedGames.DataAccess.Data.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("AccountCreated")
+                        .HasColumnType("datetime2");
+
                     b.Property<DateTime>("Birthday")
                         .HasColumnType("datetime2");
 
@@ -288,9 +291,10 @@ namespace PlayRiggedGames.DataAccess.Data.Migrations
                         {
                             Id = "f2672e1f-cf38-45a5-94d0-8ebb0c2ce2ce",
                             AccessFailedCount = 0,
+                            AccountCreated = new DateTime(2023, 6, 1, 11, 16, 40, 352, DateTimeKind.Local).AddTicks(7732),
                             Birthday = new DateTime(2000, 1, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             BlackListed = false,
-                            ConcurrencyStamp = "d0676817-e828-4c57-97d3-8169e2053575",
+                            ConcurrencyStamp = "a217ab3f-dfca-43c1-90e1-e765f3539458",
                             Email = "fuller.jc@outlook.com",
                             EmailConfirmed = true,
                             FirstName = "Jaeden",
@@ -298,9 +302,9 @@ namespace PlayRiggedGames.DataAccess.Data.Migrations
                             LockoutEnabled = false,
                             Money = 1000000,
                             NormalizedUserName = "ZABLOO",
-                            PasswordHash = "AQAAAAEAACcQAAAAEOAEApuBjkBseNY9nNpxTEpQSo/0qv1XYSB+FSBDvD3xVJ39IPRR94mBZxs0OW3nzw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEInPe+UmnlXE+TmdLuba1ca3TmuR2qyfY2q/C22e22vbAsuXlzDNy9fodxeEbKpXxw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "9a40e74c-fe38-4026-9c5b-b1ae08123b0b",
+                            SecurityStamp = "e21ee732-8560-465c-b71a-31b81b5ea6d8",
                             TwoFactorEnabled = false,
                             UserName = "ZaBloo"
                         },
@@ -308,9 +312,10 @@ namespace PlayRiggedGames.DataAccess.Data.Migrations
                         {
                             Id = "d68aba42-86f9-45de-b529-c53869d23b1f",
                             AccessFailedCount = 0,
+                            AccountCreated = new DateTime(2023, 6, 1, 11, 16, 40, 352, DateTimeKind.Local).AddTicks(7766),
                             Birthday = new DateTime(1969, 3, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             BlackListed = false,
-                            ConcurrencyStamp = "a9df827f-b69b-4c7c-83ff-076d1028ab98",
+                            ConcurrencyStamp = "848eeaea-cfa9-4b15-9865-2c90ac27b3c3",
                             Email = "b.shot@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "S.",
@@ -318,9 +323,9 @@ namespace PlayRiggedGames.DataAccess.Data.Migrations
                             LockoutEnabled = false,
                             Money = 0,
                             NormalizedUserName = "NUMBER1RATEDSALESMAN1997",
-                            PasswordHash = "AQAAAAEAACcQAAAAEEQDZQ9QNMbGttU7PtttsGKZ9cBIh9jDnad2A7xiF0+IxJ2+/TbQNcUh3/mMdP49yw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEK221F6yOT2BJBpcm3fJnRhkQ/hjj/nOYqHEGHTSa9KsOR/gEVZNp/EMn8VtPcik4A==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "7a4cb742-17d0-4478-ab56-5b9d635126c4",
+                            SecurityStamp = "8a57e9f9-c8a2-4af9-8fe4-260f4fb14429",
                             TwoFactorEnabled = false,
                             UserName = "number1ratedsalesman1997"
                         },
@@ -328,9 +333,10 @@ namespace PlayRiggedGames.DataAccess.Data.Migrations
                         {
                             Id = "d207e04f-7a11-452e-8a48-23bae4fcd12f",
                             AccessFailedCount = 0,
+                            AccountCreated = new DateTime(2023, 6, 1, 11, 16, 40, 352, DateTimeKind.Local).AddTicks(7786),
                             Birthday = new DateTime(1995, 6, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             BlackListed = false,
-                            ConcurrencyStamp = "d001c5d2-e129-4352-8fff-71e73a7acbd1",
+                            ConcurrencyStamp = "afed4847-8d87-4ce8-8a48-3e19e2d266b9",
                             Email = "example@gmail.com",
                             EmailConfirmed = true,
                             FirstName = "John",
@@ -338,9 +344,9 @@ namespace PlayRiggedGames.DataAccess.Data.Migrations
                             LockoutEnabled = false,
                             Money = 120,
                             NormalizedUserName = "COOLCAT12",
-                            PasswordHash = "AQAAAAEAACcQAAAAEHTKTxjwTYdBI1AB5soQcbBCKpQx3M98VWMAvcP6ilLoF2XTVUIPQsnk4axhAGBBQQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEEAFBaijJcgY0OXaV92N273YhCPlBEBocfApO+7OEdf1zyv85xue5fW2usBUCdT9RQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "599a9cf7-952b-4455-8a5b-32a260d0484f",
+                            SecurityStamp = "47d1d4f8-8969-401c-b12a-1d6b20969062",
                             TwoFactorEnabled = false,
                             UserName = "CoolCat12"
                         },
@@ -348,9 +354,10 @@ namespace PlayRiggedGames.DataAccess.Data.Migrations
                         {
                             Id = "b3e93844-b0c1-4e5b-a308-64353b0208d1",
                             AccessFailedCount = 0,
+                            AccountCreated = new DateTime(2023, 6, 1, 11, 16, 40, 352, DateTimeKind.Local).AddTicks(7813),
                             Birthday = new DateTime(1998, 9, 12, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             BlackListed = false,
-                            ConcurrencyStamp = "e44d43ef-608c-4d1c-8c5b-f8c903b8f929",
+                            ConcurrencyStamp = "4861404c-b80e-4bab-a6f4-971916f3d4b7",
                             Email = "example@yahoo.com",
                             EmailConfirmed = true,
                             FirstName = "Samantha",
@@ -358,9 +365,9 @@ namespace PlayRiggedGames.DataAccess.Data.Migrations
                             LockoutEnabled = false,
                             Money = 750,
                             NormalizedUserName = "LONEWOLF",
-                            PasswordHash = "AQAAAAEAACcQAAAAEP1lZQOQrY7BhZOcJqNs9sswehcpzqoX6hHUrAefIggJ6UuIuAPLN2ctnxva0V7gVw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEBc5uQNNKF0MaT5yBi+XjaRZmE4A8j1GlVyY/Uwq47Xw6FcUj/5rp2WlqvXFTwPvUA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "e7922ad3-6b43-4325-9e77-7914db42a264",
+                            SecurityStamp = "7819c979-9b55-413a-acf4-844b3d02e175",
                             TwoFactorEnabled = false,
                             UserName = "LoneWolf"
                         },
@@ -368,9 +375,10 @@ namespace PlayRiggedGames.DataAccess.Data.Migrations
                         {
                             Id = "0dd9ce5d-2e8d-4831-9087-7f2deab0082f",
                             AccessFailedCount = 0,
+                            AccountCreated = new DateTime(2023, 6, 1, 11, 16, 40, 352, DateTimeKind.Local).AddTicks(7833),
                             Birthday = new DateTime(2002, 12, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             BlackListed = false,
-                            ConcurrencyStamp = "d63b1a7a-8d80-422f-bd50-42706779884c",
+                            ConcurrencyStamp = "1504c54d-26b4-48c6-8dea-02aeaab2af24",
                             Email = "example@hotmail.com",
                             EmailConfirmed = true,
                             FirstName = "Veronica",
@@ -378,11 +386,32 @@ namespace PlayRiggedGames.DataAccess.Data.Migrations
                             LockoutEnabled = false,
                             Money = 200,
                             NormalizedUserName = "GAMERGIRL123",
-                            PasswordHash = "AQAAAAEAACcQAAAAEJc3amqYbtHWJIGL/DDklMCwLDbfFGn6B8lvZEI8yLFmpVmNxJ3DwnLoSV8ulkvw7g==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEO29OIvEfh4LPRlh2WkJbEAebF7HY87UIlSkrH2V0gz9/Igy6xgQzabyTHDGZug+Gg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "e99dec65-b9e9-4017-abf2-4cc9ad231961",
+                            SecurityStamp = "7453c76b-4503-4607-8bbb-c58f94967624",
                             TwoFactorEnabled = false,
                             UserName = "GamerGirl123"
+                        },
+                        new
+                        {
+                            Id = "0dd9ce5d-123d-4831-9087-7f2deab0082f",
+                            AccessFailedCount = 0,
+                            AccountCreated = new DateTime(2023, 6, 1, 11, 16, 40, 352, DateTimeKind.Local).AddTicks(7857),
+                            Birthday = new DateTime(1905, 12, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            BlackListed = true,
+                            ConcurrencyStamp = "01235806-1d63-43aa-bc0a-f4f50ccf8d77",
+                            Email = "exoimple@hotmail.com",
+                            EmailConfirmed = true,
+                            FirstName = "Evil",
+                            LastName = "Jaeden",
+                            LockoutEnabled = false,
+                            Money = 200,
+                            NormalizedUserName = "EVILZABLOO",
+                            PasswordHash = "AQAAAAEAACcQAAAAEANFXnX940goM+yC1lV8UY0glwO9MK/B4+qatwzTEgDYEqgO8G4+bjiNOxPvxEegfQ==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "ee139152-1e33-4882-a7a3-f76736622f87",
+                            TwoFactorEnabled = false,
+                            UserName = "EvilZabloo"
                         });
                 });
 
@@ -424,7 +453,7 @@ namespace PlayRiggedGames.DataAccess.Data.Migrations
                             MoneyInput = 50,
                             MoneyOutput = 2500,
                             PlayerId = "f2672e1f-cf38-45a5-94d0-8ebb0c2ce2ce",
-                            Time = new DateTime(2023, 5, 29, 9, 9, 27, 234, DateTimeKind.Local).AddTicks(6609)
+                            Time = new DateTime(2023, 6, 1, 11, 16, 40, 368, DateTimeKind.Local).AddTicks(3063)
                         },
                         new
                         {
@@ -433,7 +462,7 @@ namespace PlayRiggedGames.DataAccess.Data.Migrations
                             MoneyInput = 200,
                             MoneyOutput = 8000,
                             PlayerId = "f2672e1f-cf38-45a5-94d0-8ebb0c2ce2ce",
-                            Time = new DateTime(2023, 5, 29, 9, 9, 27, 234, DateTimeKind.Local).AddTicks(6613)
+                            Time = new DateTime(2023, 6, 1, 11, 16, 40, 368, DateTimeKind.Local).AddTicks(3072)
                         },
                         new
                         {
@@ -442,7 +471,7 @@ namespace PlayRiggedGames.DataAccess.Data.Migrations
                             MoneyInput = 150,
                             MoneyOutput = 5000,
                             PlayerId = "f2672e1f-cf38-45a5-94d0-8ebb0c2ce2ce",
-                            Time = new DateTime(2023, 5, 29, 9, 9, 27, 234, DateTimeKind.Local).AddTicks(6616)
+                            Time = new DateTime(2023, 6, 1, 11, 16, 40, 368, DateTimeKind.Local).AddTicks(3080)
                         },
                         new
                         {
@@ -451,7 +480,7 @@ namespace PlayRiggedGames.DataAccess.Data.Migrations
                             MoneyInput = 300,
                             MoneyOutput = 15000,
                             PlayerId = "f2672e1f-cf38-45a5-94d0-8ebb0c2ce2ce",
-                            Time = new DateTime(2023, 5, 29, 9, 9, 27, 234, DateTimeKind.Local).AddTicks(6620)
+                            Time = new DateTime(2023, 6, 1, 11, 16, 40, 368, DateTimeKind.Local).AddTicks(3088)
                         },
                         new
                         {
@@ -460,7 +489,7 @@ namespace PlayRiggedGames.DataAccess.Data.Migrations
                             MoneyInput = 1000,
                             MoneyOutput = 25000,
                             PlayerId = "f2672e1f-cf38-45a5-94d0-8ebb0c2ce2ce",
-                            Time = new DateTime(2023, 5, 29, 9, 9, 27, 234, DateTimeKind.Local).AddTicks(6623)
+                            Time = new DateTime(2023, 6, 1, 11, 16, 40, 368, DateTimeKind.Local).AddTicks(3096)
                         },
                         new
                         {
@@ -469,7 +498,7 @@ namespace PlayRiggedGames.DataAccess.Data.Migrations
                             MoneyInput = 100,
                             MoneyOutput = 5000,
                             PlayerId = "d68aba42-86f9-45de-b529-c53869d23b1f",
-                            Time = new DateTime(2023, 5, 29, 9, 9, 27, 234, DateTimeKind.Local).AddTicks(6627)
+                            Time = new DateTime(2023, 6, 1, 11, 16, 40, 368, DateTimeKind.Local).AddTicks(3104)
                         },
                         new
                         {
@@ -478,7 +507,7 @@ namespace PlayRiggedGames.DataAccess.Data.Migrations
                             MoneyInput = 200,
                             MoneyOutput = 10000,
                             PlayerId = "d68aba42-86f9-45de-b529-c53869d23b1f",
-                            Time = new DateTime(2023, 5, 29, 9, 9, 27, 234, DateTimeKind.Local).AddTicks(6631)
+                            Time = new DateTime(2023, 6, 1, 11, 16, 40, 368, DateTimeKind.Local).AddTicks(3112)
                         },
                         new
                         {
@@ -487,7 +516,7 @@ namespace PlayRiggedGames.DataAccess.Data.Migrations
                             MoneyInput = 150,
                             MoneyOutput = 7500,
                             PlayerId = "d68aba42-86f9-45de-b529-c53869d23b1f",
-                            Time = new DateTime(2023, 5, 29, 9, 9, 27, 234, DateTimeKind.Local).AddTicks(6634)
+                            Time = new DateTime(2023, 6, 1, 11, 16, 40, 368, DateTimeKind.Local).AddTicks(3120)
                         },
                         new
                         {
@@ -496,7 +525,7 @@ namespace PlayRiggedGames.DataAccess.Data.Migrations
                             MoneyInput = 300,
                             MoneyOutput = 15000,
                             PlayerId = "d68aba42-86f9-45de-b529-c53869d23b1f",
-                            Time = new DateTime(2023, 5, 29, 9, 9, 27, 234, DateTimeKind.Local).AddTicks(6638)
+                            Time = new DateTime(2023, 6, 1, 11, 16, 40, 368, DateTimeKind.Local).AddTicks(3128)
                         },
                         new
                         {
@@ -505,7 +534,7 @@ namespace PlayRiggedGames.DataAccess.Data.Migrations
                             MoneyInput = 250,
                             MoneyOutput = 12500,
                             PlayerId = "d68aba42-86f9-45de-b529-c53869d23b1f",
-                            Time = new DateTime(2023, 5, 29, 9, 9, 27, 234, DateTimeKind.Local).AddTicks(6641)
+                            Time = new DateTime(2023, 6, 1, 11, 16, 40, 368, DateTimeKind.Local).AddTicks(3136)
                         },
                         new
                         {
@@ -514,7 +543,7 @@ namespace PlayRiggedGames.DataAccess.Data.Migrations
                             MoneyInput = 100,
                             MoneyOutput = 5000,
                             PlayerId = "d207e04f-7a11-452e-8a48-23bae4fcd12f",
-                            Time = new DateTime(2023, 5, 29, 9, 9, 27, 234, DateTimeKind.Local).AddTicks(6645)
+                            Time = new DateTime(2023, 6, 1, 11, 16, 40, 368, DateTimeKind.Local).AddTicks(3144)
                         },
                         new
                         {
@@ -523,7 +552,7 @@ namespace PlayRiggedGames.DataAccess.Data.Migrations
                             MoneyInput = 200,
                             MoneyOutput = 10000,
                             PlayerId = "d207e04f-7a11-452e-8a48-23bae4fcd12f",
-                            Time = new DateTime(2023, 5, 29, 9, 9, 27, 234, DateTimeKind.Local).AddTicks(6648)
+                            Time = new DateTime(2023, 6, 1, 11, 16, 40, 368, DateTimeKind.Local).AddTicks(3152)
                         },
                         new
                         {
@@ -532,7 +561,7 @@ namespace PlayRiggedGames.DataAccess.Data.Migrations
                             MoneyInput = 150,
                             MoneyOutput = 7500,
                             PlayerId = "d207e04f-7a11-452e-8a48-23bae4fcd12f",
-                            Time = new DateTime(2023, 5, 29, 9, 9, 27, 234, DateTimeKind.Local).AddTicks(6652)
+                            Time = new DateTime(2023, 6, 1, 11, 16, 40, 368, DateTimeKind.Local).AddTicks(3160)
                         },
                         new
                         {
@@ -541,7 +570,7 @@ namespace PlayRiggedGames.DataAccess.Data.Migrations
                             MoneyInput = 300,
                             MoneyOutput = 15000,
                             PlayerId = "d207e04f-7a11-452e-8a48-23bae4fcd12f",
-                            Time = new DateTime(2023, 5, 29, 9, 9, 27, 234, DateTimeKind.Local).AddTicks(6655)
+                            Time = new DateTime(2023, 6, 1, 11, 16, 40, 368, DateTimeKind.Local).AddTicks(3168)
                         },
                         new
                         {
@@ -550,7 +579,7 @@ namespace PlayRiggedGames.DataAccess.Data.Migrations
                             MoneyInput = 250,
                             MoneyOutput = 12500,
                             PlayerId = "d207e04f-7a11-452e-8a48-23bae4fcd12f",
-                            Time = new DateTime(2023, 5, 29, 9, 9, 27, 234, DateTimeKind.Local).AddTicks(6659)
+                            Time = new DateTime(2023, 6, 1, 11, 16, 40, 368, DateTimeKind.Local).AddTicks(3176)
                         },
                         new
                         {
@@ -559,7 +588,7 @@ namespace PlayRiggedGames.DataAccess.Data.Migrations
                             MoneyInput = 100,
                             MoneyOutput = 5000,
                             PlayerId = "b3e93844-b0c1-4e5b-a308-64353b0208d1",
-                            Time = new DateTime(2023, 5, 29, 9, 9, 27, 234, DateTimeKind.Local).AddTicks(6662)
+                            Time = new DateTime(2023, 6, 1, 11, 16, 40, 368, DateTimeKind.Local).AddTicks(3184)
                         },
                         new
                         {
@@ -568,7 +597,7 @@ namespace PlayRiggedGames.DataAccess.Data.Migrations
                             MoneyInput = 200,
                             MoneyOutput = 10000,
                             PlayerId = "b3e93844-b0c1-4e5b-a308-64353b0208d1",
-                            Time = new DateTime(2023, 5, 29, 9, 9, 27, 234, DateTimeKind.Local).AddTicks(6666)
+                            Time = new DateTime(2023, 6, 1, 11, 16, 40, 368, DateTimeKind.Local).AddTicks(3192)
                         },
                         new
                         {
@@ -577,7 +606,7 @@ namespace PlayRiggedGames.DataAccess.Data.Migrations
                             MoneyInput = 150,
                             MoneyOutput = 7500,
                             PlayerId = "b3e93844-b0c1-4e5b-a308-64353b0208d1",
-                            Time = new DateTime(2023, 5, 29, 9, 9, 27, 234, DateTimeKind.Local).AddTicks(6669)
+                            Time = new DateTime(2023, 6, 1, 11, 16, 40, 368, DateTimeKind.Local).AddTicks(3200)
                         },
                         new
                         {
@@ -586,7 +615,7 @@ namespace PlayRiggedGames.DataAccess.Data.Migrations
                             MoneyInput = 300,
                             MoneyOutput = 15000,
                             PlayerId = "b3e93844-b0c1-4e5b-a308-64353b0208d1",
-                            Time = new DateTime(2023, 5, 29, 9, 9, 27, 234, DateTimeKind.Local).AddTicks(6673)
+                            Time = new DateTime(2023, 6, 1, 11, 16, 40, 368, DateTimeKind.Local).AddTicks(3208)
                         },
                         new
                         {
@@ -595,7 +624,7 @@ namespace PlayRiggedGames.DataAccess.Data.Migrations
                             MoneyInput = 250,
                             MoneyOutput = 12500,
                             PlayerId = "b3e93844-b0c1-4e5b-a308-64353b0208d1",
-                            Time = new DateTime(2023, 5, 29, 9, 9, 27, 234, DateTimeKind.Local).AddTicks(6676)
+                            Time = new DateTime(2023, 6, 1, 11, 16, 40, 368, DateTimeKind.Local).AddTicks(3216)
                         },
                         new
                         {
@@ -604,7 +633,7 @@ namespace PlayRiggedGames.DataAccess.Data.Migrations
                             MoneyInput = 100,
                             MoneyOutput = 5000,
                             PlayerId = "0dd9ce5d-2e8d-4831-9087-7f2deab0082f",
-                            Time = new DateTime(2023, 5, 29, 9, 9, 27, 234, DateTimeKind.Local).AddTicks(6680)
+                            Time = new DateTime(2023, 6, 1, 11, 16, 40, 368, DateTimeKind.Local).AddTicks(3224)
                         },
                         new
                         {
@@ -613,7 +642,7 @@ namespace PlayRiggedGames.DataAccess.Data.Migrations
                             MoneyInput = 200,
                             MoneyOutput = 10000,
                             PlayerId = "0dd9ce5d-2e8d-4831-9087-7f2deab0082f",
-                            Time = new DateTime(2023, 5, 29, 9, 9, 27, 234, DateTimeKind.Local).AddTicks(6684)
+                            Time = new DateTime(2023, 6, 1, 11, 16, 40, 368, DateTimeKind.Local).AddTicks(3231)
                         },
                         new
                         {
@@ -622,7 +651,7 @@ namespace PlayRiggedGames.DataAccess.Data.Migrations
                             MoneyInput = 150,
                             MoneyOutput = 7500,
                             PlayerId = "0dd9ce5d-2e8d-4831-9087-7f2deab0082f",
-                            Time = new DateTime(2023, 5, 29, 9, 9, 27, 234, DateTimeKind.Local).AddTicks(6687)
+                            Time = new DateTime(2023, 6, 1, 11, 16, 40, 368, DateTimeKind.Local).AddTicks(3391)
                         },
                         new
                         {
@@ -631,7 +660,7 @@ namespace PlayRiggedGames.DataAccess.Data.Migrations
                             MoneyInput = 300,
                             MoneyOutput = 15000,
                             PlayerId = "0dd9ce5d-2e8d-4831-9087-7f2deab0082f",
-                            Time = new DateTime(2023, 5, 29, 9, 9, 27, 234, DateTimeKind.Local).AddTicks(6691)
+                            Time = new DateTime(2023, 6, 1, 11, 16, 40, 368, DateTimeKind.Local).AddTicks(3400)
                         },
                         new
                         {
@@ -640,7 +669,7 @@ namespace PlayRiggedGames.DataAccess.Data.Migrations
                             MoneyInput = 250,
                             MoneyOutput = 12500,
                             PlayerId = "0dd9ce5d-2e8d-4831-9087-7f2deab0082f",
-                            Time = new DateTime(2023, 5, 29, 9, 9, 27, 234, DateTimeKind.Local).AddTicks(6694)
+                            Time = new DateTime(2023, 6, 1, 11, 16, 40, 368, DateTimeKind.Local).AddTicks(3409)
                         });
                 });
 
@@ -651,6 +680,9 @@ namespace PlayRiggedGames.DataAccess.Data.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("Cost")
+                        .HasColumnType("int");
 
                     b.Property<int>("Height")
                         .HasColumnType("int");
@@ -673,16 +705,18 @@ namespace PlayRiggedGames.DataAccess.Data.Migrations
                         new
                         {
                             Id = 1,
+                            Cost = 5,
                             Height = 3,
-                            Name = "Lucky Slots",
+                            Name = "LuckySlots",
                             OutOfOrder = false,
                             Width = 5
                         },
                         new
                         {
                             Id = 2,
+                            Cost = 0,
                             Height = 5,
-                            Name = "Daily Spin",
+                            Name = "DailySpin",
                             OutOfOrder = false,
                             Width = 7
                         });
@@ -742,15 +776,15 @@ namespace PlayRiggedGames.DataAccess.Data.Migrations
                             Id = 1,
                             Name = "club",
                             SlotMachineId = 1,
-                            Value = 5,
-                            Weight = 50
+                            Value = 75,
+                            Weight = 30
                         },
                         new
                         {
                             Id = 2,
                             Name = "lemon",
                             SlotMachineId = 1,
-                            Value = 5,
+                            Value = 25,
                             Weight = 50
                         },
                         new
@@ -758,15 +792,15 @@ namespace PlayRiggedGames.DataAccess.Data.Migrations
                             Id = 3,
                             Name = "spade",
                             SlotMachineId = 1,
-                            Value = 10,
-                            Weight = 50
+                            Value = 75,
+                            Weight = 30
                         },
                         new
                         {
                             Id = 4,
                             Name = "banana",
                             SlotMachineId = 1,
-                            Value = 10,
+                            Value = 30,
                             Weight = 50
                         },
                         new
@@ -774,7 +808,7 @@ namespace PlayRiggedGames.DataAccess.Data.Migrations
                             Id = 5,
                             Name = "cherry",
                             SlotMachineId = 1,
-                            Value = 10,
+                            Value = 50,
                             Weight = 50
                         },
                         new
@@ -782,15 +816,15 @@ namespace PlayRiggedGames.DataAccess.Data.Migrations
                             Id = 6,
                             Name = "diamond",
                             SlotMachineId = 1,
-                            Value = 15,
-                            Weight = 50
+                            Value = 75,
+                            Weight = 30
                         },
                         new
                         {
                             Id = 7,
                             Name = "melon",
                             SlotMachineId = 1,
-                            Value = 15,
+                            Value = 35,
                             Weight = 50
                         },
                         new
@@ -798,7 +832,7 @@ namespace PlayRiggedGames.DataAccess.Data.Migrations
                             Id = 8,
                             Name = "grapes",
                             SlotMachineId = 1,
-                            Value = 15,
+                            Value = 40,
                             Weight = 50
                         },
                         new
@@ -806,31 +840,31 @@ namespace PlayRiggedGames.DataAccess.Data.Migrations
                             Id = 9,
                             Name = "heart",
                             SlotMachineId = 1,
-                            Value = 25,
-                            Weight = 50
+                            Value = 75,
+                            Weight = 30
                         },
                         new
                         {
                             Id = 10,
                             Name = "dice",
                             SlotMachineId = 1,
-                            Value = 25,
-                            Weight = 50
+                            Value = 110,
+                            Weight = 10
                         },
                         new
                         {
                             Id = 11,
                             Name = "chip",
                             SlotMachineId = 1,
-                            Value = 25,
-                            Weight = 50
+                            Value = 100,
+                            Weight = 10
                         },
                         new
                         {
                             Id = 12,
                             Name = "orange",
                             SlotMachineId = 1,
-                            Value = 25,
+                            Value = 45,
                             Weight = 50
                         },
                         new
@@ -838,31 +872,31 @@ namespace PlayRiggedGames.DataAccess.Data.Migrations
                             Id = 13,
                             Name = "strawberry",
                             SlotMachineId = 1,
-                            Value = 25,
-                            Weight = 20
+                            Value = 55,
+                            Weight = 50
                         },
                         new
                         {
                             Id = 14,
                             Name = "emerald",
                             SlotMachineId = 1,
-                            Value = 50,
-                            Weight = 20
+                            Value = 200,
+                            Weight = 5
                         },
                         new
                         {
                             Id = 15,
                             Name = "coin",
                             SlotMachineId = 1,
-                            Value = 50,
-                            Weight = 20
+                            Value = 135,
+                            Weight = 10
                         },
                         new
                         {
                             Id = 16,
                             Name = "bell",
                             SlotMachineId = 1,
-                            Value = 150,
+                            Value = 125,
                             Weight = 10
                         },
                         new
@@ -878,8 +912,8 @@ namespace PlayRiggedGames.DataAccess.Data.Migrations
                             Id = 18,
                             Name = "clover",
                             SlotMachineId = 1,
-                            Value = 150,
-                            Weight = 10
+                            Value = 175,
+                            Weight = 5
                         },
                         new
                         {
@@ -887,7 +921,7 @@ namespace PlayRiggedGames.DataAccess.Data.Migrations
                             Name = "crown",
                             SlotMachineId = 1,
                             Value = 500,
-                            Weight = 3
+                            Weight = 5
                         },
                         new
                         {
@@ -895,7 +929,7 @@ namespace PlayRiggedGames.DataAccess.Data.Migrations
                             Name = "seven",
                             SlotMachineId = 1,
                             Value = 1000,
-                            Weight = 1
+                            Weight = 3
                         });
                 });
 
