@@ -1,5 +1,5 @@
 ﻿const moneyDisplay = document.getElementById("moneyDisplay");
-let money = parseInt(moneyDisplay.innerHTML.substring(1));
+let money = parseInt(moneyDisplay.innerHTML.split('$').pop());
 
 const symbolDisplay = document.getElementById("symbolDisplay")
 symbolDisplay.style.width = `${width * 80}px`;
