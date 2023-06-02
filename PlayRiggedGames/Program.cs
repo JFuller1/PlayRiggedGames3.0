@@ -42,6 +42,9 @@ namespace PlayRiggedGames
             builder.Services.AddTransient<IEmailSender, EmailSender>();
             builder.Services.Configure<AuthMessageSenderOptions>(builder.Configuration);
 
+            //Makes it so a user must have a unique email address to create an account
+            builder.Services.Configure<IdentityOptions>(options => options.User.RequireUniqueEmail = true);
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

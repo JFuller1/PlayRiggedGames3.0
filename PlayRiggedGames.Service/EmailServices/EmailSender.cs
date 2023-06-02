@@ -38,7 +38,7 @@ namespace PlayRiggedGames.Service.EmailServices
             var client = new SendGridClient(apiKey);
             var msg = new SendGridMessage()
             {
-                From = new EmailAddress("playriggedgames@gmail.com", "Password Recovery"),
+                From = new EmailAddress("playriggedgames@gmail.com", "Account Confirmation"),
                 Subject = subject,
                 PlainTextContent = message,
                 HtmlContent = message
