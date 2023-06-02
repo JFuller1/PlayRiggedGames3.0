@@ -12,6 +12,7 @@
                 <th scope="col">Width</th>
                 <th scope="col">Height</th>
                 <th scope="col">Out of Order</th>
+                <th scope="col"></th>
             </tr>
         </thead>
         <tbody>
@@ -23,6 +24,7 @@
                     <td>@(slotMachine.Width)</td>
                     <td>@(slotMachine.Height)</td>
                     <td>@(slotMachine.OutOfOrder)</td>
+                    <td><a class="" asp-area="" asp-controller="Admin" asp-action="SlotMachine" asp-route-slotMachineId="@(slotMachine.Id)">Detail</a></td>
                 </tr>
             }
         </tbody>

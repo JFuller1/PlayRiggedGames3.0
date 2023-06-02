@@ -67,7 +67,7 @@ namespace PlayRiggedGames.Service
         }
         public SlotMachine GetSlotMachineById(int id)
         {
-            return GetAllSlotMachines().FirstOrDefault(x => x.Id == id);
+            return GetAllSlotMachines().First(x => x.Id == id);
         }
         public bool UpdateSlotMachine(SlotMachine updateData)
         {

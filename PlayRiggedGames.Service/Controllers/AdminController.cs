@@ -115,9 +115,37 @@ namespace PlayRiggedGames.Service.Controllers
 
         public IActionResult SlotMachine(int slotMachineId) 
         {
-            // admin only change money input amount
-            // view should have simple if statement to check if model null or not
-            return View(_service.GetSlotMachineById(slotMachineId));
+            Admin_SlotMachine_ViewModel vm = new()
+            {
+                SlotMachine = _service.GetSlotMachineById(slotMachineId),
+                SlotSymbols = _service.GetSlotSymbolBySlotMachineId(slotMachineId).ToList()
+            };
+
+            return View(vm);
+        }
+        [HttpPost]
+        public IActionResult SlotMachine(Admin_SlotMachine_ViewModel vm)
+        {
+            // grabbing input values
+            SlotMachine selectedSlotMachine = _service.GetSlotMachineById(vm.SlotMachineId);
+
+            if (vm.IsNowOutofOrder != selectedSlotMachine.OutOfOrder)
+            {
+                selectedSlotMachine.OutOfOrder = vm.IsNowOutofOrder;
+
+                _service.UpdateSlotMachine(selectedSlotMachine);
+            }
+
+            // remaking viewmodel
+            SlotMachine returningSlotMachine = _service.GetSlotMachineById(selectedSlotMachine.Id);
+
+            Admin_SlotMachine_ViewModel returning = new()
+            {
+                SlotMachine = returningSlotMachine,
+                SlotSymbols = _service.GetSlotSymbolBySlotMachineId(returningSlotMachine.Id).ToList()
+            };
+
+            return View("SlotMachine", returning);
         }
 
         //
