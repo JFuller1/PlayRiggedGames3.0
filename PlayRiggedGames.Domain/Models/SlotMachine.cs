@@ -14,6 +14,7 @@ namespace PlayRiggedGames.Domain.Models
         public int Height { get; set; }
         public string Name { get; set; }
         public bool OutOfOrder { get; set; } = false;
+        public int Cost { get; set; }
         
         // Nav
         public virtual IEnumerable<SlotSymbol> Values { get; set; }
