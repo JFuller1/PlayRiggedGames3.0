@@ -1,6 +1,39 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@model Admin_SlotSymbol_ViewModel;
+
+<h1>Slot Symbol Details</h1>
+
+@if (Model.SlotSymbol == null)
+{
+    <p>Selected Slot Symbol does not exist.</p>
 }
-6
+else
+{
+    <p>ID:              @(Model.SlotSymbol.Id)</p>
+    <p>Name:            @(Model.SlotSymbol.Name)</p>
+    <p>Value:           @(Model.SlotSymbol.Value)</p>
+    <p>Weight:          @(Model.SlotSymbol.Weight)</p>
+    <p>Slot Machine:    <a class="" asp-area="" asp-controller="Admin" asp-action="SlotMachine" asp-route-slotMachineId="@(Model.SlotMachine.Id)">@(Model.SlotSymbol.SlotMachine.Name)</a></p>
+
+
+    <br />
+    <br />
+
+    <h2>Modify Slot Symbol Info</h2>
+    <form method="post">
+        <input type="hidden" id="slotSymbolId" name="SlotSymbolId" value="@(Model.SlotSymbol.Id)">
+
+        <div class="input-group mb-3">
+            <span class="input-group-text">Value</span>
+            <span class="input-group-text">@(Model.SlotSymbol.Value)</span>
+            <input type="number" name="NewValue" class="form-control" aria-label="New Symbol Value input" >
+        </div>
+
+        <div class="input-group mb-3">
+            <span class="input-group-text">Weight</span>
+            <span class="input-group-text">@(Model.SlotSymbol.Weight)</span>
+            <input type="number" name="NewWeight" class="form-control" aria-label="New Symbol Weight input">
+        </div>
+
+        <button type="submit">Apply Changes</button>
+    </form>
+}

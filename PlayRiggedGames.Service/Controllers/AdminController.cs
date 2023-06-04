@@ -41,7 +41,7 @@ namespace PlayRiggedGames.Service.Controllers
         {
             List<Admin_Users_ViewModel> returning = new();
 
-            foreach(ApplicationUser user in _service.GetAllUsers())
+            foreach (ApplicationUser user in _service.GetAllUsers())
             {
                 returning.Add(new Admin_Users_ViewModel()
                 {
@@ -67,7 +67,7 @@ namespace PlayRiggedGames.Service.Controllers
             return View(returning);
         }
 
-        [HttpPost] 
+        [HttpPost]
         public IActionResult User(Admin_User_ViewModel vm)
         {
             // grabbing input values
@@ -113,7 +113,7 @@ namespace PlayRiggedGames.Service.Controllers
             return View(_service.GetAllSlotMachines().ToList());
         }
 
-        public IActionResult SlotMachine(int slotMachineId) 
+        public IActionResult SlotMachine(int slotMachineId)
         {
             Admin_SlotMachine_ViewModel vm = new()
             {
@@ -126,23 +126,21 @@ namespace PlayRiggedGames.Service.Controllers
         [HttpPost]
         public IActionResult SlotMachine(Admin_SlotMachine_ViewModel vm)
         {
-            // grabbing input values
-            SlotMachine selectedSlotMachine = _service.GetSlotMachineById(vm.SlotMachineId);
+            // making
+            SlotMachine making = _service.GetSlotMachineById(vm.SlotMachineId);
 
-            if (vm.IsNowOutofOrder != selectedSlotMachine.OutOfOrder)
-            {
-                selectedSlotMachine.OutOfOrder = vm.IsNowOutofOrder;
+            // apply change
+            making.OutOfOrder = vm.IsNowOutofOrder;
+            _service.UpdateSlotMachine(making);
 
-                _service.UpdateSlotMachine(selectedSlotMachine);
-            }
 
             // remaking viewmodel
-            SlotMachine returningSlotMachine = _service.GetSlotMachineById(selectedSlotMachine.Id);
+            SlotMachine refreshed = _service.GetSlotMachineById(making.Id);
 
             Admin_SlotMachine_ViewModel returning = new()
             {
-                SlotMachine = returningSlotMachine,
-                SlotSymbols = _service.GetSlotSymbolBySlotMachineId(returningSlotMachine.Id).ToList()
+                SlotMachine = refreshed,
+                SlotSymbols = _service.GetSlotSymbolBySlotMachineId(refreshed.Id).ToList()
             };
 
             return View("SlotMachine", returning);
@@ -151,16 +149,43 @@ namespace PlayRiggedGames.Service.Controllers
         //
         // Slot Symbol related
         //
-        public IActionResult SlotSymbols(int slotMachineId)
+        public IActionResult SlotSymbols()
         {
-            return View(_service.GetSlotSymbolBySlotMachineId(slotMachineId));
+            return View(_service.GetAllSlotSymbols().ToList());
         }
 
         public IActionResult SlotSymbol(int slotSymbolId)
         {
-            // admin only change value and weight
-            // view should have simple if statement to check if model null or not
-            return View(_service.GetSlotSymbolById(slotSymbolId));
+            SlotSymbol selected = _service.GetSlotSymbolById(slotSymbolId);
+
+            Admin_SlotSymbol_ViewModel returning = new()
+            {
+                SlotSymbol = selected,
+                SlotMachine = _service.GetSlotMachineById(selected.SlotMachineId)
+            };
+
+            return View(returning);
+        }
+        [HttpPost]
+        public IActionResult SlotSymbol(Admin_SlotSymbol_ViewModel vm)
+        {
+            // newly making
+            SlotSymbol making = _service.GetSlotSymbolById(vm.SlotSymbolId);
+
+            // apply change
+            making.Value = vm.NewValue;
+            making.Weight = vm.NewWeight;
+            _service.UpdateSlotSymbol(making);
+
+            // redisplaying
+            SlotSymbol refreshed = _service.GetSlotSymbolById(vm.SlotSymbolId);
+            Admin_SlotSymbol_ViewModel returning = new()
+            {
+                SlotSymbol = refreshed,
+                SlotMachine = _service.GetSlotMachineById(refreshed.SlotMachineId)
+            };
+
+            return View("SlotSymbol", returning);
         }
     }
 }
