@@ -1,4 +1,5 @@
-﻿using PlayRiggedGames.Domain.Models;
+﻿using Microsoft.AspNetCore.Identity;
+using PlayRiggedGames.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,7 +45,8 @@ namespace PlayRiggedGames.Service
         // SlotSymbols CRU
         bool CreateSlotSymbol(SlotSymbol newSlotSymbol);
         IEnumerable<SlotSymbol> GetAllSlotSymbols();
-        SlotSymbol GetSlotSymbolById(int id);
+        IEnumerable<SlotSymbol> GetSlotSymbolsBySlotMachineId(int id);
+        public SlotSymbol GetSlotSymbolById(int id);
         bool UpdateSlotSymbol(SlotSymbol updateData);
 
 
@@ -56,6 +58,18 @@ namespace PlayRiggedGames.Service
         // SlotOutcomes CR
         bool CreateSlotOutcome(SlotOutcome slotOutcome);
         IEnumerable<SlotOutcome> GetAllSlotOutcomes();
-        IEnumerable<SlotOutcome> GetSlotOutcomesBySlotMachineId(int id);
+        IEnumerable<SlotOutcome> GetSlotOutcomesBySlotGameLogId(int id);
+
+        // IdentityRole CRU 
+        bool CreateIdentityRole(string roleName);
+        IEnumerable<IdentityRole> GetAllIdentityRoles();
+        IdentityRole GetIdentityRoleById(string id);
+        public bool UpdateIdentityRole(IdentityRole role);
+
+        // IdentityUserRole CRU
+        bool CreateIdentityUserRole(string userId, string roleId);
+        IEnumerable<IdentityUserRole<string>> GetAllIdentityUserRoles();
+        IdentityRole GetIdentityRoleByUser(ApplicationUser user);
+        public bool UpdateIdentityUserRole(ApplicationUser user, IdentityRole role);
     }
 }

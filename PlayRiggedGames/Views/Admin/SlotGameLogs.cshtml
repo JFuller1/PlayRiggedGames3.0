@@ -1,0 +1,40 @@
+﻿@model List<SlotGameLog>;
+
+<h1>Slot Game Logs</h1>
+
+@if (Model.Count > 0)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Money In</th>
+                <th scope="col">Money Out</th>
+                <th scope="col">Time</th>
+                <th scope="col">Jackpot</th>
+                <th scope="col">Player</th>
+                <th scope="col">Slot Machine</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (SlotGameLog s in Model)
+            {
+                <tr style="color: @(s.Jackpot ? "lightgreen" : "black")">
+                    <td>@(s.Id)</td>
+                    <td>@(s.MoneyInput)</td>
+                    <td>@(s.MoneyOutput)</td>
+                    <td>@(s.Time)</td>
+                    <td>@(s.Jackpot)</td>
+                    <td>@(s.PlayerId)</td>
+                    <td><a class="" asp-area="" asp-controller="Admin" asp-action="SlotGameLog" asp-route-id="@(s.Id)">Detail</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+// no slotmachines
+    <p>No Slot Machines were detected in database. Contact an admin to add one.</p>
+}

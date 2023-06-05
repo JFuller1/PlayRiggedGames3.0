@@ -1,8 +1,10 @@
-﻿using PlayRiggedGames.DataAccess;
+﻿using Microsoft.AspNetCore.Identity;
+using PlayRiggedGames.DataAccess;
 using PlayRiggedGames.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -65,7 +67,7 @@ namespace PlayRiggedGames.Service
         }
         public SlotMachine GetSlotMachineById(int id)
         {
-            return GetAllSlotMachines().FirstOrDefault(x => x.Id == id);
+            return GetAllSlotMachines().First(x => x.Id == id);
         }
         public bool UpdateSlotMachine(SlotMachine updateData)
         {
@@ -88,6 +90,10 @@ namespace PlayRiggedGames.Service
         public IEnumerable<SlotSymbol> GetAllSlotSymbols()
         {
             return _dataAccess.GetAllSlotSymbols();
+        }
+        public IEnumerable<SlotSymbol> GetSlotSymbolsBySlotMachineId(int id)
+        {
+            return GetAllSlotSymbols().Where(x => x.SlotMachineId == id);
         }
         public SlotSymbol GetSlotSymbolById(int id)
         {
@@ -135,9 +141,94 @@ namespace PlayRiggedGames.Service
         {
             return _dataAccess.GetAllSlotOutcomes();
         }
-        public IEnumerable<SlotOutcome> GetSlotOutcomesBySlotMachineId(int id)
+        public IEnumerable<SlotOutcome> GetSlotOutcomesBySlotGameLogId(int id)
         {
-            return GetAllSlotOutcomes().Where(x => x.SlotMachineId == id);
+            return GetAllSlotOutcomes().Where(x => x.GameId == id);
+        }
+
+        // IdentityRole CRU 
+        public bool CreateIdentityRole(string roleName)
+        {
+            try
+            {
+                _dataAccess.CreateIdentityRole(new IdentityRole(roleName));
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+            return true;
+        }
+        public IEnumerable<IdentityRole> GetAllIdentityRoles()
+        {
+            return _dataAccess.GetAllIdentityRoles();
+        }
+        public IdentityRole GetIdentityRoleById(string id)
+        {
+            return _dataAccess.GetAllIdentityRoles().FirstOrDefault(x => x.Id == id);
+        }
+        public bool UpdateIdentityRole(IdentityRole role)
+        {
+            if (_dataAccess.UpdateIdentityRole(role))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        // IdentityUserRole CRU
+        public bool CreateIdentityUserRole(string userId, string roleId)
+        {
+            try
+            {
+                List<string> userIdWithRoles = GetAllIdentityUserRoles().Select(x => x.UserId).ToList();
+                List<string> roleIds = GetAllIdentityRoles().Select(x => x.Id).ToList();
+
+                if (userIdWithRoles.Contains(userId))
+                {
+                    throw new Exception("User already has role. Modify instead of adding.");
+                }
+                else if (!roleIds.Contains(roleId))
+                {
+                    throw new Exception("Specified role does not exist.");
+                }
+                else
+                {
+                    // All clear
+                    _dataAccess.CreateIdentityUserRole(new IdentityUserRole<string>()
+                    {
+                        UserId = userId,
+                        RoleId = roleId
+                    });
+                }
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+            return true;
+        }
+        public IEnumerable<IdentityUserRole<string>> GetAllIdentityUserRoles()
+        {
+            return _dataAccess.GetAllIdentityUserRoles();
+        }
+        public IdentityRole GetIdentityRoleByUser(ApplicationUser user)
+        {
+            return GetIdentityRoleById(GetAllIdentityUserRoles().Where(x => x.UserId == user.Id).Select(x => x.RoleId).FirstOrDefault());
+        }
+        public bool UpdateIdentityUserRole(ApplicationUser user, IdentityRole role)
+        {
+            IdentityUserRole<string> updateData = new()
+            {
+                UserId = user.Id,
+                RoleId = role.Id
+            };
+
+            if (_dataAccess.UpdateIdentityUserRole(updateData))
+            {
+                return true;
+            }
+            return false;
         }
         #endregion
     }

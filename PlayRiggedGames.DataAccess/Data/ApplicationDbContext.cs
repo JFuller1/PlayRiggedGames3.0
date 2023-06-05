@@ -680,12 +680,12 @@ namespace PlayRiggedGames.DataAccess.Data
             try
             {
                 ApplicationUsers.Add(newUser);
+                this.SaveChanges();
             }
             catch (Exception e)
             {
                 return false;
             }
-            this.SaveChanges();
             return true;
         }
         public IEnumerable<ApplicationUser> GetAllUsers()
@@ -700,12 +700,13 @@ namespace PlayRiggedGames.DataAccess.Data
                 ApplicationUser selected = ApplicationUsers.First(x => x.Id == updateData.Id);
 
                 selected = updateData;
+
+                this.SaveChanges();
             }
             catch (Exception e)
             {
                 return false;
             }
-            this.SaveChanges();
             return true;
         }
 
@@ -715,12 +716,12 @@ namespace PlayRiggedGames.DataAccess.Data
             try
             {
                 SlotMachines.Add(newSlotMachine);
+                this.SaveChanges();
             }
             catch (Exception e)
             {
                 return false;
             }
-            this.SaveChanges();
             return true;
         }
         public IEnumerable<SlotMachine> GetAllSlotMachines()
@@ -735,12 +736,13 @@ namespace PlayRiggedGames.DataAccess.Data
                 SlotMachine selected = SlotMachines.First(x => x.Id == updateData.Id);
 
                 selected = updateData;
+
+                this.SaveChanges();
             }
             catch (Exception e)
             {
                 return false;
             }
-            this.SaveChanges();
             return true;
         }
 
@@ -750,12 +752,12 @@ namespace PlayRiggedGames.DataAccess.Data
             try
             {
                 SlotSymbols.Add(newSlotSymbol);
+                this.SaveChanges();
             }
             catch (Exception e)
             {
                 return false;
             }
-            this.SaveChanges();
             return true;
         }
         public IEnumerable<SlotSymbol> GetAllSlotSymbols()
@@ -770,12 +772,12 @@ namespace PlayRiggedGames.DataAccess.Data
 
                 selected = updateData;
 
+                this.SaveChanges();
             }
             catch (Exception e)
             {
                 return false;
             }
-            this.SaveChanges();
             return true;
         }
 
@@ -786,17 +788,17 @@ namespace PlayRiggedGames.DataAccess.Data
             try
             {
                 SlotGameLogs.Add(slotGameLog);
+                this.SaveChanges();
             }
             catch (Exception e)
             {
                 return false;
             }
-            this.SaveChanges();
             return true;
         }
         public IEnumerable<SlotGameLog> GetAllSlotGameLogs()
         {
-            return SlotGameLogs.ToArray();
+            return SlotGameLogs;
         }
 
         // SlotOutcomes CR
@@ -804,18 +806,89 @@ namespace PlayRiggedGames.DataAccess.Data
         {
             try
             {
-                SlotOutcomes.Add(slotOutcome);  
+                SlotOutcomes.Add(slotOutcome);
+                this.SaveChanges();
             }
             catch (Exception e)
             {
                 return false;
             }
-            this.SaveChanges();
             return true;
         }
         public IEnumerable<SlotOutcome> GetAllSlotOutcomes()
         {
-            return SlotOutcomes.ToArray();
+            return SlotOutcomes;
+        }
+
+        // IdentityRoles CRU
+        public bool CreateIdentityRole(IdentityRole role)
+        {
+            try
+            {
+                Roles.Add(role);
+                this.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+            return true;
+        }
+        public IEnumerable<IdentityRole> GetAllIdentityRoles()
+        {
+            return Roles;
+        }
+        public bool UpdateIdentityRole(IdentityRole role)
+        {
+            try
+            {
+                IdentityRole selected = GetAllIdentityRoles().First(x => x.Id == role.Id);
+
+                selected = role;
+
+                this.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        // IdentityUserRoles CRU
+        public bool CreateIdentityUserRole(IdentityUserRole<string> userRole)
+        {
+            try
+            {
+                UserRoles.Add(userRole);
+                this.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+            return true;
+        }
+        public IEnumerable<IdentityUserRole<string>> GetAllIdentityUserRoles()
+        {
+            return UserRoles;
+        }
+        public bool UpdateIdentityUserRole(IdentityUserRole<string> updateData)
+        {
+            try
+            {
+                IdentityUserRole<string> selected = GetAllIdentityUserRoles().First(x => x.UserId == updateData.UserId);
+                
+                UserRoles.Remove(selected);
+                UserRoles.Add(updateData);
+
+                this.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+            return true;
         }
         #endregion
     }

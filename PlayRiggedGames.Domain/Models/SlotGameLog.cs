@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +20,7 @@ namespace PlayRiggedGames.Domain.Models
 
         // Nav
         public virtual ApplicationUser Player { get; set; }
+        public virtual IEnumerable<SlotOutcome> SlotSymbols { get; set; }
         public virtual IEnumerable<SlotOutcome> SlotOutcomes { get; set; }
 
         public SlotGameLog()
