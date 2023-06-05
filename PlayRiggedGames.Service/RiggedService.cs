@@ -122,6 +122,7 @@ namespace PlayRiggedGames.Service
         {
             return _dataAccess.GetAllSlotGameLogs();
         }
+        
         public SlotGameLog GetSlotGameLogById(int id)
         {
             return GetAllSlotGameLogs().FirstOrDefault(x => x.Id == id);

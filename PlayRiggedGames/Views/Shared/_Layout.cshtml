@@ -25,7 +25,9 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
-                        
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Slots" asp-action="Index">Slots</a>
+                        </li>
                         <!-- To prevent link to display when user not logged in -->
                         <!-- Need to make a way to disable page when user is not logged in = use Authorize tag -->
                         @if (User.Identity.IsAuthenticated) {
