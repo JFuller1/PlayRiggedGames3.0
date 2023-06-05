@@ -91,7 +91,7 @@ namespace PlayRiggedGames.Service
         {
             return _dataAccess.GetAllSlotSymbols();
         }
-        public IEnumerable<SlotSymbol> GetSlotSymbolBySlotMachineId(int id)
+        public IEnumerable<SlotSymbol> GetSlotSymbolsBySlotMachineId(int id)
         {
             return GetAllSlotSymbols().Where(x => x.SlotMachineId == id);
         }
@@ -140,9 +140,9 @@ namespace PlayRiggedGames.Service
         {
             return _dataAccess.GetAllSlotOutcomes();
         }
-        public IEnumerable<SlotOutcome> GetSlotOutcomesBySlotMachineId(int id)
+        public IEnumerable<SlotOutcome> GetSlotOutcomesBySlotGameLogId(int id)
         {
-            return GetAllSlotOutcomes().Where(x => x.SlotMachineId == id);
+            return GetAllSlotOutcomes().Where(x => x.GameId == id);
         }
 
         // IdentityRole CRU 

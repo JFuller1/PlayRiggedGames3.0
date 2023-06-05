@@ -774,7 +774,7 @@ namespace PlayRiggedGames.DataAccess.Data
         }
         public IEnumerable<SlotGameLog> GetAllSlotGameLogs()
         {
-            return SlotGameLogs.ToArray();
+            return SlotGameLogs;
         }
 
         // SlotOutcomes CR
@@ -793,7 +793,7 @@ namespace PlayRiggedGames.DataAccess.Data
         }
         public IEnumerable<SlotOutcome> GetAllSlotOutcomes()
         {
-            return SlotOutcomes.ToArray();
+            return SlotOutcomes;
         }
 
         // IdentityRoles CRU

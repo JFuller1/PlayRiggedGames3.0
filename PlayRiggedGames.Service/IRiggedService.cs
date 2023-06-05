@@ -45,7 +45,7 @@ namespace PlayRiggedGames.Service
         // SlotSymbols CRU
         bool CreateSlotSymbol(SlotSymbol newSlotSymbol);
         IEnumerable<SlotSymbol> GetAllSlotSymbols();
-        IEnumerable<SlotSymbol> GetSlotSymbolBySlotMachineId(int id);
+        IEnumerable<SlotSymbol> GetSlotSymbolsBySlotMachineId(int id);
         public SlotSymbol GetSlotSymbolById(int id);
         bool UpdateSlotSymbol(SlotSymbol updateData);
 
@@ -58,7 +58,7 @@ namespace PlayRiggedGames.Service
         // SlotOutcomes CR
         bool CreateSlotOutcome(SlotOutcome slotOutcome);
         IEnumerable<SlotOutcome> GetAllSlotOutcomes();
-        IEnumerable<SlotOutcome> GetSlotOutcomesBySlotMachineId(int id);
+        IEnumerable<SlotOutcome> GetSlotOutcomesBySlotGameLogId(int id);
 
         // IdentityRole CRU 
         bool CreateIdentityRole(string roleName);

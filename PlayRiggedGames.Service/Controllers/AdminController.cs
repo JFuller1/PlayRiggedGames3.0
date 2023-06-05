@@ -113,12 +113,12 @@ namespace PlayRiggedGames.Service.Controllers
             return View(_service.GetAllSlotMachines().ToList());
         }
 
-        public IActionResult SlotMachine(int slotMachineId)
+        public IActionResult SlotMachine(int id)
         {
             Admin_SlotMachine_ViewModel vm = new()
             {
-                SlotMachine = _service.GetSlotMachineById(slotMachineId),
-                SlotSymbols = _service.GetSlotSymbolBySlotMachineId(slotMachineId).ToList()
+                SlotMachine = _service.GetSlotMachineById(id),
+                SlotSymbols = _service.GetSlotSymbolsBySlotMachineId(id).ToList()
             };
 
             return View(vm);
@@ -140,7 +140,7 @@ namespace PlayRiggedGames.Service.Controllers
             Admin_SlotMachine_ViewModel returning = new()
             {
                 SlotMachine = refreshed,
-                SlotSymbols = _service.GetSlotSymbolBySlotMachineId(refreshed.Id).ToList()
+                SlotSymbols = _service.GetSlotSymbolsBySlotMachineId(refreshed.Id).ToList()
             };
 
             return View("SlotMachine", returning);
@@ -154,9 +154,9 @@ namespace PlayRiggedGames.Service.Controllers
             return View(_service.GetAllSlotSymbols().ToList());
         }
 
-        public IActionResult SlotSymbol(int slotSymbolId)
+        public IActionResult SlotSymbol(int id)
         {
-            SlotSymbol selected = _service.GetSlotSymbolById(slotSymbolId);
+            SlotSymbol selected = _service.GetSlotSymbolById(id);
 
             Admin_SlotSymbol_ViewModel returning = new()
             {
@@ -186,6 +186,43 @@ namespace PlayRiggedGames.Service.Controllers
             };
 
             return View("SlotSymbol", returning);
+        }
+
+        // 
+        //  SlotGameLog related
+        //
+        public IActionResult SlotGameLogs()
+        {
+            return View(_service.GetAllSlotGameLogs().ToList());
+        }
+        public IActionResult SlotGameLog(int id)
+        {
+            SlotGameLog selected = _service.GetSlotGameLogById(id);
+            List<SlotOutcome> slotOutcomes = _service.GetSlotOutcomesBySlotGameLogId(selected.Id).ToList();
+
+            Admin_SlotGameLog_ViewModel returning = new()
+            {
+                SlotGameLog = selected,
+                Player = _service.GetUserById(selected.PlayerId),
+                SlotMachine = GetSlotMachineFromSlotOutComes(slotOutcomes)
+            };
+
+            return View(returning);
+        }
+
+
+
+
+
+        // I honestly need this function for only one purpose and two uses so here it is
+        public SlotMachine GetSlotMachineFromSlotOutComes(List<SlotOutcome> slotOutcomes)
+        {
+            // SlotOutcomes --> SlotOutcome --> SlotSymbol --> SlotSymbol.SlotMachineId --> SlotMachine
+            SlotSymbol firstSymbol = _service.GetSlotSymbolById(slotOutcomes[0].SymbolId);
+
+            SlotMachine slotMachine = _service.GetSlotMachineById(firstSymbol.SlotMachineId);
+
+            return slotMachine;
         }
     }
 }
