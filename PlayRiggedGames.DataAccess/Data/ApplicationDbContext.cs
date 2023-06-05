@@ -269,6 +269,172 @@ namespace PlayRiggedGames.DataAccess.Data
                 );
             #endregion
 
+            #region Daily Spin Symbols
+            builder.Entity<SlotSymbol>()
+                .HasData(
+                    new SlotSymbol()
+                    {
+                        Id = 21,
+                        Name = "goldclub",
+                        Value = 75,
+                        Weight = 30,
+                        SlotMachineId = 2
+                    },
+                    new SlotSymbol()
+                    {
+                        Id = 22,
+                        Name = "goldlemon",
+                        Value = 25,
+                        Weight = 50,
+                        SlotMachineId = 2
+                    },
+                    new SlotSymbol()
+                    {
+                        Id = 23,
+                        Name = "goldspade",
+                        Value = 75,
+                        Weight = 30,
+                        SlotMachineId = 2
+                    },
+                    new SlotSymbol()
+                    {
+                        Id = 24,
+                        Name = "goldbanana",
+                        Value = 30,
+                        Weight = 50,
+                        SlotMachineId = 2
+                    },
+                    new SlotSymbol()
+                    {
+                        Id = 25,
+                        Name = "goldcherry",
+                        Value = 50,
+                        Weight = 50,
+                        SlotMachineId = 2
+                    },
+                    new SlotSymbol()
+                    {
+                        Id = 26,
+                        Name = "golddiamond",
+                        Value = 75,
+                        Weight = 30,
+                        SlotMachineId = 2
+                    },
+                    new SlotSymbol()
+                    {
+                        Id = 27,
+                        Name = "goldmelon",
+                        Value = 35,
+                        Weight = 50,
+                        SlotMachineId = 2
+                    },
+                    new SlotSymbol()
+                    {
+                        Id = 28,
+                        Name = "goldgrapes",
+                        Value = 40,
+                        Weight = 50,
+                        SlotMachineId = 2
+                    },
+                    new SlotSymbol()
+                    {
+                        Id = 29,
+                        Name = "goldheart",
+                        Value = 75,
+                        Weight = 30,
+                        SlotMachineId = 2
+                    },
+                    new SlotSymbol()
+                    {
+                        Id = 30,
+                        Name = "golddice",
+                        Value = 110,
+                        Weight = 10,
+                        SlotMachineId = 2
+                    },
+                    new SlotSymbol()
+                    {
+                        Id = 31,
+                        Name = "goldchip",
+                        Value = 100,
+                        Weight = 10,
+                        SlotMachineId = 2
+                    },
+                    new SlotSymbol()
+                    {
+                        Id = 32,
+                        Name = "goldorange",
+                        Value = 45,
+                        Weight = 50,
+                        SlotMachineId = 2
+                    },
+                    new SlotSymbol()
+                    {
+                        Id = 33,
+                        Name = "goldstrawberry",
+                        Value = 55,
+                        Weight = 50,
+                        SlotMachineId = 2
+                    },
+                    new SlotSymbol()
+                    {
+                        Id = 34,
+                        Name = "goldemerald",
+                        Value = 200,
+                        Weight = 5,
+                        SlotMachineId = 2
+                    },
+                    new SlotSymbol()
+                    {
+                        Id = 35,
+                        Name = "goldcoin",
+                        Value = 135,
+                        Weight = 10,
+                        SlotMachineId = 2
+                    },
+                    new SlotSymbol()
+                    {
+                        Id = 36,
+                        Name = "goldbell",
+                        Value = 125,
+                        Weight = 10,
+                        SlotMachineId = 2
+                    },
+                    new SlotSymbol()
+                    {
+                        Id = 37,
+                        Name = "goldhorseshoe",
+                        Value = 150,
+                        Weight = 10,
+                        SlotMachineId = 2
+                    },
+                    new SlotSymbol()
+                    {
+                        Id = 38,
+                        Name = "goldclover",
+                        Value = 175,
+                        Weight = 5,
+                        SlotMachineId = 2
+                    },
+                    new SlotSymbol()
+                    {
+                        Id = 39,
+                        Name = "goldcrown",
+                        Value = 500,
+                        Weight = 5,
+                        SlotMachineId = 2
+                    },
+                    new SlotSymbol()
+                    {
+                        Id = 40,
+                        Name = "goldseven",
+                        Value = 1000,
+                        Weight = 3,
+                        SlotMachineId = 2
+                    }
+                );
+            #endregion
+
             // Blackjack end result (Win, Loss, Stalemate)
             //builder.Entity<BlackjackEndResult>()
             //    .HasData(

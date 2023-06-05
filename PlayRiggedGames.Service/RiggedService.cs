@@ -50,6 +50,11 @@ namespace PlayRiggedGames.Service
             return false;
         }
 
+        public bool CanUserSpinDaily(ApplicationUser user)
+        {
+
+        }
+
         // SlotMachine CRU
         public bool CreateSlotMachine(SlotMachine newSlotMachine)
         {
