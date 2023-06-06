@@ -8,12 +8,14 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace PlayRiggedGames.Service.Controllers
 {
     // [Authorize(Roles = "Admin")]
+    [Authorize]
     public class AdminController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -30,14 +32,22 @@ namespace PlayRiggedGames.Service.Controllers
 
         public IActionResult Index()
         {
-            // should contain links to other pages
-            return View();
+            if (_service.GetIdentityRoleOfUser(GetLoggedInUser()) == _service.GetIdentityRoleByName("Admin")) {
+                // should contain links to other pages
+                return View();
+            }
+            string host = HttpContext.Request.Host.Host;
+            string port = HttpContext.Request.Host.Port.HasValue ? HttpContext.Request.Host.Port.Value.ToString() : string.Empty;
+
+            string accessDeniedUrl = $"https://{host}:{port}/Identity/Account/AccessDenied";
+
+            return Redirect(accessDeniedUrl);
         }
 
         //
         // User related
         //
-        public IActionResult Users()
+        public IActionResult ApplicationUsers()
         {
             List<Admin_Users_ViewModel> returning = new();
 
@@ -53,7 +63,7 @@ namespace PlayRiggedGames.Service.Controllers
             return View(returning);
         }
 
-        public IActionResult User(string id)
+        public IActionResult ApplicationUser(string id)
         {
             ApplicationUser selectedUser = _service.GetUserById(id);
 
@@ -68,7 +78,7 @@ namespace PlayRiggedGames.Service.Controllers
         }
 
         [HttpPost]
-        public IActionResult User(Admin_User_ViewModel vm)
+        public IActionResult ApplicationUser(Admin_User_ViewModel vm)
         {
             // grabbing input values
             ApplicationUser selectedUser = _service.GetUserById(vm.UserId);
@@ -102,7 +112,7 @@ namespace PlayRiggedGames.Service.Controllers
                 AllRoles = _service.GetAllIdentityRoles().ToList()
             };
 
-            return View("User", returning);
+            return View("ApplicationUser", returning);
         }
 
         //
@@ -212,7 +222,12 @@ namespace PlayRiggedGames.Service.Controllers
 
 
 
-
+        private ApplicationUser GetLoggedInUser()
+        {
+            // gets the id of the currently logged in user
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            return _service.GetUserById(userId);
+        }
 
         // I honestly need this function for only one purpose and two uses so here it is
         public SlotMachine GetSlotMachineFromSlotOutComes(List<SlotOutcome> slotOutcomes)
