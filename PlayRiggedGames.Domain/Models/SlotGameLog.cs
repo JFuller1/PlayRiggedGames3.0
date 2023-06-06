@@ -21,7 +21,7 @@ namespace PlayRiggedGames.Domain.Models
         // Nav
         public virtual ApplicationUser Player { get; set; }
         public virtual IEnumerable<SlotOutcome> SlotSymbols { get; set; }
-        public virtual IEnumerable<SlotOutcome> SlotOutcomes { get; set; }
+        //public virtual IEnumerable<SlotOutcome> SlotOutcomes { get; set; }
 
         public SlotGameLog()
         {

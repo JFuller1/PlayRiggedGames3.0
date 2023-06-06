@@ -48,6 +48,7 @@ namespace PlayRiggedGames.Service
         IEnumerable<SlotSymbol> GetSlotSymbolsBySlotMachineId(int id);
         public SlotSymbol GetSlotSymbolById(int id);
         bool UpdateSlotSymbol(SlotSymbol updateData);
+        int GetSlotSymbolIdByName(string name);
 
 
         // SlotGameLogs CR
