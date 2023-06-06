@@ -118,6 +118,7 @@ namespace PlayRiggedGames.Controllers
             for(int i = 0; i < resultList.Count(); i++)
             {
                 SlotOutcome outcome = new SlotOutcome(i, _service.GetSlotSymbolIdByName(result[i]), machine.Id, log.Id);
+                _service.CreateSlotOutcome(outcome);
             }
 
             return Json(JsonConvert.SerializeObject(new
