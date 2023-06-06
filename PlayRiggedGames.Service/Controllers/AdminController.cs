@@ -46,7 +46,7 @@ namespace PlayRiggedGames.Service.Controllers
                 returning.Add(new Admin_Users_ViewModel()
                 {
                     User = user,
-                    Role = _service.GetIdentityRoleByUser(user)
+                    Role = _service.GetIdentityRoleOfUser(user)
                 });
             }
 
@@ -60,7 +60,7 @@ namespace PlayRiggedGames.Service.Controllers
             Admin_User_ViewModel returning = new()
             {
                 User = selectedUser,
-                Role = _service.GetIdentityRoleByUser(selectedUser),
+                Role = _service.GetIdentityRoleOfUser(selectedUser),
                 AllRoles = _service.GetAllIdentityRoles().ToList()
             };
 
@@ -77,7 +77,7 @@ namespace PlayRiggedGames.Service.Controllers
             // check if newRole, blacklisted is different from user info
             // if different change values
             // then return to User
-            if (newRole != _service.GetIdentityRoleByUser(selectedUser))
+            if (newRole != _service.GetIdentityRoleOfUser(selectedUser))
             {
                 // given role does not match
                 // need to change value
@@ -98,7 +98,7 @@ namespace PlayRiggedGames.Service.Controllers
             Admin_User_ViewModel returning = new()
             {
                 User = returningUser,
-                Role = _service.GetIdentityRoleByUser(returningUser),
+                Role = _service.GetIdentityRoleOfUser(returningUser),
                 AllRoles = _service.GetAllIdentityRoles().ToList()
             };
 
