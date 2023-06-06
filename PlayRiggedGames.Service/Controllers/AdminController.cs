@@ -193,7 +193,7 @@ namespace PlayRiggedGames.Service.Controllers
         //
         public IActionResult SlotGameLogs()
         {
-            return View(_service.GetAllSlotGameLogs().ToList());
+            return View(_service.GetAllSlotGameLogs().OrderByDescending(x => x.Time).ToList());
         }
         public IActionResult SlotGameLog(int id)
         {
@@ -204,7 +204,8 @@ namespace PlayRiggedGames.Service.Controllers
             {
                 SlotGameLog = selected,
                 Player = _service.GetUserById(selected.PlayerId),
-                SlotMachine = GetSlotMachineFromSlotOutComes(slotOutcomes)
+                SlotMachine = GetSlotMachineFromSlotOutComes(slotOutcomes),
+                SlotOutcomes = ToDictionaryLocationAndSymbol(slotOutcomes)
             };
 
             return View(returning);
@@ -215,7 +216,7 @@ namespace PlayRiggedGames.Service.Controllers
 
 
         // I honestly need this function for only one purpose and two uses so here it is
-        public SlotMachine GetSlotMachineFromSlotOutComes(List<SlotOutcome> slotOutcomes)
+        private SlotMachine GetSlotMachineFromSlotOutComes(List<SlotOutcome> slotOutcomes)
         {
             // SlotOutcomes --> SlotOutcome --> SlotSymbol --> SlotSymbol.SlotMachineId --> SlotMachine
             SlotSymbol firstSymbol = _service.GetSlotSymbolById(slotOutcomes[0].SymbolId);
@@ -223,6 +224,18 @@ namespace PlayRiggedGames.Service.Controllers
             SlotMachine slotMachine = _service.GetSlotMachineById(firstSymbol.SlotMachineId);
 
             return slotMachine;
+        }
+
+        private Dictionary<int, SlotSymbol> ToDictionaryLocationAndSymbol(List<SlotOutcome> slotOutcomes)
+        {
+            Dictionary<int, SlotSymbol> returning = new();
+
+            foreach(SlotOutcome slotOutcome in slotOutcomes)
+            {
+                returning.Add(slotOutcome.Location, _service.GetSlotSymbolById(slotOutcome.SymbolId));
+            }
+
+            return returning;
         }
     }
 }
