@@ -13,9 +13,11 @@ using PlayRiggedGames.Service.Controllers;
 using PlayRiggedGames.Service;
 using Newtonsoft.Json;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 namespace PlayRiggedGames.Controllers
 {
+    [Authorize]
     public class SlotsController : Controller
     {
         private readonly ILogger<HomeController> _logger;
