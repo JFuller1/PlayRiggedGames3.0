@@ -167,6 +167,10 @@ namespace PlayRiggedGames.Service
         {
             return _dataAccess.GetAllIdentityRoles().FirstOrDefault(x => x.Id == id);
         }
+        public IdentityRole GetIdentityRoleByName(string name)
+        {
+            return GetAllIdentityRoles().FirstOrDefault(x => x.Name == name);
+        }
         public bool UpdateIdentityRole(IdentityRole role)
         {
             if (_dataAccess.UpdateIdentityRole(role))
@@ -212,7 +216,7 @@ namespace PlayRiggedGames.Service
         {
             return _dataAccess.GetAllIdentityUserRoles();
         }
-        public IdentityRole GetIdentityRoleByUser(ApplicationUser user)
+        public IdentityRole GetIdentityRoleOfUser(ApplicationUser user)
         {
             return GetIdentityRoleById(GetAllIdentityUserRoles().Where(x => x.UserId == user.Id).Select(x => x.RoleId).FirstOrDefault());
         }
