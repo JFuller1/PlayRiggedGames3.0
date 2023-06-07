@@ -20,5 +20,18 @@ namespace PlayRiggedGames.Domain.Models
         // Nav
         public virtual SlotSymbol Symbol { get; set; }
         public virtual SlotGameLog Game { get; set; }
+
+        public SlotOutcome()
+        {
+
+        }
+
+        public SlotOutcome(int location, int symbolId, int slotMachineId, int gameId)
+        {
+            Location = location;
+            SymbolId = symbolId;
+            SlotMachineId = slotMachineId;
+            GameId = gameId;
+        }
     }
 }

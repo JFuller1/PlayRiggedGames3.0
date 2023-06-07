@@ -44,10 +44,21 @@ namespace PlayRiggedGames.Service.Controllers
         public IActionResult UserDetails()
         {
             ApplicationUser user = GetLoggedInUser();
-            List<SlotGameLog> slotLogs = _service.GetAllSlotGameLogs().Where(x => x.Player == user).ToList();
-            List<SlotMachine> slotMachines = _service.GetAllSlotMachines().ToList();
+            List<SlotGameLog> slotLogs = _service.GetAllSlotGameLogs().Where(x => x.Player == user).OrderByDescending(x => x.Time).ToList();
+            List<SlotMachineAndSlotGameLog> machineAndGameLog = new();
 
-            return View(new Home_UserDetails_ViewModel(user, slotLogs, slotMachines));
+            foreach(SlotGameLog slotGameLog in slotLogs)
+            {
+                machineAndGameLog.Add(
+                    new SlotMachineAndSlotGameLog ()
+                    {
+                        SlotMachine = _service.SlotGameLogToSlotMachine(slotGameLog),
+                        SlotGameLog = slotGameLog
+                    }
+                    );
+            }
+
+            return View(new Home_UserDetails_ViewModel(user, machineAndGameLog));
         }
 
         private ApplicationUser GetLoggedInUser()

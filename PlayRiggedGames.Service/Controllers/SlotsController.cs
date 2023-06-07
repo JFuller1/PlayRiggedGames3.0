@@ -13,9 +13,11 @@ using PlayRiggedGames.Service.Controllers;
 using PlayRiggedGames.Service;
 using Newtonsoft.Json;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 namespace PlayRiggedGames.Controllers
 {
+    [Authorize]
     public class SlotsController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -93,6 +95,8 @@ namespace PlayRiggedGames.Controllers
                 paidRows.Add(rowIndex, row);
             }
 
+
+
             List<SlotRowWin> wins = new List<SlotRowWin>();
 
             foreach(KeyValuePair<int, List<string>> kvp in paidRows)
@@ -112,6 +116,12 @@ namespace PlayRiggedGames.Controllers
 
             SlotGameLog log = new SlotGameLog(machine.Cost * paidRowIndexes.Count, pay, DateTime.Now, false, user.Id);
             _service.CreateSlotGameLog(log);
+
+            for(int i = 0; i < resultList.Count(); i++)
+            {
+                SlotOutcome outcome = new SlotOutcome(i, _service.GetSlotSymbolIdByName(result[i]), machine.Id, log.Id);
+                _service.CreateSlotOutcome(outcome);
+            }
 
             return Json(JsonConvert.SerializeObject(new
             {

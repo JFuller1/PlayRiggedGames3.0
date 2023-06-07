@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PlayRiggedGames.DataAccess.Data;
 
@@ -11,9 +12,10 @@ using PlayRiggedGames.DataAccess.Data;
 namespace PlayRiggedGames.DataAccess.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230606134045_RemoveSlotValuesInSlotGameLog")]
+    partial class RemoveSlotValuesInSlotGameLog
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -926,166 +928,6 @@ namespace PlayRiggedGames.DataAccess.Data.Migrations
                             Id = 20,
                             Name = "seven",
                             SlotMachineId = 1,
-                            Value = 1000,
-                            Weight = 3
-                        },
-                        new
-                        {
-                            Id = 21,
-                            Name = "goldclub",
-                            SlotMachineId = 2,
-                            Value = 75,
-                            Weight = 30
-                        },
-                        new
-                        {
-                            Id = 22,
-                            Name = "goldlemon",
-                            SlotMachineId = 2,
-                            Value = 25,
-                            Weight = 50
-                        },
-                        new
-                        {
-                            Id = 23,
-                            Name = "goldspade",
-                            SlotMachineId = 2,
-                            Value = 75,
-                            Weight = 30
-                        },
-                        new
-                        {
-                            Id = 24,
-                            Name = "goldbanana",
-                            SlotMachineId = 2,
-                            Value = 30,
-                            Weight = 50
-                        },
-                        new
-                        {
-                            Id = 25,
-                            Name = "goldcherry",
-                            SlotMachineId = 2,
-                            Value = 50,
-                            Weight = 50
-                        },
-                        new
-                        {
-                            Id = 26,
-                            Name = "golddiamond",
-                            SlotMachineId = 2,
-                            Value = 75,
-                            Weight = 30
-                        },
-                        new
-                        {
-                            Id = 27,
-                            Name = "goldmelon",
-                            SlotMachineId = 2,
-                            Value = 35,
-                            Weight = 50
-                        },
-                        new
-                        {
-                            Id = 28,
-                            Name = "goldgrapes",
-                            SlotMachineId = 2,
-                            Value = 40,
-                            Weight = 50
-                        },
-                        new
-                        {
-                            Id = 29,
-                            Name = "goldheart",
-                            SlotMachineId = 2,
-                            Value = 75,
-                            Weight = 30
-                        },
-                        new
-                        {
-                            Id = 30,
-                            Name = "golddice",
-                            SlotMachineId = 2,
-                            Value = 110,
-                            Weight = 10
-                        },
-                        new
-                        {
-                            Id = 31,
-                            Name = "goldchip",
-                            SlotMachineId = 2,
-                            Value = 100,
-                            Weight = 10
-                        },
-                        new
-                        {
-                            Id = 32,
-                            Name = "goldorange",
-                            SlotMachineId = 2,
-                            Value = 45,
-                            Weight = 50
-                        },
-                        new
-                        {
-                            Id = 33,
-                            Name = "goldstrawberry",
-                            SlotMachineId = 2,
-                            Value = 55,
-                            Weight = 50
-                        },
-                        new
-                        {
-                            Id = 34,
-                            Name = "goldemerald",
-                            SlotMachineId = 2,
-                            Value = 200,
-                            Weight = 5
-                        },
-                        new
-                        {
-                            Id = 35,
-                            Name = "goldcoin",
-                            SlotMachineId = 2,
-                            Value = 135,
-                            Weight = 10
-                        },
-                        new
-                        {
-                            Id = 36,
-                            Name = "goldbell",
-                            SlotMachineId = 2,
-                            Value = 125,
-                            Weight = 10
-                        },
-                        new
-                        {
-                            Id = 37,
-                            Name = "goldhorseshoe",
-                            SlotMachineId = 2,
-                            Value = 150,
-                            Weight = 10
-                        },
-                        new
-                        {
-                            Id = 38,
-                            Name = "goldclover",
-                            SlotMachineId = 2,
-                            Value = 175,
-                            Weight = 5
-                        },
-                        new
-                        {
-                            Id = 39,
-                            Name = "goldcrown",
-                            SlotMachineId = 2,
-                            Value = 500,
-                            Weight = 5
-                        },
-                        new
-                        {
-                            Id = 40,
-                            Name = "goldseven",
-                            SlotMachineId = 2,
                             Value = 1000,
                             Weight = 3
                         });
