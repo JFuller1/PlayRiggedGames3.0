@@ -138,6 +138,10 @@ namespace PlayRiggedGames.Service
         {
             return _dataAccess.GetAllSlotGameLogs();
         }
+        public IEnumerable<SlotGameLog> GetAllSlotGameLogsByMachineId(int machineId)
+        {
+            return _dataAccess.GetAllSlotGameLogs();
+        }
         public SlotGameLog GetSlotGameLogById(int id)
         {
             return GetAllSlotGameLogs().FirstOrDefault(x => x.Id == id);

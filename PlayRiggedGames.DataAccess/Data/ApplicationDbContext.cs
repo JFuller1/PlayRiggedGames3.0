@@ -713,6 +713,10 @@ namespace PlayRiggedGames.DataAccess.Data
         {
             return SlotGameLogs.ToArray();
         }
+        public IEnumerable<SlotGameLog> GetAllSlotGameLogsByMachineId(int machineId)
+        {
+            return
+        }
 
         // SlotOutcomes CR
         public bool CreateSlotOutcome(SlotOutcome slotOutcome)
