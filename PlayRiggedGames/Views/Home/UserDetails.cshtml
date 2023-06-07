@@ -13,18 +13,35 @@
     </ul>
 
     <h2>Slot Machine Game Logs</h2>
-    <ul>
-        @foreach (var gamelog in Model.SlotGameLogs)
-        {
-            @*<li>Slot Machine: </li> UPDATE ONCE SLOT OUTCOMES ARE BEING CREATED*@
-            @*Check if it was a jackpot, if so display cool jackpot text*@
-            @if (gamelog.Jackpot == true)
-            {
-                <li>JACKPOT</li>
-            }
-            <li>Money Spent: @gamelog.MoneyInput</li>
-            <li>Money Won: @gamelog.MoneyOutput</li>
-            <li>Time: @gamelog.Time</li>
-        }
-    </ul>
+    
+    @if (Model.MachineAndGameLog.Count > 0)
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Slot Machine</th>
+                    <th scope="col">Money Spent</th>
+                    <th scope="col">Money Won</th>
+                    <th scope="col">Time</th>
+                    <th scope="col">JACKPOT</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var machineAndLog in Model.MachineAndGameLog)
+                {
+                    <tr @(machineAndLog.SlotGameLog.Jackpot ? "style: background-color: green color:white" : null)>
+                        <td>@(machineAndLog.SlotMachine.Name)</td>
+                        <td>@(machineAndLog.SlotGameLog.MoneyInput)</td>
+                        <td>@(machineAndLog.SlotGameLog.MoneyOutput)</td>
+                        <td>@(machineAndLog.SlotGameLog.Time)</td>
+                        <td>@(machineAndLog.SlotGameLog.Jackpot)</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>No Game Logs yet. Go try play one.</p>
+    }
 </div>

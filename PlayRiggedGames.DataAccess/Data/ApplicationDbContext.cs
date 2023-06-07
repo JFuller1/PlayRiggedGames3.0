@@ -798,7 +798,7 @@ namespace PlayRiggedGames.DataAccess.Data
         }
         public IEnumerable<SlotGameLog> GetAllSlotGameLogs()
         {
-            return SlotGameLogs;
+            return SlotGameLogs.ToArray();
         }
 
         // SlotOutcomes CR
@@ -817,7 +817,7 @@ namespace PlayRiggedGames.DataAccess.Data
         }
         public IEnumerable<SlotOutcome> GetAllSlotOutcomes()
         {
-            return SlotOutcomes;
+            return SlotOutcomes.ToArray();
         }
 
         // IdentityRoles CRU
@@ -836,7 +836,7 @@ namespace PlayRiggedGames.DataAccess.Data
         }
         public IEnumerable<IdentityRole> GetAllIdentityRoles()
         {
-            return Roles;
+            return Roles.ToArray();
         }
         public bool UpdateIdentityRole(IdentityRole role)
         {
@@ -871,7 +871,7 @@ namespace PlayRiggedGames.DataAccess.Data
         }
         public IEnumerable<IdentityUserRole<string>> GetAllIdentityUserRoles()
         {
-            return UserRoles;
+            return UserRoles.ToArray();
         }
         public bool UpdateIdentityUserRole(IdentityUserRole<string> updateData)
         {
