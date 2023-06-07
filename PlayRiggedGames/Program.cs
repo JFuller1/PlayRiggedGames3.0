@@ -45,6 +45,12 @@ namespace PlayRiggedGames
             //Makes it so a user must have a unique email address to create an account
             builder.Services.Configure<IdentityOptions>(options => options.User.RequireUniqueEmail = true);
 
+            builder.Services.AddAuthorization(options =>
+            {
+                options.AddPolicy("RequireRoleAdmin",
+                        policy => policy.RequireRole("Admin"));
+            });
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
