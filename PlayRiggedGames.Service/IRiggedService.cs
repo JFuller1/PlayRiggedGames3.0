@@ -35,6 +35,7 @@ namespace PlayRiggedGames.Service
         IEnumerable<ApplicationUser> GetAllUsers();
         ApplicationUser GetUserById(string id);
         bool UpdateUser(ApplicationUser updateData);
+        bool UserCanSpinDaily(ApplicationUser user);
 
         // SlotMachine CRU
         bool CreateSlotMachine(SlotMachine newSlotMachine);
