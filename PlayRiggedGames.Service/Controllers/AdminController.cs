@@ -86,7 +86,7 @@ namespace PlayRiggedGames.Service.Controllers
                 return View(returning);
             }
             else
-            {
+            { 
                 return Redirect(AccessDeniedPageUrl());
             }
         }
