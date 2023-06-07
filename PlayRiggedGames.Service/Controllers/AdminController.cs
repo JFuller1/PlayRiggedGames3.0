@@ -114,6 +114,8 @@ namespace PlayRiggedGames.Service.Controllers
                     // blacklist has been toggled 
                     // need to change value
                     selectedUser.BlackListed = vm.NowBlacklist;
+                    selectedUser.LockoutEnabled = vm.NowBlacklist;
+                    selectedUser.LockoutEnd = DateTimeOffset.MaxValue;
 
                     _service.UpdateUser(selectedUser);
                 }
