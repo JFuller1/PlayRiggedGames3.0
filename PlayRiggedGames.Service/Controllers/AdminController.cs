@@ -13,7 +13,6 @@ using System.Threading.Tasks;
 
 namespace PlayRiggedGames.Service.Controllers
 {
-    // [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -34,7 +33,6 @@ namespace PlayRiggedGames.Service.Controllers
             return View();
         }
 
-        //
         // User related
         //
         public IActionResult Users()

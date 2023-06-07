@@ -29,7 +29,7 @@
             <tbody>
                 @foreach (var machineAndLog in Model.MachineAndGameLog)
                 {
-                    <tr @(machineAndLog.SlotGameLog.Jackpot ? "style: background-color: green color:white" : null)>
+                    <tr style="background-color: @(machineAndLog.SlotGameLog.Jackpot ? "lightgreen" : null)">
                         <td>@(machineAndLog.SlotMachine.Name)</td>
                         <td>@(machineAndLog.SlotGameLog.MoneyInput)</td>
                         <td>@(machineAndLog.SlotGameLog.MoneyOutput)</td>

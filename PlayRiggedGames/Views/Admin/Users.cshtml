@@ -20,7 +20,7 @@
         <tbody>
             @foreach (Admin_Users_ViewModel viewModel in Model)
             {
-                <tr style="color: @(viewModel.User.BlackListed ? "red" : "black")">
+                <tr style="background-color: @(viewModel.User.BlackListed ? "#FF7276" : null)">
                     <td>@(viewModel.User.Id)</td>
                     <td>@(viewModel.User.UserName)</td>
                     <td>@(viewModel.User.FirstName)</td>
