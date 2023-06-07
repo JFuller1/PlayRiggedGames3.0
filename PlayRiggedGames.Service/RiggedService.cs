@@ -148,7 +148,19 @@ namespace PlayRiggedGames.Service
         }
         public IEnumerable<SlotOutcome> GetSlotOutcomesBySlotGameLogId(int id)
         {
-            return GetAllSlotOutcomes().Where(x => x.GameId == id);
+            var returning = GetAllSlotOutcomes().Where(x => (int)x.GameId == id).ToArray();       // this returning null
+
+            //List<SlotOutcome> returning = new List<SlotOutcome>();
+
+            //foreach(var outcome in all)
+            //{
+            //    if (outcome.GameId == id)
+            //    {
+            //        returning.Add(outcome);
+            //    }
+            //}
+
+            return GetAllSlotOutcomes().Where(x => (int)x.GameId == id).ToArray();
         }
 
         // IdentityRole CRU 
@@ -239,6 +251,20 @@ namespace PlayRiggedGames.Service
             }
             return false;
         }
+
+        // Converter
+        public SlotMachine SlotGameLogToSlotMachine(SlotGameLog input)
+        {
+            // SlotGameLog --> SlotOutcomes --> SlotOutcome --> SlotSymbol --> SlotGameLog
+            List<SlotOutcome> slotOutcomes = GetSlotOutcomesBySlotGameLogId(input.Id).ToList();     // still returning null
+            
+            SlotOutcome firstSlotOutcome = slotOutcomes.First();
+
+            SlotSymbol theSymbol = GetSlotSymbolById(firstSlotOutcome.SymbolId);
+
+            return GetSlotMachineById(theSymbol.SlotMachineId);
+        }
+
         #endregion
     }
 }

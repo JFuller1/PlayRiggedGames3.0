@@ -10,14 +10,12 @@ namespace PlayRiggedGames.Service.ViewModels
     public class Home_UserDetails_ViewModel
     {
         public ApplicationUser User { get; set; }
-        public List<SlotGameLog> SlotGameLogs { get; set; } = new List<SlotGameLog>();
-        public List<SlotMachine> SlotMachines { get; set; }
+        public List<SlotMachineAndSlotGameLog> MachineAndGameLog { get; set; }
 
-        public Home_UserDetails_ViewModel(ApplicationUser user, List<SlotGameLog> logs, List<SlotMachine> slots)
+        public Home_UserDetails_ViewModel(ApplicationUser user, List<SlotMachineAndSlotGameLog> machineAndGameLog)
         {
             User = user;
-            SlotGameLogs = logs;
-            SlotMachines = slots;
+            MachineAndGameLog = machineAndGameLog;
         }
     }
 }

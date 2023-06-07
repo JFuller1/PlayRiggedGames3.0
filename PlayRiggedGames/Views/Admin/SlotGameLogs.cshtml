@@ -20,7 +20,7 @@
         <tbody>
             @foreach (SlotGameLog s in Model)
             {
-                <tr style="color: @(s.Jackpot ? "lightgreen" : "black")">
+                <tr style="background-color: @(s.Jackpot ? "lightgreen" : null)">
                     <td>@(s.Id)</td>
                     <td>@(s.MoneyInput)</td>
                     <td>@(s.MoneyOutput)</td>
