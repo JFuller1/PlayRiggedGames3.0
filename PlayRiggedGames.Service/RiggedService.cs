@@ -108,6 +108,11 @@ namespace PlayRiggedGames.Service
             return false;
         }
 
+        public int GetSlotSymbolIdByName(string name)
+        {
+            return _dataAccess.GetAllSlotSymbols().Where(symbol => symbol.Name == name).FirstOrDefault().Id;
+        }
+
 
         // SlotGameLogs CR
         public bool CreateSlotGameLog(SlotGameLog slotGameLog)

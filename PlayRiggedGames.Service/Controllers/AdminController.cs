@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -268,7 +268,7 @@ namespace PlayRiggedGames.Service.Controllers
         {
             if (UserIsAdmin())
             {
-                return View(_service.GetAllSlotGameLogs().ToList());
+                return View(_service.GetAllSlotGameLogs().OrderByDescending(x => x.Time).ToList());
             }
             else
             {
@@ -281,12 +281,13 @@ namespace PlayRiggedGames.Service.Controllers
             {
                 SlotGameLog selected = _service.GetSlotGameLogById(id);
                 List<SlotOutcome> slotOutcomes = _service.GetSlotOutcomesBySlotGameLogId(selected.Id).ToList();
-
+                
                 Admin_SlotGameLog_ViewModel returning = new()
                 {
                     SlotGameLog = selected,
                     Player = _service.GetUserById(selected.PlayerId),
-                    SlotMachine = GetSlotMachineFromSlotOutComes(slotOutcomes)
+                    SlotMachine = GetSlotMachineFromSlotOutComes(slotOutcomes),
+                    SlotOutcomes = ToDictionaryLocationAndSymbol(slotOutcomes)
                 };
 
                 return View(returning);
@@ -309,7 +310,7 @@ namespace PlayRiggedGames.Service.Controllers
         }
 
         // I honestly need this function for only one purpose and two uses so here it is
-        public SlotMachine GetSlotMachineFromSlotOutComes(List<SlotOutcome> slotOutcomes)
+        private SlotMachine GetSlotMachineFromSlotOutComes(List<SlotOutcome> slotOutcomes)
         {
             // SlotOutcomes --> SlotOutcome --> SlotSymbol --> SlotSymbol.SlotMachineId --> SlotMachine
             SlotSymbol firstSymbol = _service.GetSlotSymbolById(slotOutcomes[0].SymbolId);
@@ -318,6 +319,7 @@ namespace PlayRiggedGames.Service.Controllers
 
             return slotMachine;
         }
+
         private bool UserIsAdmin()
         {
             if (_service.GetIdentityRoleOfUser(GetLoggedInUser()) == _service.GetIdentityRoleByName("Admin"))
@@ -326,12 +328,25 @@ namespace PlayRiggedGames.Service.Controllers
             }
             return false;
         }
+        
         private string AccessDeniedPageUrl()
         {
             string host = HttpContext.Request.Host.Host;
             string port = HttpContext.Request.Host.Port.HasValue ? HttpContext.Request.Host.Port.Value.ToString() : string.Empty;
 
             return $"https://{host}:{port}/Identity/Account/AccessDenied";
+        }
+
+        private Dictionary<int, SlotSymbol> ToDictionaryLocationAndSymbol(List<SlotOutcome> slotOutcomes)
+        {
+            Dictionary<int, SlotSymbol> returning = new();
+
+            foreach(SlotOutcome slotOutcome in slotOutcomes)
+            {
+                returning.Add(slotOutcome.Location, _service.GetSlotSymbolById(slotOutcome.SymbolId));
+            }
+
+            return returning;
         }
     }
 }
