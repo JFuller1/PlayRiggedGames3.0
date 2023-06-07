@@ -149,9 +149,19 @@ namespace PlayRiggedGames.Service
         public IEnumerable<SlotOutcome> GetSlotOutcomesBySlotGameLogId(int id)
         {
             var all = _dataAccess.GetAllSlotOutcomes();
-            var returning = all.Where(x => x.GameId == id).ToArray();
+            // var returning = all.Where(x => (int)x.GameId == id).ToArray();       // this returning null
 
-            return returning;
+            List<SlotOutcome> returning = new List<SlotOutcome>();
+
+            foreach(var outcome in all)
+            {
+                if (outcome.GameId == id)
+                {
+                    returning.Add(outcome);
+                }
+            }
+
+            return returning.ToArray();
         }
 
         // IdentityRole CRU 
@@ -247,7 +257,7 @@ namespace PlayRiggedGames.Service
         public SlotMachine SlotGameLogToSlotMachine(SlotGameLog input)
         {
             // SlotGameLog --> SlotOutcomes --> SlotOutcome --> SlotSymbol --> SlotGameLog
-            List<SlotOutcome> slotOutcomes = GetSlotOutcomesBySlotGameLogId(input.Id).ToList();
+            List<SlotOutcome> slotOutcomes = GetSlotOutcomesBySlotGameLogId(input.Id).ToList();     // still returning null
             
             SlotOutcome firstSlotOutcome = slotOutcomes.First();
 
