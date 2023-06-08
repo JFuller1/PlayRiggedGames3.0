@@ -265,6 +265,9 @@ namespace PlayRiggedGames.Service
 
             SlotSymbol theSymbol = GetSlotSymbolById(firstSlotOutcome.SymbolId);
 
+            if (theSymbol == null)
+                throw new ArgumentNullException();
+
             return GetSlotMachineById(theSymbol.SlotMachineId);
         }
 

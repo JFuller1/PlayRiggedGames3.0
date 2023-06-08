@@ -143,5 +143,62 @@ namespace PlayRiggedGames.Service.Tests
                 () => _service.SlotGameLogToSlotMachine(slotGameLog)
                 );
         }
+
+        // Liam's Test Method
+        [TestMethod()] 
+        public void SlotGameLogToSlotMachine_NoMatchingSlotSymbol()
+        {
+            // Arrange 
+            SlotGameLog slotGameLog = new SlotGameLog()
+            {
+                Id = 1,
+                Jackpot = false,
+                MoneyInput = 10,
+                MoneyOutput = 10,
+                PlayerId = "Player Id Here",
+                Time = DateTime.MinValue
+            };
+
+            SlotMachine slotMachine = new SlotMachine()
+            {
+                Id = 12,
+                Cost = 10,
+                Height = 10,
+                OutOfOrder = false,
+                Name = "Test",
+                Width = 10
+            };
+
+            SlotSymbol slotSymbol = new SlotSymbol()
+            {
+                Id = 23,
+                Name = "Da symbol",
+                SlotMachineId = slotMachine.Id,
+                Value = 1,
+                Weight = 10
+            };
+
+            SlotOutcome slotOutcome = new SlotOutcome()
+            {
+                GameId = slotGameLog.Id,
+                SymbolId = slotSymbol.Id,
+                Location = 1,
+                SlotMachineId = slotMachine.Id,
+            };
+
+            _mockDataAccess = new Mock<IRiggedDataAccess>();
+            _mockDataAccess.Setup<IEnumerable<SlotOutcome>>(x => x.GetAllSlotOutcomes()).Returns(
+                new List<SlotOutcome>()
+                {
+                    slotOutcome
+                });
+            _mockDataAccess.Setup<IEnumerable<SlotSymbol>>(x => x.GetAllSlotSymbols()).Returns(new List<SlotSymbol>());
+            _service = new RiggedService(_mockDataAccess.Object);
+
+            // Act & Assert
+            Assert.ThrowsException<ArgumentNullException>(
+                () => _service.SlotGameLogToSlotMachine(slotGameLog)
+                );
+        }
     }
 }
