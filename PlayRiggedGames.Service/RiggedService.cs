@@ -52,17 +52,6 @@ namespace PlayRiggedGames.Service
             return false;
         }
 
-        public bool UserCanSpinDaily(ApplicationUser user)
-        {
-            // last daily spin time is longer or equal to 24 hours ago when
-            // compared to the user creation date with the day and month and year set to the current time
-            // SlotGameLog latestSpinOnDailySlots = 
-            // -> canspin = true
-            // else
-            // -> canspin = false, visually make the button look deactivated
-            return true;
-        }
-
         // SlotMachine CRU
         public bool CreateSlotMachine(SlotMachine newSlotMachine)
         {
@@ -140,7 +129,7 @@ namespace PlayRiggedGames.Service
         }
         public IEnumerable<SlotGameLog> GetAllSlotGameLogsByMachineId(int machineId)
         {
-            return _dataAccess.GetAllSlotGameLogs();
+            return GetAllSlotGameLogs().Where(slotGameLogs => SlotGameLogToSlotMachine(slotGameLogs).Id == machineId);
         }
         public SlotGameLog GetSlotGameLogById(int id)
         {

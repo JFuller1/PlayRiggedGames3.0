@@ -5,6 +5,8 @@ const symbolDisplay = document.getElementById("symbolDisplay")
 symbolDisplay.style.width = `${width * 80}px`;
 symbolDisplay.style.height = `${height * 80}px`;
 
+const spinStatus = document.getElementById("spinStatus");
+
 const slots = [];
 
 for (let i = 0; i < (width * height); i++) {
@@ -49,9 +51,14 @@ function generateSymbols() {
             data: { machineId: machineId, selectedRows: JSON.stringify(selectedRows)},
             dataType: "json",
             success: function (response) {
-                const obj = JSON.parse(`${response}`);
 
                 document.getElementById("generateBtn").disabled = true;
+
+                if (response === "") {
+                    spinStatus.innerHTML = "You already spun within the last 24 hours"
+                }
+
+                const obj = JSON.parse(`${response}`);
 
                 document.getElementById("resultDisplay").innerHTML = "";
                 slots.forEach(el => {

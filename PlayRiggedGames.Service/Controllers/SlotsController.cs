@@ -46,6 +46,11 @@ namespace PlayRiggedGames.Controllers
             return View();
         }
 
+        public IActionResult CantSpin()
+        {
+            return View();
+        }
+
         [HttpPost]
         public JsonResult GenerateSlotSymbols(int machineId, string selectedRows)
         {
@@ -59,6 +64,15 @@ namespace PlayRiggedGames.Controllers
             string[] result = new string[totalSymbols];
 
             ApplicationUser user = GetLoggedInUser();
+
+
+            if (machine.Id == 2)
+            {
+                if (!CanUserSpinDaily(user))
+                {
+                    return Json("");
+                }
+            }
 
             for (int i = 0; i < totalSymbols; i++)
             {
@@ -233,6 +247,24 @@ namespace PlayRiggedGames.Controllers
             // gets the id of the currently logged in user
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             return _service.GetUserById(userId);
+        }
+
+        public bool CanUserSpinDaily(ApplicationUser user)
+        {
+            // last daily spin time is longer or equal to 24 hours ago when
+            // compared to the user creation date
+            List<SlotGameLog> dailySpinGameLogs = _service.GetAllSlotGameLogsByMachineId(2).ToList();
+
+            if (dailySpinGameLogs.Count != 0)
+            {
+                SlotGameLog latestSpinOnDailySlots = dailySpinGameLogs.OrderByDescending(gameLog => gameLog.Time).FirstOrDefault();
+
+                return (DateTime.Now - latestSpinOnDailySlots.Time).TotalHours >= 24;
+            } else
+            {
+                // has not spun the daily spin machine yet
+                return true;
+            }
         }
     }
 }
