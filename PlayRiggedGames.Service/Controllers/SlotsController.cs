@@ -46,11 +46,6 @@ namespace PlayRiggedGames.Controllers
             return View();
         }
 
-        public IActionResult CantSpin()
-        {
-            return View();
-        }
-
         [HttpPost]
         public JsonResult GenerateSlotSymbols(int machineId, string selectedRows)
         {
@@ -257,7 +252,9 @@ namespace PlayRiggedGames.Controllers
 
             if (dailySpinGameLogs.Count != 0)
             {
-                SlotGameLog latestSpinOnDailySlots = dailySpinGameLogs.OrderByDescending(gameLog => gameLog.Time).FirstOrDefault();
+                SlotGameLog latestSpinOnDailySlots = dailySpinGameLogs.OrderByDescending(gameLog => gameLog.Time).First();
+
+                //Console.WriteLine((DateTime.Now - latestSpinOnDailySlots.Time).TotalHours);
 
                 return (DateTime.Now - latestSpinOnDailySlots.Time).TotalHours >= 24;
             } else
