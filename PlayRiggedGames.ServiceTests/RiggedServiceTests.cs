@@ -99,6 +99,37 @@ namespace PlayRiggedGames.Service.Tests
             Assert.AreEqual(expectedUser, applicationUser);
         }
 
+        [TestMethod()]
+        public void GetUserByIdThatDoesntExistInDatabaseTest()
+        {
+            //Arrange
+            string userId = "hj67e1f-cf38-45a5-94d0-8ebb0c2ce2cd";
+
+            //DB Setup
+            _mockDataAccess = new Mock<IRiggedDataAccess>();
+            _mockDataAccess.Setup<IEnumerable<ApplicationUser>>(x => x.GetAllUsers()).Returns(new List<ApplicationUser>()
+            {
+                new ApplicationUser()
+                {
+                    Id = "f2672e1f-cf38-45a5-94d0-8ebb0c2ce2cd",
+                    UserName = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    NormalizedUserName = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                    Money = -1000,
+                    Birthday = new DateTime(2000, 1, 20),
+                    Email = "IAmInCripplingDept@SendHelp.com",
+                    EmailConfirmed = true,
+                    FirstName = "Liam",
+                    LastName = "Lee"
+                }
+            });
+            _service = new RiggedService(_mockDataAccess.Object);
+
+            //Act & Assert
+            Assert.ThrowsException<InvalidOperationException>(
+                () => _service.GetUserById(userId)
+                );
+        }
+
         // Liam's Test Method
         [TestMethod()]
         public void SlotGameLogToSlotMachine_NoSlotOutcomes()
