@@ -238,7 +238,7 @@ namespace PlayRiggedGames.Service
         }
         public IdentityRole GetIdentityRoleOfUser(ApplicationUser user)
         {
-            return GetIdentityRoleById(GetAllIdentityUserRoles().Where(x => x.UserId == user.Id).Select(x => x.RoleId).FirstOrDefault());
+            return GetIdentityRoleById(GetAllIdentityUserRoles().Where(x => x.UserId == user.Id).Select(x => x.RoleId).First());
         }
         public bool UpdateIdentityUserRole(ApplicationUser user, IdentityRole role)
         {
@@ -260,10 +260,16 @@ namespace PlayRiggedGames.Service
         {
             // SlotGameLog --> SlotOutcomes --> SlotOutcome --> SlotSymbol --> SlotGameLog
             List<SlotOutcome> slotOutcomes = GetSlotOutcomesBySlotGameLogId(input.Id).ToList();     // still returning null
-            
+
+            if (slotOutcomes.Count == 0)
+                throw new ArgumentNullException();
+
             SlotOutcome firstSlotOutcome = slotOutcomes.First();
 
             SlotSymbol theSymbol = GetSlotSymbolById(firstSlotOutcome.SymbolId);
+
+            if (theSymbol == null)
+                throw new ArgumentNullException();
 
             return GetSlotMachineById(theSymbol.SlotMachineId);
         }
