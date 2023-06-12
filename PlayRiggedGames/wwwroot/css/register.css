@@ -1,0 +1,72 @@
+﻿main {
+    display: flex;
+    flex-direction: column;
+    grid-column: 5 / 21;
+    grid-row: 2 / 21;
+    padding: 20px;
+    background-color: #0F131B;
+}
+
+.content {
+    padding: 20px;
+    background-color: #242935;
+    border-radius: 12px;
+}
+
+    .content h2 {
+        margin-top: 0;
+        margin-bottom: 20px;
+        color: #fff;
+    }
+
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.first-name, .last-name, .email, .username, .password, .confirm-password {
+    width: calc((100% / 3) - 6.67px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: space-between;
+}
+
+form input {
+    border-radius: 12px;
+    padding: 10px 20px;
+    border: 1px solid #fff;
+    background-color: #4f5a75;
+}
+
+form button {
+    margin-top: 20px;
+    border: none;
+    width: fit-content;
+    padding: 10px 20px;
+    background-color: #394154;
+    border-radius: 12px;
+    box-shadow: #282d3a 0px 0px 4px 4px;
+    transition: background-color 0.4s ease;
+    color: #fff;
+}
+
+    form button:hover {
+        background-color: #4f5a75;
+    }
+
+label {
+    color: #fff;
+    margin-bottom: 5px;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+    .input-container:first-of-type {
+        margin-bottom: 10px;
+    }

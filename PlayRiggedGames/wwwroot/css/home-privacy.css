@@ -1,0 +1,31 @@
+﻿body {
+    height: 100vh !important;
+    grid-template-rows: repeat(20, 1fr) !important;
+}
+
+main {
+    grid-column: 5 / 21;
+    grid-row: 2 / 21;
+    padding: 20px;
+    background-color: #0F131B;
+}
+
+    main div {
+        background-color: #242935;
+        padding: 20px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        border-radius: 12px;
+    }
+
+    main h2 {
+        color: #fff;
+        margin: 0 0 20px 0;
+    }
+
+    main p {
+        font-size: 16px;
+        font-weight: 500;
+        color: #fff;
+    }
