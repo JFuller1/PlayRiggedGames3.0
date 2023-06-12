@@ -203,3 +203,8 @@ h3 {
 /* ------------ */
 /* MAIN CONTENT */
 /* ------------ */
+
+.error {
+    color: #fff;
+    margin-top: 20px;
+}
