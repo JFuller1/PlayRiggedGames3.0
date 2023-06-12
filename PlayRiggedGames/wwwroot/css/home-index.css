@@ -11,9 +11,9 @@
 }
 
     .intro-container h2, .daily-spin-container h2, .slots-container h2, .blackjack-container h2, .legal-container h2 {
-        margin-top: 0;
-        margin-bottom: 10px;
-        color: #fff;
+        margin-top: 0 !important;
+        margin-bottom: 10px !important;
+        color: #fff !important;
     }
 
 /* --------------- */

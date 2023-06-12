@@ -1,0 +1,133 @@
+﻿main {
+    display: flex !important;
+    flex-direction: column !important;
+    grid-column: 5 / 21 !important;
+    grid-row: 2 / 21 !important;
+    padding: 20px !important;
+    background-color: #0F131B !important;
+    /* box-shadow: inset 0px 0px 14px 4px #161c28; */
+}
+
+    main h2 {
+        margin: 0 !important;
+        color: #fff !important;
+    }
+
+    main div {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: 20px;
+        background-color: #242935;
+        border-radius: 12px;
+    }
+
+        main div:first-of-type {
+            margin-bottom: 20px;
+        }
+
+    main ul {
+        padding: 20px 0 0 0;
+        margin: 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    main li, main span {
+        color: #fff;
+        font-size: 16px;
+    }
+
+    main li {
+        list-style-type: none;
+        width: calc(100% / 3);
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin: 5px 0;
+    }
+
+    main span {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        box-shadow: inset 0px 0px 8px 4px #0F131B;
+        border-radius: 12px;
+        padding: 10px 20px;
+    }
+
+    main ul span:last-of-type {
+        box-shadow: none;
+        border-radius: 0;
+        padding: 0;
+    }
+
+li p {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    box-shadow: inset 0px 0px 8px 4px #0F131B;
+    border-radius: 12px;
+    padding: 10px 20px;
+    margin: 0 0 0 10px;
+}
+
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-radius: 12px !important;
+    padding: 50px !important;
+}
+
+th, td {
+    background-color: #161c28 !important;
+    color: #fff !important;
+}
+
+form {
+    padding-top: 20px;
+}
+
+    form p {
+        color: #fff;
+        margin-bottom: 10px;
+    }
+
+    form label {
+        color: #fff;
+        margin-left: 10px;
+    }
+
+    form div {
+        display: flex !important;
+        flex-direction: row !important;
+        width: 30%;
+        padding: 0;
+    }
+
+.form-check {
+    display: auto;
+}
+
+.form-check-input:checked {
+    background-color: #263348 !important;
+    border-color: #263348 !important;
+}
+
+form button {
+    margin-top: 20px;
+    border: none;
+    width: fit-content;
+    padding: 10px 20px;
+    background-color: #394154;
+    border-radius: 12px;
+    box-shadow: #282d3a 0px 0px 4px 4px;
+    transition: background-color 0.4s ease;
+    color: #fff;
+}
+
+    form button:hover {
+        background-color: #4f5a75;
+    }
