@@ -41,6 +41,11 @@ namespace PlayRiggedGames.Service
         }
         public ApplicationUser GetUserById(string id)
         {
+            if (!GetAllUsers().Any(user => user.Id == id))
+            {
+                throw new InvalidOperationException("User Id cannot be found within database");
+            }
+
             return GetAllUsers().FirstOrDefault(x => x.Id == id);
         }
         public bool UpdateUser(ApplicationUser updateData)
