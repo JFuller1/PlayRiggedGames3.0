@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using PlayRiggedGames.Domain.Models;
+using PlayRiggedGames.Models;
 using System.Security.Cryptography.X509Certificates;
 
 namespace PlayRiggedGames.DataAccess.Data
@@ -65,6 +66,8 @@ namespace PlayRiggedGames.DataAccess.Data
             // since SlotOutcome has no specified PK
             builder.Entity<SlotOutcome>()
                 .HasKey(s => new { s.GameId, s.Location });
+
+            builder.Ignore<SlotRowWin>();
 
             #region Seed Data
             // User Roles
