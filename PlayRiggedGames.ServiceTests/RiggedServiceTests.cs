@@ -52,6 +52,13 @@ namespace PlayRiggedGames.Service.Tests
             // ASSERT STUFF HERE
         }
 
+        [TestMethod()]
+        public void GetAllSlotGameLogsByMachineIdTest()
+        {
+            var machine = new SlotMachine();
+
+        }
+
         // Elliot's Test Method
         [TestMethod()]
         public void CreateSlotSymbol_ReturnsFalseWithNull()
