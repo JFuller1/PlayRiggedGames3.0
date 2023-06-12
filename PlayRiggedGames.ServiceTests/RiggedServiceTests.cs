@@ -52,6 +52,78 @@ namespace PlayRiggedGames.Service.Tests
             // ASSERT STUFF HERE
         }
 
+        // Elliot's Test Method
+        [TestMethod()]
+        public void CreateSlotSymbol_ReturnsFalseWithNull()
+        {
+
+            //Arrange
+            bool expectedResult = false;
+            SlotSymbol? nullSymbol = null;
+
+            // DB setup
+            _mockDataAccess = new Mock<IRiggedDataAccess>();
+            _service = new RiggedService(_mockDataAccess.Object);
+
+            //Act
+            bool result = _service.CreateSlotSymbol(nullSymbol);
+
+            //Assert
+            Assert.AreEqual(expectedResult, result);
+        }
+
+        // Elliot's Test Method
+        [TestMethod()]
+        public void CreateSlotSymbol_ReturnsFalseWithInvalidSlotMachineId()
+        {
+
+            //Arrange
+            bool expectedResult = false;
+            SlotSymbol slotSymbol = new SlotSymbol()
+            {
+                Id = 0,
+                Name = "TestSymbol",
+                Value = 0,
+                Weight = 0,
+                SlotMachineId = -1,
+                SlotMachine = null
+            };
+
+            SlotMachine slotMachine = new SlotMachine()
+            {
+                Id = 0,
+                Cost = 0,
+                Height = 0,
+                Width = 0,
+                Name = "TestMachine",
+                OutOfOrder = false,
+                Values = new List<SlotSymbol>()
+            };
+
+            // DB setup
+            _mockDataAccess = new Mock<IRiggedDataAccess>();
+
+            _mockDataAccess.Setup<IEnumerable<SlotMachine>>(l => l.GetAllSlotMachines()).Returns(new List<SlotMachine>()
+                {
+                    slotMachine
+                }
+                );
+
+            _mockDataAccess.Setup<IEnumerable<SlotSymbol>>(l => l.GetAllSlotSymbols()).Returns(new List<SlotSymbol>()
+                {
+                    slotSymbol
+                }
+                );
+
+            _service = new RiggedService(_mockDataAccess.Object);
+
+            //Act
+            bool result = _service.CreateSlotSymbol(slotSymbol);
+
+            //Assert
+            Assert.AreEqual(expectedResult, result);
+        }
+
         // Jaeden's Test Method
         [TestMethod()]
         public void GetUserByIdTest()
