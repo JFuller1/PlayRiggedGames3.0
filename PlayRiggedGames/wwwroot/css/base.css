@@ -96,6 +96,10 @@ h3 {
         margin-right: 10px;
     }
 
+    .button-container form {
+        border-radius: 12px;
+    }
+
 .login-container {
     margin-bottom: 10px;
     transition: background-color 0.4s ease;

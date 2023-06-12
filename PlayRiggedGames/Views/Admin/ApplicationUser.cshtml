@@ -2,27 +2,30 @@
 @model Admin_User_ViewModel;
 <link rel="stylesheet" href="~/css/admin-applicationUser.css" asp-append-version="true" />
 
-<h1>User Details</h1>
+<div>
+    <h2>User Details</h2>
+    <ul>
+        @if (Model.User == null)
+        {
+            <li>Selected User does not exist.</li>
+        }
+        else
+        {
+            <li>ID:          <p>@(Model.User.Id)</p></li>
+            <li>Username:    <p>@(Model.User.UserName)</p></li>
+            <li>First Name:  <p>@(Model.User.FirstName)</p></li>
+            <li>Last Name:   <p>@(Model.User.LastName)</p></li>
+            <li>Email:       <p>@(Model.User.Email)</p></li>
+            <li>Phone:       <p>@(Model.User.PhoneNumber)</p></li>
+            <li>Money:       <p>@(Model.User.Money)</p></li>
+            <li>Role:        <p>@(Model.Role.Name)</p></li>
+            <li>Blacklisted: <p>@(Model.User.BlackListed)</p></li>
+        }
+    </ul>
+</div>
 
-@if (Model.User == null)
-{
-    <p>Selected User does not exist.</p>
-}
-else
-{
-    <p>ID:          @(Model.User.Id)</p>
-    <p>Username:    @(Model.User.UserName)</p>
-    <p>First Name:  @(Model.User.FirstName)</p>
-    <p>Last Name:   @(Model.User.LastName)</p>
-    <p>Email:       @(Model.User.Email)</p>
-    <p>Phone:       @(Model.User.PhoneNumber)</p>
-    <p>Money:       @(Model.User.Money)</p>
-    <p>Role:        @(Model.Role.Name)</p>
-    <p>Blacklisted: @(Model.User.BlackListed)</p>
 
-    <br />
-    <br />
-
+<div>
     <h2>Modify User Info</h2>
     <form method="post">
         <p>Assign New Role</p>
@@ -55,7 +58,6 @@ else
                 </label>
             </div>
         </div>
-
         <button type="submit">Apply Changes</button>
     </form>
-}
+</div>
