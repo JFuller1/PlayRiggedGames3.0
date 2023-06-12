@@ -441,7 +441,7 @@ namespace PlayRiggedGames.DataAccess.Data.Migrations
 
                     b.HasIndex("PlayerId");
 
-                    b.ToTable("SlotGameLogs");
+                    b.ToTable("SlotGameLogs", (string)null);
                 });
 
             modelBuilder.Entity("PlayRiggedGames.Domain.Models.SlotMachine", b =>
@@ -470,7 +470,7 @@ namespace PlayRiggedGames.DataAccess.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("SlotMachines");
+                    b.ToTable("SlotMachines", (string)null);
 
                     b.HasData(
                         new
@@ -511,7 +511,7 @@ namespace PlayRiggedGames.DataAccess.Data.Migrations
 
                     b.HasIndex("SymbolId");
 
-                    b.ToTable("SlotOutcomes");
+                    b.ToTable("SlotOutcomes", (string)null);
                 });
 
             modelBuilder.Entity("PlayRiggedGames.Domain.Models.SlotSymbol", b =>
@@ -539,7 +539,7 @@ namespace PlayRiggedGames.DataAccess.Data.Migrations
 
                     b.HasIndex("SlotMachineId");
 
-                    b.ToTable("SlotSymbols");
+                    b.ToTable("SlotSymbols", (string)null);
 
                     b.HasData(
                         new
