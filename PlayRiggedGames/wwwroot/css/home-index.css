@@ -1,0 +1,222 @@
+﻿body {
+    height: 100vh !important;
+    grid-template-rows: repeat(20, 1fr) !important;
+}
+
+.intro-container, .slots-container, .blackjack-container, .legal-container, .daily-spin-container {
+    padding: 20px;
+    background-color: #242935;
+    border-radius: 12px;
+    /* box-shadow: 0px 0px 4px 4px #171b22; */
+}
+
+    .intro-container h2, .daily-spin-container h2, .slots-container h2, .blackjack-container h2, .legal-container h2 {
+        margin-top: 0 !important;
+        margin-bottom: 10px !important;
+        color: #fff !important;
+    }
+
+/* --------------- */
+/* INTRO CONTAINER */
+/* --------------- */
+
+.intro-container {
+    grid-column: 1 / 4;
+    grid-row: 1 / 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+    .intro-container h2 {
+        font-size: 36px;
+        font-weight: 900;
+    }
+
+    .intro-container p {
+        color: #fff;
+        font-size: 16px;
+        font-weight: 500;
+    }
+
+    .intro-container a {
+        width: fit-content;
+        padding: 10px 20px;
+        border-radius: 12px;
+        border: #3f3f3f 1px solid;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        transition: background-color 0.4s ease;
+        background-color: #F6519D;
+    }
+
+    .intro-container i {
+        margin-right: 10px;
+    }
+
+    .intro-container a:hover {
+        background-color: #f678b3;
+    }
+
+/* -------------------- */
+/* DAILY SPIN CONTAINER */
+/* -------------------- */
+
+.daily-spin-container {
+    grid-column: 4 / 5;
+    grid-row: 1 / 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+    .daily-spin-container h2 {
+        font-size: 36px;
+        font-weight: 900;
+    }
+
+    .daily-spin-container p {
+        color: #fff;
+    }
+
+    .daily-spin-container a {
+        width: fit-content;
+        padding: 10px 20px;
+        background-color: #394154;
+        border-radius: 12px;
+        box-shadow: #282d3a 0px 0px 4px 4px;
+        transition: background-color 0.4s ease;
+    }
+
+        .daily-spin-container a:hover {
+            background-color: #4f5a75;
+        }
+
+/* --------------- */
+/* SLOTS CONTAINER */
+/* --------------- */
+
+.slots-container {
+    background-color: #06B0F7;
+    grid-column: 1 / 3;
+    grid-row: 3 / 5;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+    .slots-container a {
+        padding: 10px 20px;
+        background-color: #5DAFEC;
+        border-radius: 12px;
+        box-shadow: #4a9bd9 0px 0px 4px 4px;
+        transition: background-color 0.4s ease;
+    }
+
+        .slots-container a:hover {
+            background-color: #79b9ea;
+        }
+
+    .slots-container .thumbnail-content {
+        color: #DEF7FE;
+    }
+
+    .slots-container i {
+        color: #DEF7FE;
+        width: 50%;
+        font-size: 180px;
+    }
+
+/* ------------------- */
+/* BLACKJACK CONTAINER */
+/* ------------------- */
+
+.blackjack-container {
+    background-color: #F6519D;
+    grid-column: 3 / 5;
+    grid-row: 3 / 5;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+    .blackjack-container a {
+        padding: 10px 20px;
+        background-color: #E98DBA;
+        border-radius: 12px;
+        box-shadow: #d56d9a 0px 0px 4px 4px;
+        transition: background-color 0.4s ease;
+    }
+
+        .blackjack-container a:hover {
+            background-color: #f0a3c3;
+        }
+
+    .blackjack-container .thumbnail-content {
+        color: #F9EDF9;
+    }
+
+    .blackjack-container i {
+        color: #F9EDF9;
+        width: 50%;
+        font-size: 180px;
+    }
+
+/* ---------------- */
+/* THUMBNAIL STYLES */
+/* ---------------- */
+
+.thumbnail-content {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+    .thumbnail-content a {
+        width: fit-content;
+    }
+
+/* --------------- */
+/* LEGAL CONTAINER */
+/* --------------- */
+
+.legal-container {
+    grid-column: 1 / 5;
+    grid-row: 5 / 7;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+    .legal-container p {
+        color: #fff;
+    }
+
+    .legal-container a {
+        width: fit-content;
+        padding: 10px 20px;
+        background-color: #394154;
+        border-radius: 12px;
+        box-shadow: #282d3a 0px 0px 4px 4px;
+        transition: background-color 0.4s ease;
+    }
+
+        .legal-container a:hover {
+            background-color: #4f5a75;
+        }
+
+main {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    gap: 20px;
+    grid-column: 5 / 21;
+    grid-row: 2 / 21;
+    padding: 20px;
+    background-color: #0F131B;
+    /* box-shadow: inset 0px 0px 14px 4px #161c28; */
+}

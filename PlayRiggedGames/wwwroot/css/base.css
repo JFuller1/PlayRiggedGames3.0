@@ -1,0 +1,325 @@
+﻿body {
+    width: 100vw;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    letter-spacing: 0.8px;
+    font-family: Helvetica, sans-serif !important;
+    display: grid;
+    grid-template-columns: repeat(20, calc(100vw / 20));
+    grid-template-rows: repeat(2, 86px) repeat(min-height, calc((100vh - 172px) / 18));
+    background-color: #171F2C !important;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    grid-column: 5 / 21;
+    grid-row: 2 / 21;
+    padding: 20px;
+    background-color: #0F131B;
+    /* box-shadow: inset 0px 0px 14px 4px #161c28; */
+}
+
+i {
+    font-size: 18px;
+    width: 20px;
+    text-align: center;
+}
+
+a, button {
+    text-decoration: none !important;
+    color: #fff !important;
+    border: none !important;
+}
+
+h3 {
+    margin: 10px 0 !important;
+}
+
+/* ------------ */
+/* VERTICAL NAV */
+/* ------------ */
+
+.vertical-nav {
+    padding: 20px;
+    grid-column: 1 / 5;
+    grid-row: 2 / end;
+    background-color: #171F2C;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid #0F131B;
+}
+
+.links-container {
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    border-top: 1px solid #fff;
+}
+
+    .links-container h3 {
+        font-size: 16px;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+
+        .links-container h3:first-of-type {
+            margin-top: 0 !important;
+        }
+
+    .links-container div {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        margin: 8px 0;
+    }
+
+        .links-container div a {
+            margin-left: 10px;
+            transition: color 0.4s ease;
+        }
+
+            .links-container div a:hover {
+                color: #ccc;
+            }
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 24px;
+}
+
+    .button-container a, button {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        /*width: 100%;*/
+        border-radius: 12px;
+        padding: 10px 20px;
+        /* background-color: #3f3f3f; */
+    }
+
+    .button-container i {
+        margin-right: 10px;
+    }
+
+    .button-container button {
+        border-radius: 12px;
+        width: 100%;
+    }
+
+.login-container {
+    margin-bottom: 10px;
+    transition: background-color 0.4s ease;
+    background-color: #06B0F7;
+}
+
+    .login-container:hover {
+        background-color: #56c4f3;
+    }
+
+.register-container {
+    transition: background-color 0.4s ease;
+    background-color: #F6519D;
+}
+
+    .register-container:hover {
+        background-color: #f678b3;
+    }
+
+/* -------------- */
+/* HORIZONTAL NAV */
+/* -------------- */
+
+.horizontal-nav {
+    padding: 20px;
+    grid-column: 1 / 21;
+    grid-row: 1 / 2;
+    background-color: #171F2C;
+    color: #fff;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+    .title-container h2 {
+        margin: 0 0 0 15px;
+    }
+
+    .title-container i {
+        font-size: 30px;
+        width: 34.45px;
+        text-align: center;
+        transition: color 0.4s ease;
+    }
+
+        .title-container i:hover {
+            color: #ccc;
+        }
+
+.right-side-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.profile-container a {
+    margin-right: 10px;
+    padding: 10px 20px;
+    border-radius: 12px;
+    border: #fff 1px solid;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    transition: background-color 0.4s ease;
+}
+
+    .profile-container a p {
+        margin: 0 0 0 10px;
+    }
+
+    .profile-container a:hover {
+        background-color: #263348;
+    }
+
+.balance-container {
+    height: 100%;
+    margin-left: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    box-shadow: inset 0px 0px 8px 4px #0F131B;
+    border-radius: 12px;
+    padding: 10px 20px;
+}
+
+    .balance-container p {
+        margin: 0;
+    }
+
+    .profile-container p, .balance-container p {
+        margin-left: 10px;
+    }
+
+/* ------------ */
+/* MAIN CONTENT */
+/* ------------ */
+
+.error {
+    color: #fff;
+    margin-top: 20px;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    grid-column: 5 / 21;
+    grid-row: 2 / 21;
+    padding: 20px;
+    background-color: #0F131B;
+    /* box-shadow: inset 0px 0px 14px 4px #161c28; */
+}
+
+/*.content {
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/SlotMachine/machine.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 62%;
+    background-color: #242935;
+    border-radius: 12px;
+    display: grid;
+    grid-template-columns: repeat(1000, calc(100% / 1000));
+    grid-template-rows: repeat(1000, calc(100% / 1000));
+}
+
+.bet-button-container {
+    grid-column: 100 / auto;
+    grid-row: 349 / auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 240px;
+    width: max-content;
+    background-color: #242935;
+}
+
+    .bet-button-container label {
+        background-color: #8B9CB4;
+        border-radius: 12px;
+        border: none !important;
+        padding: 10px 20px;
+        box-shadow: 0px 0px 14px 4px #161c28;
+        transition: none !important;
+        width: 100%;
+    }
+
+        .bet-button-container label:hover {
+            background-color: #98a3b2 !important;
+            box-shadow: 0px 0px 14px 4px #161c28 !important;
+        }
+
+.btn-check:checked + .btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check) + .btn:active {
+    background-color: #6e7681 !important;
+    box-shadow: 0px 0px 14px 4px #161c28 !important;
+}
+
+#symbolDisplay {
+    width: 400px;
+    height: 240px;
+    background-image: url('../images/SlotMachine/slotbg.png');
+    background-repeat: repeat;
+    grid-column: 333 / auto;
+    grid-row: 349 / auto;
+}
+
+.spin-button-container {
+    grid-column: 396 / auto;
+    grid-row: 778 / auto;
+    display: flex;
+    align-items: flex-end;
+    height: 75.95px;
+}
+
+    .spin-button-container img {
+        width: 250px;
+    }
+
+.slot {
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+
+.buyRow {
+    display: inline;
+    position: relative;
+    width: 40px;
+    height: 40px;
+    margin: 20px;
+}*/
+
+.user-account-content-background {
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    padding: 20px;
+    background-color: #242935;
+}
+
+h1, h2, h3, h4, p {
+    color: #fff !important;
+}

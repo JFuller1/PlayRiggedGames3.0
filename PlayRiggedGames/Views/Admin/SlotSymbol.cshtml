@@ -1,39 +1,42 @@
 ﻿@model Admin_SlotSymbol_ViewModel;
-
-<h1>Slot Symbol Details</h1>
+<link rel="stylesheet" href="~/css/admin-slotSymbolDetails.css" asp-append-version="true" />
 
 @if (Model.SlotSymbol == null)
 {
-    <p>Selected Slot Symbol does not exist.</p>
+    <div>
+        <h2>Slot Symbol Details</h2>
+        <p>Selected Slot Symbol does not exist.</p>
+    </div>
 }
 else
 {
-    <p>ID:              @(Model.SlotSymbol.Id)</p>
-    <p>Name:            @(Model.SlotSymbol.Name)</p>
-    <p>Value:           @(Model.SlotSymbol.Value)</p>
-    <p>Weight:          @(Model.SlotSymbol.Weight)</p>
-    <p>Slot Machine:    <a class="" asp-area="" asp-controller="Admin" asp-action="SlotMachine" asp-route-id="@(Model.SlotMachine.Id)">@(Model.SlotSymbol.SlotMachine.Name)</a></p>
+    <div>
+        <h2>Slot Symbol Details</h2>
+        <ul>
+            <li>Id: <p>@(Model.SlotSymbol.Id)</p></li>
+            <li>Name: <p>@(Model.SlotSymbol.Name)</p></li>
+            <li>Value: <p>@(Model.SlotSymbol.Value)</p></li>
+            <li>Weight: <p>@(Model.SlotSymbol.Weight)</p></li>
+            <li>Slot Machine: <a class="" asp-area="" asp-controller="Admin" asp-action="SlotMachine" asp-route-id="@(Model.SlotMachine.Id)"><p>@(Model.SlotSymbol.SlotMachine.Name)</p></a></li>
+        </ul>
+    </div>
 
+    <div>
+        <h2>Modify Slot Symbol Info</h2>
+        <form method="post">
+            <input type="hidden" id="slotSymbolId" name="SlotSymbolId" value="@(Model.SlotSymbol.Id)">
 
-    <br />
-    <br />
+            <div class="mb-3">
+                <label for="NewValue" class="form-label">Value:</label>
+                <input type="number" name="NewValue" class="form-control" aria-label="New Symbol Value input">
+            </div>
 
-    <h2>Modify Slot Symbol Info</h2>
-    <form method="post">
-        <input type="hidden" id="slotSymbolId" name="SlotSymbolId" value="@(Model.SlotSymbol.Id)">
+            <div class="mb-3">
+                <label for="NewWeight" class="form-label">Weight:</label>
+                <input type="number" name="NewWeight" class="form-control" aria-label="New Symbol Weight input">
+            </div>
 
-        <div class="input-group mb-3">
-            <span class="input-group-text">Value</span>
-            <span class="input-group-text">@(Model.SlotSymbol.Value)</span>
-            <input type="number" name="NewValue" class="form-control" aria-label="New Symbol Value input" >
-        </div>
-
-        <div class="input-group mb-3">
-            <span class="input-group-text">Weight</span>
-            <span class="input-group-text">@(Model.SlotSymbol.Weight)</span>
-            <input type="number" name="NewWeight" class="form-control" aria-label="New Symbol Weight input">
-        </div>
-
-        <button type="submit">Apply Changes</button>
-    </form>
+            <button type="submit">Apply Changes</button>
+        </form>
+    </div>
 }

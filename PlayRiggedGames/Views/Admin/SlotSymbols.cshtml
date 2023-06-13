@@ -1,35 +1,38 @@
 ﻿@model List<SlotSymbol>;
+<link rel="stylesheet" href="~/css/admin-tableOnly.css" asp-append-version="true" />
 
-<h1>Slot Symbols</h1>
-
-@if (Model.Count > 0)
-{
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">Id</th>
-                <th scope="col">Name</th>
-                <th scope="col">Value</th>
-                <th scope="col">Weight</th>
-                <th scope="col"></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (SlotSymbol s in Model)
-            {
-                <tr>
-                    <td>@(s.Id)</td>
-                    <td>@(s.Name)</td>
-                    <td>@(s.Value)</td>
-                    <td>@(s.Weight)</td>
-                    <td><a class="" asp-area="" asp-controller="Admin" asp-action="SlotSymbol" asp-route-id="@(s.Id)">Detail</a></td>
-                </tr>
-            }
-        </tbody>
-    </table>
-}
-else
-{
-    // no slotsymbols
-    <p>No Slot Symbols were detected in database. Contact an admin to add one.</p>
-}
+<div class="content-container">
+    <div>
+        <h2>Slot Symbols</h2>
+        @if (Model.Count > 0)
+        {
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Value</th>
+                        <th scope="col">Weight</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (SlotSymbol s in Model)
+                    {
+                        <tr>
+                            <td>@(s.Id)</td>
+                            <td>@(s.Name)</td>
+                            <td>@(s.Value)</td>
+                            <td>@(s.Weight)</td>
+                            <td><a class="" asp-area="" asp-controller="Admin" asp-action="SlotSymbol" asp-route-id="@(s.Id)">Detail</a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <p class="error">No Slot Symbols were detected in database. Contact an admin to add one.</p>
+        }
+    </div>
+</div>

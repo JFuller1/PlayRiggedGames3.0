@@ -1,8 +1,65 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Identity;
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+@inject SignInManager<ApplicationUser> SignInManager
+<link rel="stylesheet" href="~/css/home-index.css" asp-append-version="true" />
+
+<div class="intro-container">
+    <div>
+        <h2>Welcome to PlayRiggedGames</h2>
+        <p>Hit the jackpot of online excitement at our virtual casino, where luck meets limitless possibilities</p>
+    </div>
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <a asp-area="Identity" asp-page="/Account/Manage/Index">
+            <i class="fa-solid fa-user"></i>
+            Account Detail
+        </a>
+    }
+    else
+    {
+        <a asp-area="Identity" asp-page="/Account/Register">
+            <i class="fa-solid fa-id-card"></i>
+            Register
+        </a>
+    }
+</div>
+
+<div class="daily-spin-container">
+    <div>
+        <h2>Daily Spin</h2>
+        <p>Come visit daily for your chance at a free reward</p>
+    </div>
+    <a asp-area="" asp-controller="Slots" asp-action="DailySpin">Spin now</a>
+</div>
+
+<div class="slots-container">
+    <div class="thumbnail-content">
+        <div>
+            <h2>Slots</h2>
+            <p>Play our slots for a chance to win big</p>
+        </div>
+        <a asp-area="" asp-controller="Slots" asp-action="Index">Spin now</a>
+    </div>
+    <i class="fa-solid fa-rotate"></i>
+</div>
+<div class="blackjack-container">
+    <div class="thumbnail-content">
+        <div>
+            <h2>Blackjack</h2>
+            <p>Play blackjack for a chance to win big</p>
+        </div>
+        <a>Coming soon</a>
+    </div>
+    <i class="fa-solid fa-heart"></i>
+</div>
+
+<div class="legal-container">
+    <div>
+        <h2>Legal</h2>
+        <p>By using this website, you agree to abide by the terms outlined in our privacy policy. We reserve the right to make changes as needed to the privacy policy. Check back frequently for any amendments that may have been made.</p>
+    </div>
+    <a asp-area="" asp-controller="Home" asp-action="Privacy">Read now</a>
 </div>

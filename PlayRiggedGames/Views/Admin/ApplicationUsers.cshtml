@@ -1,41 +1,47 @@
 ﻿@model List<Admin_Users_ViewModel>;
+<link rel="stylesheet" href="~/css/admin-tableOnly.css" asp-append-version="true" />
 
-<h1>Users</h1>
+<div class="content-container">
+    <div>
+        <h2>Users</h2>
+        @if (Model.Count > 0)
+        {
+             <table class="table">
+                 <thead>
+                     <tr>
+                         <th scope="col">Id</th>
+                        <th scope="col">Username</th>
+                        <th scope="col">First Name</th>
+                        <th scope="col">Last Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Role</th>
+                        <th scope="col">Blacklisted</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (Admin_Users_ViewModel viewModel in Model)
+                    {
+                        <tr style="background-color: @(viewModel.User.BlackListed ? "#FF7276" : null)">
+                            <td>@(viewModel.User.Id)</td>
+                            <td>@(viewModel.User.UserName)</td>
+                            <td>@(viewModel.User.FirstName)</td>
+                            <td>@(viewModel.User.LastName)</td>
+                            <td>@(viewModel.User.Email)</td>
+                            <td>@(viewModel.Role.Name)</td>
+                            <td>@(viewModel.User.BlackListed)</td>
+                            <td><a class="" asp-area="" asp-controller="Admin" asp-action="ApplicationUser" asp-route-id="@(viewModel.User.Id)">Detail</a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <p class="error">No Users were detected in database. Contact an admin to add one.</p>
+        }
+    </div>
+    <div id="pagination-container">
 
-@if (Model.Count > 0)
-{
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">Id</th>
-                <th scope="col">Username</th>
-                <th scope="col">First Name</th>
-                <th scope="col">Last Name</th>
-                <th scope="col">Email</th>
-                <th scope="col">Role</th>
-                <th scope="col">Blacklisted</th>
-                <th scope="col"></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (Admin_Users_ViewModel viewModel in Model)
-            {
-                <tr style="background-color: @(viewModel.User.BlackListed ? "#FF7276" : null)">
-                    <td>@(viewModel.User.Id)</td>
-                    <td>@(viewModel.User.UserName)</td>
-                    <td>@(viewModel.User.FirstName)</td>
-                    <td>@(viewModel.User.LastName)</td>
-                    <td>@(viewModel.User.Email)</td>
-                    <td>@(viewModel.Role.Name)</td>
-                    <td>@(viewModel.User.BlackListed)</td>
-                    <td><a class="" asp-area="" asp-controller="Admin" asp-action="ApplicationUser" asp-route-id="@(viewModel.User.Id)">Detail</a></td>
-                </tr>
-            }
-        </tbody>
-    </table>
-}
-else
-{
-    // no users
-    <p>No Users were detected in database. Contact an admin to add one.</p>
-}
+    </div>
+</div>

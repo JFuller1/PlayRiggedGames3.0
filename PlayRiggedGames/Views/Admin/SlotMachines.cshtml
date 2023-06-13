@@ -1,37 +1,42 @@
 ﻿@model List<SlotMachine>;
+<link rel="stylesheet" href="~/css/admin-tableOnly.css" asp-append-version="true" />
+<div class="content-container">
+    <div>
+        <h2>Slot Machines</h2>
+        @if (Model.Count > 0)
+        {
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Width</th>
+                        <th scope="col">Height</th>
+                        <th scope="col">Out of Order</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (SlotMachine slotMachine in Model)
+                    {
+                        <tr style="color: @(slotMachine.OutOfOrder ? "red" : "black")">
+                            <td>@(slotMachine.Id)</td>
+                            <td>@(slotMachine.Name)</td>
+                            <td>@(slotMachine.Width)</td>
+                            <td>@(slotMachine.Height)</td>
+                            <td>@(slotMachine.OutOfOrder)</td>
+                            <td><a class="" asp-area="" asp-controller="Admin" asp-action="SlotMachine" asp-route-id="@(slotMachine.Id)">Detail</a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <p class="error">No Slot Machines were detected in database. Contact an admin to add one.</p>
+        }
+    </div>
+    <div id="pagination-container">
 
-<h1>Slot Machines</h1>
-
-@if (Model.Count > 0)
-{
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">Id</th>
-                <th scope="col">Name</th>
-                <th scope="col">Width</th>
-                <th scope="col">Height</th>
-                <th scope="col">Out of Order</th>
-                <th scope="col"></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (SlotMachine slotMachine in Model)
-            {
-                <tr style="color: @(slotMachine.OutOfOrder ? "red" : "black")">
-                    <td>@(slotMachine.Id)</td>
-                    <td>@(slotMachine.Name)</td>
-                    <td>@(slotMachine.Width)</td>
-                    <td>@(slotMachine.Height)</td>
-                    <td>@(slotMachine.OutOfOrder)</td>
-                    <td><a class="" asp-area="" asp-controller="Admin" asp-action="SlotMachine" asp-route-id="@(slotMachine.Id)">Detail</a></td>
-                </tr>
-            }
-        </tbody>
-    </table>
-}
-else
-{
-    // no slotmachines
-    <p>No Slot Machines were detected in database. Contact an admin to add one.</p>
-}
+    </div>
+</div>

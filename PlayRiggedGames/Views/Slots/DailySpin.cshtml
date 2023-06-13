@@ -1,10 +1,12 @@
-﻿<link rel="stylesheet" href="~/css/slots.css" />
+﻿<link rel="stylesheet" href="~/css/dailyslots.css" />
 
-<input type="hidden" value="@Url.Action("GenerateSlotSymbols")" id="UrlGenerateSlotSymbols" />
-<button id="generateBtn">Generate Symbols</button>
-<div id="spinStatus"></div>
-<div id="symbolDisplay"></div>
-<div id="resultDisplay"></div>
+<div class="content">
+    <div id="symbolDisplay"></div>
+    <input type="hidden" value="@Url.Action("GenerateSlotSymbols")" id="UrlGenerateSlotSymbols" />
+    <button id="generateBtn"></button>
+    <div id="spinStatus"></div>
+    <div id="resultDisplay"></div>
+</div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" defer>

@@ -1,69 +1,74 @@
 ﻿@model Admin_SlotMachine_ViewModel;
-
-<h1>Slot Machine Details</h1>
+<link rel="stylesheet" href="~/css/admin-slotMachineDetails.css" asp-append-version="true" />
 
 @if (Model.SlotMachine == null)
 {
-    <p>Selected Slot Machine does not exist.</p>
-
+    <div class="content-block">
+        <h2>Slot Machine Details</h2>
+        <p class="error">Selected Slot Machine does not exist.</p>
+    </div>
 }
 else
 {
-    <p>ID:              @(Model.SlotMachine.Id)</p>
-    <p>Width:           @(Model.SlotMachine.Width)</p>
-    <p>Height:          @(Model.SlotMachine.Height)</p>
-    <p>Name:            @(Model.SlotMachine.Name)</p>
-    <p>Out of Order:    @(Model.SlotMachine.OutOfOrder)</p>
+    <div class="content-block">
+        <ul>
+            <li>Id: <p>@(Model.SlotMachine.Id)</p></li>
+            <li>Width: <p>@(Model.SlotMachine.Width)</p></li>
+            <li>Height: <p>@(Model.SlotMachine.Height)</p></li>
+            <li>Name: <p>@(Model.SlotMachine.Name)</p></li>
+            <li>Out of Order: <p>@(Model.SlotMachine.OutOfOrder)</p></li>
+        </ul>
+    </div>
 
-    <br />
-    <br />
+    <div class="content-block">
+        <h2>Modify Slot Machine Info</h2>
+        <form method="post">
+            <input type="hidden" id="slotMachineId" name="SlotMachineId" value="@(Model.SlotMachine.Id)">
 
-    <h2>Modify Slot Machine Info</h2>
-    <form method="post">
-        <input type="hidden" id="slotMachineId" name="SlotMachineId" value="@(Model.SlotMachine.Id)">
+            <p>Set as Out of Order</p>
+            <div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="IsNowOutofOrder" id="nowOutOfOrderTrue" value="true" @(Model.SlotMachine.OutOfOrder ? "checked" : null)>
+                    <label class="form-check-label" for="nowBlacklistTrue">
+                        True
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="IsNowOutofOrder" id="nowOutOfOrderFalse" value="false" @(Model.SlotMachine.OutOfOrder ? null : "checked")>
+                    <label class="form-check-label" for="nowBlacklistFalse">
+                        False
+                    </label>
+                </div>
+            </div>
 
-        <p>Set as Out of Order</p>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="IsNowOutofOrder" id="nowOutOfOrderTrue" value="true" @(Model.SlotMachine.OutOfOrder ? "checked" : null)>
-            <label class="form-check-label" for="nowBlacklistTrue">
-                True
-            </label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="IsNowOutofOrder" id="nowOutOfOrderFalse" value="false" @(Model.SlotMachine.OutOfOrder ? null : "checked")>
-            <label class="form-check-label" for="nowBlacklistFalse">
-                False
-            </label>
-        </div>
+            <button type="submit">Apply Changes</button>
+        </form>
+    </div>
 
-        <button type="submit">Apply Changes</button>
-    </form>
-
-    <br />
-    <br />
-
-    <h2>Slot Symbols for @(Model.SlotMachine.Name)</h2>
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">Id</th>
-                <th scope="col">Name</th>
-                <th scope="col">Value</th>
-                <th scope="col">Weight</th>
-                <th scope="col"></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (SlotSymbol s in Model.SlotSymbols)
-            {
+    <div class="content-block">
+        <h2>Slot Symbols for @(Model.SlotMachine.Name)</h2>
+        <table class="table table-striped">
+            <thead>
                 <tr>
-                    <td>@(s.Id)</td>
-                    <td>@(s.Name)</td>
-                    <td>@(s.Value)</td>
-                    <td>@(s.Weight)</td>
-                    <td><a class="" asp-area="" asp-controller="Admin" asp-action="SlotSymbol" asp-route-id="@(s.Id)">Detail</a></td>
+                    <th scope="col">Id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Value</th>
+                    <th scope="col">Weight</th>
+                    <th scope="col"></th>
                 </tr>
-            }
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @foreach (SlotSymbol s in Model.SlotSymbols)
+                {
+                    <tr>
+                        <td>@(s.Id)</td>
+                        <td>@(s.Name)</td>
+                        <td>@(s.Value)</td>
+                        <td>@(s.Weight)</td>
+                        <td><a class="" asp-area="" asp-controller="Admin" asp-action="SlotSymbol" asp-route-id="@(s.Id)">Detail</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
 }
