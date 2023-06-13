@@ -10,6 +10,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Moq;
 using System.Runtime.CompilerServices;
+using Microsoft.AspNetCore.Identity;
+using System.Security.Principal;
 
 namespace PlayRiggedGames.Service.Tests
 {
@@ -50,6 +52,131 @@ namespace PlayRiggedGames.Service.Tests
 
             // ACT STUFF HERE
             // ASSERT STUFF HERE
+        }
+
+        // Aayush's Unit Test
+        [TestMethod()]
+        public void GetIdentityRoleOfUser_ValidOutput()
+        {
+            // Arrange
+            var userId = "f2672e1f-cf38-45a5-94d0-8ebb0c2ce2cd";
+            var user = new ApplicationUser()
+            {
+                Id = userId,
+                UserName = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                NormalizedUserName = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+                Money = -1000,
+                Birthday = new DateTime(2000, 1, 20),
+                Email = "IAmInCripplingDept@SendHelp.com",
+                EmailConfirmed = true,
+                FirstName = "Liam",
+                LastName = "Lee"
+            };
+
+            var roleId = "80960ea5-6c16-4c1d-8eb7-66940d0ad43de820885b-8490-4367-8bd6-50440fed5b39";
+            var role = new IdentityRole()
+            {
+                Id = roleId,
+                Name = "Developer"
+            };
+
+            var userRole = new IdentityUserRole<string>()
+            {
+                RoleId = roleId,
+                UserId = userId
+            };
+
+            // DB Setup
+            _mockDataAccess = new Mock<IRiggedDataAccess>();
+
+            _mockDataAccess.Setup<IEnumerable<IdentityUserRole<string>>>(l => l.GetAllIdentityUserRoles()).Returns(
+                new List<IdentityUserRole<string>>()
+                {
+                    userRole,
+                    new IdentityUserRole<string>()
+                    {
+                        RoleId = "80960ea5-6c26-4c1d-8eb7-66940d0ad43de820885b-8490-4367-8bd6-50440fed5b39",
+                        UserId = "f2672e1f-cf38-45a5-94d0-8ecb0c2ce2cd"
+                    }
+                }
+            );
+
+            _mockDataAccess.Setup<IEnumerable<IdentityRole>>(p => p.GetAllIdentityRoles()).Returns(
+                new List<IdentityRole>()
+                {
+                    role,
+                    new IdentityRole()
+                    {
+                        Id = "80970ea5-6c16-4c1d-8eb7-66940d0ad43de820885b-8490-4367-8bd6-50440fed5b39",
+                        Name = "Develoooooper"
+                    }
+                }
+            );
+
+            _service = new RiggedService(_mockDataAccess.Object);
+
+            // Act
+            var iRole = _service.GetIdentityRoleOfUser(user);
+
+            // Assert
+            Assert.AreEqual(role, iRole);
+        }
+
+        // Aayush's Unit Test
+        [TestMethod()]
+        public void GetIdentityRoleOfUser_NullInput()
+        {
+            // Arrange
+            var userId = "f2672e1f-cf38-45a5-94d0-8ebb0c2ce2cd";
+            ApplicationUser? user = null;
+
+            var roleId = "80960ea5-6c16-4c1d-8eb7-66940d0ad43de820885b-8490-4367-8bd6-50440fed5b39";
+            var role = new IdentityRole()
+            {
+                Id = roleId,
+                Name = "Developer"
+            };
+
+            var userRole = new IdentityUserRole<string>()
+            {
+                RoleId = roleId,
+                UserId = userId
+            };
+
+            // DB Setup
+            _mockDataAccess = new Mock<IRiggedDataAccess>();
+
+            _mockDataAccess.Setup<IEnumerable<IdentityUserRole<string>>>(l => l.GetAllIdentityUserRoles()).Returns(
+                new List<IdentityUserRole<string>>()
+                {
+                    userRole,
+                    new IdentityUserRole<string>()
+                    {
+                        RoleId = "80960ea5-6c26-4c1d-8eb7-66940d0ad43de820885b-8490-4367-8bd6-50440fed5b39",
+                        UserId = "f2672e1f-cf38-45a5-94d0-8ecb0c2ce2cd"
+                    }
+                }
+            );
+
+            _mockDataAccess.Setup<IEnumerable<IdentityRole>>(p => p.GetAllIdentityRoles()).Returns(
+                new List<IdentityRole>()
+                {
+                    role,
+                    new IdentityRole()
+                    {
+                        Id = "80970ea5-6c16-4c1d-8eb7-66940d0ad43de820885b-8490-4367-8bd6-50440fed5b39",
+                        Name = "Develoooooper"
+                    }
+                }
+            );
+
+            _service = new RiggedService(_mockDataAccess.Object);
+
+            // Act + Assert
+
+            Assert.ThrowsException<NullReferenceException>(
+                () => _service.GetIdentityRoleOfUser(user)
+            );
         }
 
         // Elliot's Test Method
