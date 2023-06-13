@@ -1,16 +1,20 @@
 ﻿<link rel="stylesheet" href="~/css/slots.css" />
 
-<input type="hidden" value="@Url.Action("GenerateSlotSymbols")" id="UrlGenerateSlotSymbols" />
-<button id="generateBtn">Generate Symbols</button>
-<div id="symbolDisplay"></div>
-<div id="resultDisplay"></div>
+<div class="content">
+    <div id="symbolDisplay"></div>
+
+    <div id="resultDisplay"></div>
+
+    <input type="hidden" value="@Url.Action("GenerateSlotSymbols")" id="UrlGenerateSlotSymbols" />
+    <button id="generateBtn"></button>
+</div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script type="text/javascript" defer>
-    const machineId = 1;
+
+<script type="text/javascript" defer>const machineId = 1;
     const name = "LuckySlots"
     const cost = 5;
     const width = 5;
-    const height = 3;
-</script>
+    const height = 3;</script>
+
 <script src="~/js/slothelper.js" defer></script>

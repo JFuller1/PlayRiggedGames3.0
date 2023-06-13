@@ -23,13 +23,13 @@
             </div>
             <div class="balance-container">
                 <i class="fa-solid fa-wallet"></i>
-                <p>$<span>@_service.GetUserById(UserManager.GetUserId(User)).Money</span></p>
+                <p><span id="moneyDisplay">$@_service.GetUserById(UserManager.GetUserId(User)).Money</span></p>
             </div>
         </div>
     }
     else
     {
-        <div class="right-side-container">
+        @*<div class="right-side-container">
             <div class="profile-container">
                 <a asp-area="Identity" asp-page="/Account/Register">
                     <i class="fa-solid fa-id-card"></i>
@@ -42,7 +42,7 @@
                     <p>Login</p>
                 </a>
             </div>
-        </div>
+        </div>*@
 
         @*<li class="nav-item">
             <a class="nav-link text-dark" id="register" asp-area="Identity" asp-page="/Account/Register">Register</a>

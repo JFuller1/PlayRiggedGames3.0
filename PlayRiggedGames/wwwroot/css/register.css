@@ -61,12 +61,21 @@ label {
     margin-bottom: 5px;
 }
 
+/*label:first-of-type {
+    margin-top: 0 !important;
+}*/
+
 .input-container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    gap: 20px;
 }
 
-    .input-container:first-of-type {
-        margin-bottom: 10px;
-    }
+.input-container:first-of-type {
+    margin-bottom: 10px;
+}
+
+.input-container div {
+    width: calc(100% / 3);
+}

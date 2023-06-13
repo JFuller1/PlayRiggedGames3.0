@@ -11,13 +11,15 @@
     padding: 20px;
     background-color: #242935;
     border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
-    .content h2 {
-        margin-top: 0;
-        margin-bottom: 20px;
-        color: #fff;
-    }
+.content h2 {
+    margin-top: 0;
+    color: #fff;
+}
 
 form {
     width: 100%;
@@ -25,36 +27,36 @@ form {
     flex-direction: column;
 }
 
-    form .username, form .password {
-        width: calc(50% - 5px);
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: space-between;
-    }
+form .username, form .password {
+    width: calc(50% - 10px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: space-between;
+}
 
-    form input {
-        border-radius: 12px;
-        padding: 10px 20px;
-        border: 1px solid #fff;
-        background-color: #4f5a75;
-    }
+form input {
+    border-radius: 12px;
+    padding: 10px 20px;
+    border: 1px solid #fff;
+    background-color: #4f5a75;
+}
 
-    form button {
-        margin-top: 20px;
-        border: none;
-        width: fit-content;
-        padding: 10px 20px;
-        background-color: #394154;
-        border-radius: 12px;
-        box-shadow: #282d3a 0px 0px 4px 4px;
-        transition: background-color 0.4s ease;
-        color: #fff;
-    }
+form button {
+    margin: 20px 0;
+    border: none;
+    width: fit-content;
+    padding: 10px 20px;
+    background-color: #394154;
+    border-radius: 12px;
+    box-shadow: #282d3a 0px 0px 4px 4px;
+    transition: background-color 0.4s ease;
+    color: #fff;
+}
 
-        form button:hover {
-            background-color: #4f5a75;
-        }
+form button:hover {
+    background-color: #4f5a75;
+}
 
 label {
     color: #fff;
@@ -65,4 +67,14 @@ label {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+}
+
+.checkbox {
+    margin: 10px 0 0 0;
+    display: flex;
+    align-items: center;
+}
+
+.form-check-input {
+    margin: 0;
 }
